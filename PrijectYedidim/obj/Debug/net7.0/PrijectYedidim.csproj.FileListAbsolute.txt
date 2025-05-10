@@ -1,0 +1,185 @@
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\appsettings.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.staticwebassets.runtime.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.exe
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.deps.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.runtimeconfig.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Azure.Core.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Azure.Identity.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Drawing.Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Memory.Data.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Runtime.Caching.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Security.Permissions.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Windows.Extensions.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Mock.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Repository.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Service.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Mock.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Service.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Common.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Repository.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.csproj.AssemblyReference.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.AssemblyInfoInputs.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.AssemblyInfo.cs
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.csproj.CoreCompileInputs.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.RazorAssemblyInfo.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.RazorAssemblyInfo.cs
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.PrijectYedidim.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.build.PrijectYedidim.props
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.PrijectYedidim.props
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.PrijectYedidim.props
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\bundle\PrijectYedidim.styles.css
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\projectbundle\PrijectYedidim.bundle.scp.css
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\refint\PrijectYedidim.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.genruntimeconfig.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\ref\PrijectYedidim.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectY.36278BFD.Up2Date
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\appsettings.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.staticwebassets.runtime.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.staticwebassets.endpoints.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.exe
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.deps.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.runtimeconfig.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Azure.Core.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Azure.Identity.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Drawing.Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Memory.Data.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Runtime.Caching.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Security.Permissions.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.Windows.Extensions.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Mock.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Repository.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Service.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Mock.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Service.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Common.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Repository.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.csproj.AssemblyReference.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.AssemblyInfoInputs.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.AssemblyInfo.cs
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.csproj.CoreCompileInputs.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.RazorAssemblyInfo.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.RazorAssemblyInfo.cs
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\bundle\PrijectYedidim.styles.css
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\scopedcss\projectbundle\PrijectYedidim.bundle.scp.css
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.PrijectYedidim.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.PrijectYedidim.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.build.PrijectYedidim.props
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.PrijectYedidim.props
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.PrijectYedidim.props
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectY.36278BFD.Up2Date
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\refint\PrijectYedidim.dll
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.pdb
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.genruntimeconfig.cache
+C:\Users\This User\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\ref\PrijectYedidim.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\PrijectYedidim.staticwebassets.endpoints.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets\msbuild.PrijectYedidim.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Humanizer.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\PrijectYedidim\obj\Debug\net7.0\PrijectYedidim.sourcelink.json

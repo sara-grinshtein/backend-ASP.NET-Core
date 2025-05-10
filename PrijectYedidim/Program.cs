@@ -1,0 +1,59 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using AutoMapper;
+using Service.service;
+using Repository.interfaces;
+using Mock;
+
+var builder = WebApplication.CreateBuilder(args);
+
+//  שירותים עבור Razor Pages
+builder.Services.AddRazorPages();
+
+//  הוספת Controllers לאפליקציית API
+builder.Services.AddControllers();
+
+//  חובה ל־Swagger – אחרת תופיע שגיאה של constructor
+builder.Services.AddEndpointsApiExplorer();
+
+// רישום Swagger
+builder.Services.AddSwaggerGen(option =>
+{
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+});
+
+// שירותים פנימיים שלך
+builder.Services.AddService();
+builder.Services.AddDbContext<Icontext, DataBase>();
+builder.Services.AddAutoMapper(typeof(MyMapper));
+
+var app = builder.Build();
+
+//  הפעלת Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// תשתית האפליקציה
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+
+// מיפוי גם ל־Controllers וגם ל־Razor Pages
+app.MapControllers();
+app.MapRazorPages();
+
+app.Run();

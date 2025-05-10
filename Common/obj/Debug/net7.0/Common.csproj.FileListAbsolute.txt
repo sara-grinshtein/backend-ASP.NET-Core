@@ -1,0 +1,25 @@
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.deps.json
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.csproj.AssemblyReference.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.AssemblyInfoInputs.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.AssemblyInfo.cs
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\refint\Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.pdb
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\ref\Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.deps.json
+C:\Users\This User\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\Common\bin\Debug\net7.0\Common.pdb
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.csproj.AssemblyReference.cache
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.AssemblyInfoInputs.cache
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.AssemblyInfo.cs
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\refint\Common.dll
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.pdb
+C:\Users\This User\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\ref\Common.dll
+C:\Users\משפחה\Desktop\ProjectYedidim\Common\obj\Debug\net7.0\Common.sourcelink.json
