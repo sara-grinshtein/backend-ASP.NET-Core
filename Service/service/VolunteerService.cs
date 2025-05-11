@@ -15,7 +15,7 @@ namespace Service.service
     {
         private readonly Irepository<Volunteer> repository;
         private readonly IMapper mapper;
-         
+
 
 
         public VolunteerService(Irepository<Volunteer> repository, IMapper mapper)
@@ -24,33 +24,34 @@ namespace Service.service
             this.mapper = mapper;
 
         }
-        public VolunteerDto AddItem(VolunteerDto item)
+        public async Task<VolunteerDto> AddItem(VolunteerDto item)
         {
-            return mapper.Map<Volunteer, VolunteerDto>(repository.AddItem(mapper.Map<VolunteerDto, Volunteer>(item)));
+            return mapper.Map<Volunteer, VolunteerDto>(await repository.AddItem(mapper.Map<VolunteerDto, Volunteer>(item)));
 
         }
-        public void DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            repository.DeleteItem(id);
- 
+            await repository.DeleteItem(id);
+
         }
 
-        public List<VolunteerDto> GetAll()
+        public async Task<List<VolunteerDto>> GetAll()
         {
-            return mapper.Map<List<Volunteer>, List<VolunteerDto>>(repository.GetAll());
+            return mapper.Map<List<Volunteer>, List<VolunteerDto>>(await repository.GetAll());
         }
 
-        public VolunteerDto Getbyid(int id)
+        public async Task<VolunteerDto> Getbyid(int id)
         {
-            return mapper.Map<Volunteer, VolunteerDto>(repository.Getbyid(id));
+            return mapper.Map<Volunteer, VolunteerDto>(await repository.Getbyid(id));
         }
 
-        public void UpDateItem(int id, VolunteerDto item)
+        public async Task UpDateItem(int id, VolunteerDto item)
         {
-            repository.UpDateItem(id, mapper.Map<VolunteerDto, Volunteer>(item));
+            await repository.UpDateItem(id, mapper.Map<VolunteerDto, Volunteer>(item));
 
         }
     }
 
 
 }
+

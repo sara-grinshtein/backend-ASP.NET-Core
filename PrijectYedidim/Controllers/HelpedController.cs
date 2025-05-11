@@ -4,6 +4,7 @@ using Repository.Entites;
 using Service.interfaces;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 
 
@@ -17,44 +18,42 @@ namespace PrijectYedidim.Controllers
     {
 
         private readonly IService<HelpedDto> service;
-
-        [HttpGet]
-        public List<HelpedDto> GetAll()
-        {
-            return service.GetAll();
-        }
         public HelpedController(IService<HelpedDto> service)
         {
             this.service = service;
         }
-      
+
+        [HttpGet]
+        public async Task<List<HelpedDto>> GetAll()
+        {
+            return await service.GetAll();
+        }
+       
         // GET api/<HelpedController>/5
         [HttpGet("{id}")]
-        public HelpedDto Get(int id)
+        public async Task<HelpedDto> Get(int id)
         {
-             return  service.Getbyid(id);
+             return await service.Getbyid(id);
         }
-      
-
-        // POST api/<HelpedController>
         [HttpPost]
-        public HelpedDto Post([FromBody]HelpedDto value)
+       // [Authorize]
+        public async Task<HelpedDto> Post([FromBody]HelpedDto value)
         {
-            return service.AddItem(value);
+            return await service.AddItem(value);
         }
-
+        
         // PUT api/<HelpedController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]HelpedDto value)
+        public async Task Put(int id, [FromBody]HelpedDto value)
         {
-            service.UpDateItem(id, value);
+          await  service.UpDateItem(id, value);
         }
 
         // DELETE api/<HelpedController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            service.DeleteItem(id);
+          await  service.DeleteItem(id);
         }
     }
 }

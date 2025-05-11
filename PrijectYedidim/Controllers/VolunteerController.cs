@@ -1,7 +1,8 @@
 ﻿using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
-
+using System.Security.Claims;
+using System.Threading.Tasks;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PrijectYedidim.Controllers
@@ -12,9 +13,9 @@ namespace PrijectYedidim.Controllers
     {
         private readonly IService<VolunteerDto> service;
         [HttpGet]
-        public List<VolunteerDto> GetAll()
+        public async Task<List<VolunteerDto>> GetAll()
         {
-            return service.GetAll();
+            return await service.GetAll();
         }
         public VolunteerController(IService<VolunteerDto> service)
         {
