@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
-//tytgbgjh
 
 namespace Repository.Repositories
 {

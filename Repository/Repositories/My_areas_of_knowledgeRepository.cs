@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
 
@@ -17,36 +18,36 @@ namespace Repository.Repositories
             this.context = context;
         }
         
-        public My_areas_of_knowledge AddItem(My_areas_of_knowledge item)
+        public async Task< My_areas_of_knowledge> AddItem(My_areas_of_knowledge item)
         {
-            this.context.areas_Of_Knowledges.Add(item);
-            this.context.Save();
+            await this.context.areas_Of_Knowledges.AddAsync(item);
+            await this.context.Save();
             return item;
         }
 
-        public My_areas_of_knowledge DeleteItem(int id)
+        public async Task< My_areas_of_knowledge> DeleteItem(int id)
         {
-            this.context.areas_Of_Knowledges.Remove(Getbyid(id));
-            this.context.Save();
-            return Getbyid(id);
+            var item = await ((Irepository<My_areas_of_knowledge>)this).Getbyid(id);
+            this.context.areas_Of_Knowledges.Remove(item);
+            await this.context.Save();
+            return item;
         }
-        //lalalalaallaalalallllllsssssss
-        public List<My_areas_of_knowledge> GetAll()
+        public async Task< List<My_areas_of_knowledge>> GetAll()
         {
-            return context.areas_Of_Knowledges.ToList();
-        }
-
-        public My_areas_of_knowledge Getbyid(int id)
-        {
-            return context.areas_Of_Knowledges.FirstOrDefault(x => x.ID_knowledge == id);
+            return await context.areas_Of_Knowledges.ToListAsync();
         }
 
-        public My_areas_of_knowledge UpDateItem(int id, My_areas_of_knowledge item)
+        public async Task  <My_areas_of_knowledge> Getbyid(int id)
         {
-            var knowledge = Getbyid(id);
-            knowledge.describtion = item.describtion;
-            context.Save();
-            return Getbyid(id);
+            return await context.areas_Of_Knowledges.FirstOrDefaultAsync(x => x.ID_knowledge == id);
+        }
+
+        public async Task <My_areas_of_knowledge> UpDateItem(int id, My_areas_of_knowledge item)
+        {
+            var knowledge = await ((Irepository<My_areas_of_knowledge>)this).Getbyid(id);
+            knowledge.describtion=item.describtion;
+            await context.Save();
+            return knowledge;
         }
     }
 }

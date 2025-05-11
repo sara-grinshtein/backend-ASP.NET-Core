@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
 
@@ -16,46 +17,45 @@ namespace Repository.Repositories
             this.context = context;
         }
 
-        public Helped AddItem(Helped item)
+        public async Task<Helped> AddItem(Helped item)
         {
-            this.context.Helpeds.Add(item);
-            this.context.Save();
+            await this.context.Helpeds.AddAsync(item);
+            await this.context.Save();
             return item;
         }
 
-        public Helped DeleteItem(int id)
+        public async Task<Helped> DeleteItem(int id)
         {
-            this.context.Helpeds.Remove(Getbyid(id));
-            this.context.Save();
-            return Getbyid(id);
+            var item = await ((Irepository<Helped>)this).Getbyid(id);
+            this.context.Helpeds.Remove(item);
+            await this.context.Save();
+            return item;
         }
 
-        public List<Helped> GetAll()
+        public async Task< List<Helped>> GetAll()
         {
-            return context.Helpeds.ToList();
+            return await context.Helpeds.ToListAsync();
         }
 
-        public Helped Getbyid(int id)
+        public async Task<Helped> Getbyid(int id)
         {
-            return context.Helpeds.FirstOrDefault(x => x.helped_id == id);
+            return await context.Helpeds.FirstOrDefaultAsync(x => x.helped_id == id);
         }
 
-        public Helped UpDateItem(int id, Helped item)
+        public async Task< Helped> UpDateItem(int id, Helped item)
         {
 
-            var helped = Getbyid(id);
+            var helped =await Getbyid(id);
             helped.tel = item.tel;
             helped.email = item.email;
             helped.password = item.password;
-           //// helped.helped_id = item.helped_id;
             helped.helped_first_name = item.helped_first_name;
             helped.helped_last_name = item.helped_last_name;
             helped.location = item.location;
-            context.Save();
-            return Getbyid(id);//? האם לעשות זא
-
-            ///להשלים את כל השדות
-            
+            await context.Save();
+            return helped;
         }
+
+
     }
 }
