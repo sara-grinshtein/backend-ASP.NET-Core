@@ -24,30 +24,30 @@ namespace PrijectYedidim.Controllers
 
         // GET api/<VolunteerController>/5
         [HttpGet("{id}")]
-        public VolunteerDto Get(int id)
+        public async Task<VolunteerDto> GetAsync(int id)
         {
-            return service.Getbyid(id);
+            return await service.Getbyid(id);
         }
 
         // POST api/<VolunteerController>
         [HttpPost]
-        public VolunteerDto Post([FromBody] VolunteerDto value)
+        public async Task<VolunteerDto> PostAsync([FromBody] VolunteerDto value)
         {
-            return service.AddItem(value);
+            return await service.AddItem(value);
         }
 
         // PUT api/<VolunteerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] VolunteerDto value)
+        public async Task PutAsync(int id, [FromBody] VolunteerDto value)
         {
-            service.UpDateItem(id, value);
+            await service.UpDateItem(id, value);
         }
 
         // DELETE api/<VolunteerController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            service.DeleteItem(id);
+            await service.DeleteItem(id);
         }
     }
 }
