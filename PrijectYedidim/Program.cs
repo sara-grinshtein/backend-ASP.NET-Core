@@ -8,6 +8,9 @@ using AutoMapper;
 using Service.service;
 using Repository.interfaces;
 using Mock;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,11 +36,51 @@ builder.Services.AddSwaggerGen(option =>
         BearerFormat = "JWT",
         Scheme = "Bearer"
     });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
 });
 
 // שירותים פנימיים שלך
 builder.Services.AddService();
 builder.Services.AddDbContext<Icontext, DataBase>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(option =>
+              option.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuer = true,
+                  ValidateAudience = true,
+                  ValidateLifetime = true,
+                  ValidateIssuerSigningKey = true,
+                  ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                  ValidAudience = builder.Configuration["Jwt:Audience"],
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+
+              });
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+//cores
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                      });
+});
+
 builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
@@ -51,6 +94,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseAuthentication();
+app.UseCors(MyAllowSpecificOrigins);
 
 // מיפוי גם ל־Controllers וגם ל־Razor Pages
 app.MapControllers();
