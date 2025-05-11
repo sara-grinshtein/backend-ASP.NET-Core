@@ -16,7 +16,6 @@ namespace PrijectYedidim.Controllers
     [ApiController]
     public class HelpedController : ControllerBase
     {
-
         private readonly IService<HelpedDto> service;
         public HelpedController(IService<HelpedDto> service)
         {
@@ -46,14 +45,14 @@ namespace PrijectYedidim.Controllers
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody]HelpedDto value)
         {
-          await  service.UpDateItem(id, value);
+          await service.UpDateItem(id, value);
         }
 
         // DELETE api/<HelpedController>/5
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-          await  service.DeleteItem(id);
+          await service.DeleteItem(id);
         }
     }
 }
