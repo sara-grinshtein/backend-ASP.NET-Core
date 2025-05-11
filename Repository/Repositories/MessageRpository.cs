@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
 //tytgbgjh
@@ -18,44 +19,35 @@ namespace Repository.Repositories
             this.context = context;
         }
 
-        public Message AddItem(Message item)
+        async Task<Message> Irepository<Message>.AddItem(Message item)
         {
-            this.context.Messages.Add(item);
-            this.context.Save();
+            await this.context.Messages.AddAsync(item);
+            await this.context.Save();
             return item;
         }
 
-        public Message DeleteItem(int id)
+        async Task<Message> Irepository<Message>.Getbyid(int id)
         {
-            this.context.Messages.Remove(Getbyid(id));
-            this.context.Save();
-            return Getbyid(id);
+            return await context.Messages.FirstOrDefaultAsync(x => x.message_id == id);
         }
-
-        public List<Message> GetAll()
+        async Task<Message> Irepository<Message>.DeleteItem(int id)
         {
-            return context.Messages.ToList();
+            var item = await ((Irepository<Message>)this).Getbyid(id);
+            this.context.Messages.Remove(item);
+            await this.context.Save();
+            return item;
         }
-
-        public Message Getbyid(int id)
+        async Task<Message> Irepository<Message>.UpDateItem(int id, Message item)
         {
-            return context.Messages.FirstOrDefault(x => x.message_id == id);
-        }
-
-        public Message UpDateItem(int id, Message item)
-        {
-            var message = Getbyid(id);
-            if (message == null)
-                return null;
-
-            message.description = item.description;
+            var message = await ((Irepository<Message>)this).Getbyid(id);
             message.isDone = item.isDone;
-            message.volunteer_id = item.volunteer_id;
-            message.helped_id = item.helped_id;
-
-            this.context.Save();        
-
+            message.description = item.description;
+            await context.Save();
             return message;
+        }
+        async Task<List<Message>> Irepository<Message>.GetAll()
+        {
+            return await context.Messages.ToListAsync();
         }
 
 

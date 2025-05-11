@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Repository.Entites;
 using Service.interfaces;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,8 +32,9 @@ namespace PrijectYedidim.Controllers
         [HttpGet("{id}")]
         public HelpedDto Get(int id)
         {
-            return service.Getbyid(id);
+             return  service.Getbyid(id);
         }
+      
 
         // POST api/<HelpedController>
         [HttpPost]

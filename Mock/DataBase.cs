@@ -18,9 +18,9 @@ namespace Mock
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
 
-        public void Save()
+        public async Task Save()
         {
-            SaveChanges();
+            await SaveChangesAsync();
         }
 
         //שכבה שמטפלת בSQL
@@ -28,5 +28,7 @@ namespace Mock
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;");
         }
+
+        
     }
 }

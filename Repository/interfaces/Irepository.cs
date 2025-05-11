@@ -10,11 +10,11 @@ namespace Repository.interfaces
     // get update ....
     public interface Irepository<T>
     {
-        T Getbyid(int id);
-        List<T> GetAll();
-        T AddItem(T item);
-        T DeleteItem(int id);
-        T UpDateItem(int id, T item);
+        Task<T> Getbyid(int id);
+        Task< List<T>> GetAll();
+        Task<T> AddItem(T item);
+        Task<T> DeleteItem(int id);
+        Task<T> UpDateItem(int id, T item);
 
 
 
