@@ -10,10 +10,10 @@ namespace Service.interfaces
     {
         // קוראת לריפוזירטורי שיביא את הנתנוים וכאן רושמים את הלוגיקה //
         //לוגיקה עסקית
-        T Getbyid(int id);
-        List<T> GetAll();
-        T AddItem(T item);
-        void DeleteItem(int id);
-        void UpDateItem(int id, T item);
+        Task<T> Getbyid(int id);
+        Task<List<T>> GetAll();
+        Task <T> AddItem(T item);
+        Task  DeleteItem(int id);
+        Task UpDateItem(int id, T item);
     }
 }

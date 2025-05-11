@@ -23,29 +23,29 @@ namespace Service.service
 
         }
 
-        public MessageDto AddItem(MessageDto item)
+        public async Task< MessageDto> AddItem(MessageDto item)
         {
-            return mapper.Map<Message,MessageDto>(repository.AddItem(mapper.Map<MessageDto,Message>(item)));
+            return mapper.Map<Message,MessageDto>(await repository.AddItem(mapper.Map<MessageDto,Message>(item)));
         }
 
-        public void DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            repository.DeleteItem(id);
+           await repository.DeleteItem(id);
          }
 
-        public List<MessageDto> GetAll()
+        public async Task <List<MessageDto>> GetAll()
         {
-            return mapper.Map<List<Message>, List<MessageDto>>(repository.GetAll());
+            return mapper.Map<List<Message>, List<MessageDto>>( await repository.GetAll());
         }
 
-        public MessageDto Getbyid(int id)
+        public async  Task <MessageDto> Getbyid(int id)
         {
-            return mapper.Map<Message, MessageDto>(repository.Getbyid(id));
+            return mapper.Map<Message, MessageDto>(await repository.Getbyid(id));
         }
 
-        public void UpDateItem(int id, MessageDto item)
+        public async Task UpDateItem(int id, MessageDto item)
         {
-            repository.UpDateItem(id, mapper.Map<MessageDto, Message>(item));
+           await repository.UpDateItem(id, mapper.Map<MessageDto, Message>(item));
 
         }
     }
