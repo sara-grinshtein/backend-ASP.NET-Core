@@ -24,31 +24,31 @@ namespace Service.service
             this.mapper = mapper;
 
         }
-        public HelpedDto AddItem(HelpedDto item)
+        public async  Task<HelpedDto> AddItem(HelpedDto item)
         {
-            return mapper.Map<Helped, HelpedDto>(repository.AddItem(mapper.Map<HelpedDto, Helped>(item)));
+            return mapper.Map<Helped, HelpedDto>(await repository.AddItem(mapper.Map<HelpedDto, Helped>(item)));
 
         }
 
-        public void DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            repository.DeleteItem(id);
+           await repository.DeleteItem(id);
              
         }
 
-        public List<HelpedDto> GetAll()
+        public async Task<List<HelpedDto>> GetAll()
         {
-            return mapper.Map<List<Helped>, List<HelpedDto>>(repository.GetAll());
+            return mapper.Map<List<Helped>, List<HelpedDto>>(await repository.GetAll());
         }
 
-        public HelpedDto Getbyid(int id)
+        public async Task<HelpedDto> Getbyid(int id)
         {
-            return mapper.Map<Helped, HelpedDto>(repository.Getbyid(id));
+            return mapper.Map<Helped, HelpedDto>(await repository.Getbyid(id));
         }
 
-        public void UpDateItem(int id, HelpedDto item)
+        public async Task UpDateItem(int id, HelpedDto item)
         {
-            repository.UpDateItem(id, mapper.Map<HelpedDto, Helped>(item));
+           await repository.UpDateItem(id, mapper.Map<HelpedDto, Helped>(item));
 
         }
     }

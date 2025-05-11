@@ -26,33 +26,33 @@ namespace Service.service
             this.mapper = mapper;
 
         }
-        public My_areas_of_knowledge_Dto AddItem(My_areas_of_knowledge_Dto item)
+        public async Task< My_areas_of_knowledge_Dto> AddItem(My_areas_of_knowledge_Dto item)
         {
-            return mapper.Map<My_areas_of_knowledge, My_areas_of_knowledge_Dto>(
+            return mapper.Map<My_areas_of_knowledge, My_areas_of_knowledge_Dto>(await 
                 repository.AddItem(mapper.Map<My_areas_of_knowledge_Dto, My_areas_of_knowledge>(item)));
 
         }
 
-        public void DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            repository.DeleteItem(id);
+           await repository.DeleteItem(id);
  
         }
 
-        public List<My_areas_of_knowledge_Dto> GetAll()
+        public async Task<List<My_areas_of_knowledge_Dto>> GetAll()
         {
-            return mapper.Map<List<My_areas_of_knowledge>, List<My_areas_of_knowledge_Dto>>(repository.GetAll());
+            return mapper.Map<List<My_areas_of_knowledge>, List<My_areas_of_knowledge_Dto>>(await repository.GetAll());
         }
 
-        public My_areas_of_knowledge_Dto Getbyid(int id)
+        public async Task<My_areas_of_knowledge_Dto> Getbyid(int id)
         {
-            return mapper.Map<My_areas_of_knowledge, My_areas_of_knowledge_Dto>(repository.Getbyid(id));
+            return mapper.Map<My_areas_of_knowledge, My_areas_of_knowledge_Dto>(await repository.Getbyid(id));
 
         }
 
-        public void UpDateItem(int id, My_areas_of_knowledge_Dto item)
+        public async Task UpDateItem(int id, My_areas_of_knowledge_Dto item)
         {
-            repository.UpDateItem(id, mapper.Map<My_areas_of_knowledge_Dto, My_areas_of_knowledge>(item));
+          await repository.UpDateItem(id, mapper.Map<My_areas_of_knowledge_Dto, My_areas_of_knowledge>(item));
 
         }
 
