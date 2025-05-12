@@ -12,41 +12,41 @@ namespace PrijectYedidim.Controllers
     {
         private readonly IService<ResponseDto> service;
         [HttpGet]
-        public List<ResponseDto> GetAll()
+        public async Task<List<ResponseDto>> GetAllAsync()
         {
-            return service.GetAll();
+            return await service.GetAll();
         }
         public ResponseController(IService<ResponseDto> service)
         {
             this.service = service;
         }
-    
+
         // GET api/<ResponseController>/5
         [HttpGet("{id}")]
-        public ResponseDto Get(int id)
+        public async Task<ResponseDto> GetAsync(int id)
         {
-            return service.Getbyid(id);
+            return await service.Getbyid(id);
         }
 
         // POST api/<ResponseController>
         [HttpPost]
-        public ResponseDto Post([FromBody] ResponseDto value)
+        public async Task<ResponseDto> PostAsync([FromBody] ResponseDto value)
         {
-            return service.AddItem(value);
+            return await service.AddItem(value);
         }
 
         // PUT api/<ResponseController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ResponseDto value)
+        public async Task PutAsync(int id, [FromBody] ResponseDto value)
         {
-            service.UpDateItem(id, value);
+            await service.UpDateItem(id, value);
         }
 
         // DELETE api/<ResponseController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            service.DeleteItem(id);
+            await service.DeleteItem(id);
         }
     }
 }

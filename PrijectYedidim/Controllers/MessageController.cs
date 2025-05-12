@@ -1,4 +1,5 @@
-﻿using Common.Dto;
+﻿using System.Threading.Tasks;
+using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
 
@@ -13,47 +14,45 @@ namespace PrijectYedidim.Controllers
 
         private readonly IService<MessageDto> service;
 
-        // GET: api/<MessageController>
-        [HttpGet]
-        public List<MessageDto> GetAll()
-        {
-            return service.GetAll();
-        }
-
         public MessageController(IService<MessageDto> service)
         {
             this.service = service;
         }
 
-     
-        
+        // GET: api/<MessageController>
+        [HttpGet]
+        public async Task<List<MessageDto>> GetAllAsync()
+        {
+            return await service.GetAll();
+        }
+
 
         // GET api/<MessageController>/5
         [HttpGet("{id}")]
-        public MessageDto Get(int id)
+        public async Task<MessageDto> Get(int id)
         {
-            return service.Getbyid(id);
+            return await service.Getbyid(id);
         }
 
         // POST api/<MessageController>
         [HttpPost]
-        public MessageDto Post([FromBody] MessageDto value)
+        public async Task<MessageDto> Post([FromBody] MessageDto value)
         {
-            return service.AddItem(value);
+            return await service.AddItem(value);
         }
 
         // PUT api/<MessageController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] MessageDto value)
+        public async Task Put(int id, [FromBody] MessageDto value)
         {
-            service.UpDateItem(id, value);
+            await service.UpDateItem(id, value);
         }
 
         // DELETE api/<MessageController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            service.DeleteItem(id);
+            await service.DeleteItem(id);
         }
     }
 }

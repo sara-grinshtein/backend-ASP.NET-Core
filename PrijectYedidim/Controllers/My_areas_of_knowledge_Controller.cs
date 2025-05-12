@@ -1,4 +1,5 @@
-﻿using Common.Dto;
+﻿using System.Threading.Tasks;
+using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
 
@@ -12,42 +13,42 @@ namespace PrijectYedidim.Controllers
     {
         private readonly IService<My_areas_of_knowledge_Dto> service;
         [HttpGet]
-        public List<My_areas_of_knowledge_Dto> GetAll()
+        public async Task<List<My_areas_of_knowledge_Dto>> GetAll()
         {
-            return service.GetAll();
+            return await service.GetAll();
         }
         public My_areas_of_knowledge_Controller(IService<My_areas_of_knowledge_Dto> service)
         {
             this.service = service;
         }
-        
+
 
         // GET api/<My_areas_of_knowledge_Controller>/5
         [HttpGet("{id}")]
-        public My_areas_of_knowledge_Dto Get(int id)
+        public async Task<My_areas_of_knowledge_Dto> GetAsync(int id)
         {
-            return service.Getbyid(id);
+            return await service.Getbyid(id);
         }
 
         // POST api/<My_areas_of_knowledge_Controller>
         [HttpPost]
-        public My_areas_of_knowledge_Dto Post([FromBody] My_areas_of_knowledge_Dto value)
+        public async Task<My_areas_of_knowledge_Dto> PostAsync([FromBody] My_areas_of_knowledge_Dto value)
         {
-            return service.AddItem(value);
+            return await service.AddItem(value);
         }
 
         // PUT api/<My_areas_of_knowledge_Controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] My_areas_of_knowledge_Dto value)
+        public async Task PutAsync(int id, [FromBody] My_areas_of_knowledge_Dto value)
         {
-            service.UpDateItem(id, value);
+            await service.UpDateItem(id, value);
         }
 
         // DELETE api/<My_areas_of_knowledge_Controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            service.DeleteItem(id);
+            await service.DeleteItem(id);
         }
     }
 }

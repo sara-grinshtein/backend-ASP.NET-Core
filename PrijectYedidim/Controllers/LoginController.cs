@@ -5,6 +5,7 @@ using Service.interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,21 +32,15 @@ namespace PrijectYedidim.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         [HttpGet("{id}")]
-        public IActionResult Get(int id, [FromQuery][FromHeader(Name = "role")] string role)
+        public async Task<IActionResult> Get(int id, [FromQuery][FromHeader(Name = "role")] string role)
         {
             if (string.IsNullOrEmpty(role))
                 return BadRequest("Role is required (Volunteer or Helped)");
 
             if (role.ToLower() == "volunteer")
             {
-                var volunteer = volunteerService.Getbyid(id);
+                var volunteer = await volunteerService.Getbyid(id);
                 if (volunteer == null)
                     return NotFound();
                 return Ok(volunteer);
@@ -64,13 +59,13 @@ namespace PrijectYedidim.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody] UserLogin value)
+        public async Task< IActionResult> Post([FromBody] UserLogin value)
         {
             // אם המשתמש כבר קיים — מחזירים שגיאה מתאימה בלי לדרוש Role
-            if (IsVolunteer(value))
+            if (await IsVolunteer(value))
                 return BadRequest("Volunteer already exists.");
 
-            if (IsHelped(value))
+            if (await IsHelped(value))
                 return BadRequest("Helped already exists.");
 
             // אם המשתמש לא קיים – נדרש שRole יהיה קיים
@@ -87,7 +82,7 @@ namespace PrijectYedidim.Controllers
                     email = value.Email
                 };
 
-                volunteerService.AddItem(newVolunteer);
+                await volunteerService.AddItem(newVolunteer);
                 return Ok("Volunteer registered successfully.");
             }
 
@@ -110,16 +105,16 @@ namespace PrijectYedidim.Controllers
 
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] UserLogin value)
+        public async Task<IActionResult> Login([FromBody] UserLogin value)
         {
-            var volunteer = AuthenticateVolunteer(value);
-            if (volunteer != null)
+            var volunteer =await AuthenticateVolunteer(value);
+            if ( volunteer != null)
             {
                 var token = GenerateVolunteerToken(volunteer);
                 return Ok(new { token, role = "Volunteer" });
             }
 
-            var helped = AuthenticateHelped(value);
+            var helped = await AuthenticateHelped(value);
             if (helped != null)
             {
                 var token = GenerateHelpedToken(helped);
@@ -162,60 +157,49 @@ namespace PrijectYedidim.Controllers
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        private bool IsVolunteer(UserLogin value)
+        private async Task<bool> IsVolunteer(UserLogin value)
         {
-            var volunteer = volunteerService.GetAll()
-                .FirstOrDefault(x =>
-                    x.volunteer_first_name == value.FirstName &&
-                    x.volunteer_last_name == value.LastName &&
-                    x.password == value.Password &&
-                    x.email == value.Email);  
+            var volunteers = await volunteerService.GetAll();
+            var volunteer = volunteers.FirstOrDefault(x =>
+                x.volunteer_first_name == value.FirstName &&
+                x.volunteer_last_name == value.LastName &&
+                x.password == value.Password &&
+                x.email == value.Email);
 
             return volunteer != null;
         }
 
-        private bool IsHelped(UserLogin value)
+        private async  Task<bool> IsHelped(UserLogin value)
         {
-            var helped = helpedService.GetAll()
-                .FirstOrDefault(x =>
-                    x.helped_first_name == value.FirstName &&
-                    x.helped_last_name == value.LastName &&
-                    x.password == value.Password &&
-                    x.email == value.Email);  // ✅ נבדק גם מייל
+            var helpeds = await helpedService.GetAll();
+            var helped = helpeds.FirstOrDefault(x =>
+                x.helped_first_name == value.FirstName &&
+                x.helped_last_name == value.LastName &&
+                x.password == value.Password &&
+                x.email == value.Email);
 
             return helped != null;
         }
 
-        private VolunteerDto? AuthenticateVolunteer(UserLogin value)
+        private async Task<VolunteerDto?> AuthenticateVolunteer(UserLogin value)
         {
-            return volunteerService.GetAll()
-                .FirstOrDefault(x =>
-                    x.volunteer_first_name == value.FirstName &&
-                    x.volunteer_last_name == value.LastName &&
-                    x.password == value.Password &&
-                    x.email == value.Email);  // מחפש מתנדב לפי כל השדות
+            var volunteers = await volunteerService.GetAll();
+            return volunteers.FirstOrDefault(x =>
+                x.volunteer_first_name == value.FirstName &&
+                x.volunteer_last_name == value.LastName &&
+                x.password == value.Password &&
+                x.email == value.Email);
         }
 
-        private HelpedDto? AuthenticateHelped(UserLogin value)
+        private async Task<HelpedDto?> AuthenticateHelped(UserLogin value)
         {
-            return helpedService.GetAll()
-                .FirstOrDefault(x =>
-                    x.helped_first_name == value.FirstName &&
-                    x.helped_last_name == value.LastName &&
-                    x.password == value.Password &&
-                    x.email == value.Email);  // מחפש נעזר לפי כל השדות
+            var helpeds = await helpedService.GetAll();
+            return helpeds.FirstOrDefault(x =>
+                x.helped_first_name == value.FirstName &&
+                x.helped_last_name == value.LastName &&
+                x.password == value.Password &&
+                x.email == value.Email);
         }
 
-
-
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

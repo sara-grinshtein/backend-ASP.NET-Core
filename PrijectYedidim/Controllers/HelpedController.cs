@@ -27,32 +27,32 @@ namespace PrijectYedidim.Controllers
         {
             return await service.GetAll();
         }
-       
+
         // GET api/<HelpedController>/5
         [HttpGet("{id}")]
         public async Task<HelpedDto> Get(int id)
         {
-             return await service.Getbyid(id);
+            return await service.Getbyid(id);
         }
         [HttpPost]
-       // [Authorize]
-        public async Task<HelpedDto> Post([FromBody]HelpedDto value)
+        // [Authorize]
+        public async Task<HelpedDto> Post([FromBody] HelpedDto value)
         {
             return await service.AddItem(value);
         }
-        
+
         // PUT api/<HelpedController>/5
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody]HelpedDto value)
+        public async Task Put(int id, [FromBody] HelpedDto value)
         {
-          await service.UpDateItem(id, value);
+            await service.UpDateItem(id, value);
         }
 
         // DELETE api/<HelpedController>/5
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-          await service.DeleteItem(id);
+            await service.DeleteItem(id);
         }
     }
 }
