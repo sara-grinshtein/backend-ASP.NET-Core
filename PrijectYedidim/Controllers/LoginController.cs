@@ -36,7 +36,11 @@ namespace PrijectYedidim.Controllers
         public async Task<IActionResult> Get(int id, [FromQuery][FromHeader(Name = "role")] string role)
         {
             if (string.IsNullOrEmpty(role))
-                return BadRequest("Role is required (Volunteer or Helped)");
+                return BadRequest("Role is req" +
+                    "" +
+                    "" +
+                    "" +
+                    "uired (Volunteer or Helped)");
 
             if (role.ToLower() == "volunteer")
             {
