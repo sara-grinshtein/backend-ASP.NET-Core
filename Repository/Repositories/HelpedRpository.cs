@@ -24,13 +24,6 @@ namespace Repository.Repositories
             return item;
         }
 
-        //public async Task<Helped> DeleteItem(int id)
-        //{
-        //    var item = await ((Irepository<Helped>)this).Getbyid(id);
-        //    this.context.Helpeds.Remove(item);
-        //    await this.context.Save();
-        //    return item;
-        //}
         async Task<Helped> Irepository<Helped>.DeleteItem(int id)
         {
             var Helped = await ((Irepository<Helped>)this).Getbyid(id);
@@ -39,10 +32,6 @@ namespace Repository.Repositories
             return Helped;
         }
 
-        //public async Task< List<Helped>> GetAll()
-        //{
-        //    return await context.Helpeds.ToListAsync();
-        //}
         async Task<List<Helped>> Irepository<Helped>.GetAll()
         {
             return await context.Helpeds
