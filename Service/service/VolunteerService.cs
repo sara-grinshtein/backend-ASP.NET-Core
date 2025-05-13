@@ -8,6 +8,7 @@ using Repository.Entites;
 using Service.interfaces;
 using Common.Dto;
 using Repository.interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service.service
 {
@@ -50,6 +51,9 @@ namespace Service.service
             await repository.UpDateItem(id, mapper.Map<VolunteerDto, Volunteer>(item));
 
         }
+
+       
+
     }
 
 

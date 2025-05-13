@@ -19,5 +19,7 @@ namespace Common.Dto
         public TimeSpan end_time { get; set; }
         public string tel { get; set; }//טל
         public string email { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }

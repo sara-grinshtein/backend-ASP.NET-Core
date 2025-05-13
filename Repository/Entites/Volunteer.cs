@@ -21,8 +21,10 @@ namespace Repository.Entites
         public TimeSpan?  end_time { get; set; }
         public string? tel { get; set; }//טל
         public string email { get; set; }
-        public List<My_areas_of_knowledge>? areas_of_knowledge { get; set; } 
-        
+        public List<My_areas_of_knowledge>? areas_of_knowledge { get; set; }
+        public bool IsDeleted { get; set; } = false;
+
+
 
 
     }

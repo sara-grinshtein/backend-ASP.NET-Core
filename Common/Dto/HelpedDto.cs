@@ -16,6 +16,8 @@ namespace Common.Dto
         public string tel { get; set; }//טל   
         public string email { get; set; }
         public string location { get; set; }
+        public bool IsDeleted { get; set; }
+
 
     }
 }
