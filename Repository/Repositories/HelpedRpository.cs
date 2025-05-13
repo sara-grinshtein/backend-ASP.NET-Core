@@ -24,18 +24,32 @@ namespace Repository.Repositories
             return item;
         }
 
-        public async Task<Helped> DeleteItem(int id)
+        //public async Task<Helped> DeleteItem(int id)
+        //{
+        //    var item = await ((Irepository<Helped>)this).Getbyid(id);
+        //    this.context.Helpeds.Remove(item);
+        //    await this.context.Save();
+        //    return item;
+        //}
+        async Task<Helped> Irepository<Helped>.DeleteItem(int id)
         {
-            var item = await ((Irepository<Helped>)this).Getbyid(id);
-            this.context.Helpeds.Remove(item);
-            await this.context.Save();
-            return item;
+            var Helped = await ((Irepository<Helped>)this).Getbyid(id);
+            Helped.IsDeleted = true;
+            await context.Save();
+            return Helped;
         }
 
-        public async Task< List<Helped>> GetAll()
+        //public async Task< List<Helped>> GetAll()
+        //{
+        //    return await context.Helpeds.ToListAsync();
+        //}
+        async Task<List<Helped>> Irepository<Helped>.GetAll()
         {
-            return await context.Helpeds.ToListAsync();
+            return await context.Helpeds
+                .Where(h => !h.IsDeleted)
+                .ToListAsync();
         }
+
 
         public async Task<Helped> Getbyid(int id)
         {

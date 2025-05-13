@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Service\\Service.csproj": {}
+    "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Service\\Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\Common.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\Common.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\obj\\",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -67,29 +67,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\obj\\",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -151,29 +165,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Service\\Service.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Service\\obj\\",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -189,11 +217,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Common\\Common.csproj"
+              "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Common\\Common.csproj"
               },
-              "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\This User\\Desktop\\לימודים תשפה\\לימודים יד תשפה\\פרויקט\\projectYedidim-csharp\\Repository\\Repository.csproj"
+              "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\ProjectYedidim\\Repository\\Repository.csproj"
               }
             }
           }
@@ -230,12 +258,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

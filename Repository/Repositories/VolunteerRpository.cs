@@ -47,18 +47,33 @@ namespace Repository.Repositories
             return volunteer;
         }
 
+        //async Task<Volunteer> Irepository<Volunteer>.DeleteItem(int id)
+        //{
+        //    var item = await ((Irepository<Volunteer>)this).Getbyid(id);
+        //    this.context.Volunteers.Remove(item);
+        //    await this.context.Save();
+        //    return item;
+        //}
         async Task<Volunteer> Irepository<Volunteer>.DeleteItem(int id)
         {
-            var item = await ((Irepository<Volunteer>)this).Getbyid(id);
-            this.context.Volunteers.Remove(item);
-            await this.context.Save();
-            return item;
+            var volunteer = await ((Irepository<Volunteer>)this).Getbyid(id);
+            volunteer.IsDeleted = true;
+            await context.Save();
+            return volunteer;
         }
 
+
+        //async Task<List<Volunteer>> Irepository<Volunteer>.GetAll()
+        //{
+        //    return await context.Volunteers.ToListAsync();
+        //}
         async Task<List<Volunteer>> Irepository<Volunteer>.GetAll()
         {
-            return await context.Volunteers.ToListAsync();
+            return await context.Volunteers
+                .Where(v => !v.IsDeleted)
+                .ToListAsync();
         }
+
 
 
     }
