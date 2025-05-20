@@ -36,14 +36,23 @@ namespace Repository.Repositories
             await this.context.Save();
             return item;
         }
+  
         async Task<Message> Irepository<Message>.UpDateItem(int id, Message item)
         {
             var message = await ((Irepository<Message>)this).Getbyid(id);
-            message.isDone = item.isDone;
-            message.description = item.description;
-            await context.Save();
+
+            if (message != null)
+            {
+                message.isDone = item.isDone;
+                message.description = item.description;
+                message.ConfirmArrival = item.ConfirmArrival; 
+                await context.Save();
+            }
+
             return message;
         }
+
+
         async Task<List<Message>> Irepository<Message>.GetAll()
         {
             return await context.Messages.ToListAsync();

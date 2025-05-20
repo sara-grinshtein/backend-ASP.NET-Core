@@ -1,6 +1,7 @@
 ﻿using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
+using Service.service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -48,5 +49,36 @@ namespace PrijectYedidim.Controllers
         {
             await service.DeleteItem(id);
         }
+
+
+        // כדי שהמתנדב יראה רק תגובות לקריאות שנשלחו אליו
+        [HttpGet("by-volunteer/{volunteerId}")]
+        public async Task<List<ResponseDto>> GetByVolunteer(int volunteerId)
+        {
+            // כאן נדרשת גישה ל־MessageService כדי לבדוק למי שייכת כל קריאה
+            // אם כבר הזרקת אותו בקונסטרקטור, השתמשי בו — אם לא, נוסיף עכשיו
+            var allMessages = await service.GetAll();
+            var messageIds = allMessages
+                .Where(m => m.volunteer_id == volunteerId)
+                .Select(m => m.message_id)
+                .ToList();
+
+            var allResponses = await service.GetAll();
+            return allResponses
+                .Where(r => messageIds.Contains(r.me)) // message_id חייב להיות ב־ResponseDto
+                .ToList();
+        }
+
+        // כדי שהנעזר יראה רק את התגובות ששייכות לו
+        [HttpGet("by-helped/{helpedId}")]
+        public async Task<List<ResponseDto>> GetByHelped(int helpedId)
+        {
+            var allResponses = await service.GetAll();
+            return allResponses
+                .Where(r => r.helped_id == helpedId)
+                .ToList();
+        }
+
+
     }
 }

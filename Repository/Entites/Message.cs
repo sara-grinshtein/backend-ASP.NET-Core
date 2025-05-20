@@ -19,7 +19,10 @@ namespace Repository.Entites
         public int helped_id { get; set; }
 
         public bool isDone { get; set; }//האם טופל
+
         public string description { get; set; }
+
+        public bool? ConfirmArrival { get; set; }
 
 
 

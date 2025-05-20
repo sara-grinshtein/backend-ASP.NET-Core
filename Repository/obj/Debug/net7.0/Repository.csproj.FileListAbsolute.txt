@@ -27,3 +27,18 @@ C:\Users\This User\Desktop\ProjectYedidim\Repository\obj\Debug\net7.0\Repository
 C:\Users\This User\Desktop\ProjectYedidim\Repository\obj\Debug\net7.0\Repository.genruntimeconfig.cache
 C:\Users\This User\Desktop\ProjectYedidim\Repository\obj\Debug\net7.0\ref\Repository.dll
 C:\Users\משפחה\Desktop\ProjectYedidim\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\bin\Debug\net7.0\Repository.deps.json
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\bin\Debug\net7.0\Repository.runtimeconfig.json
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\bin\Debug\net7.0\Repository.dll
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\bin\Debug\net7.0\Repository.pdb
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.csproj.AssemblyReference.cache
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.dll
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\refint\Repository.dll
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.pdb
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.genruntimeconfig.cache
+C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\ref\Repository.dll

@@ -17,6 +17,7 @@ namespace Common.Dto
 
         [Display(Name = "Role (Only required for registration)", Description = "Use 'Volunteer' or 'Helped' when registering a new user")]
         public string?  Role { get; set; }  
+
         
 
     }

@@ -13,10 +13,15 @@ namespace Repository.Entites
         [Key]
         public int response_id { get; set; }
 
+        [ForeignKey("message_id")]
+        public int message_id { get; set; }
+
         [ForeignKey("helped_id")]
         public int helped_id { get; set; }
         public string context { get; set; }
         public int rating { get; set; }
+
+
 
     }
 }
