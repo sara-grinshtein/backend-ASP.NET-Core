@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 namespace PrijectYedidim.Controllers
 {
     [Route("api/[controller]")]
-
-
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -113,22 +111,27 @@ namespace PrijectYedidim.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLogin value)
         {
-            var volunteer =await AuthenticateVolunteer(value);
-            if ( volunteer != null)
+            if (string.IsNullOrEmpty(value.Email) || string.IsNullOrEmpty(value.Password))
+                return BadRequest("Missing credentials.");
+
+            var volunteer = await AuthenticateVolunteer(value);
+            if (volunteer != null)
             {
                 var token = GenerateVolunteerToken(volunteer);
-                return Ok(new { token, role = "Volunteer" });
+                return Ok(new { token });
             }
 
             var helped = await AuthenticateHelped(value);
             if (helped != null)
             {
                 var token = GenerateHelpedToken(helped);
-                return Ok(new { token, role = "Helped" });
+                return Ok(new { token });
             }
 
-            return Unauthorized("Invalid login credentials.");
+            return Unauthorized("Invalid credentials.");
         }
+
+
 
         private string GenerateVolunteerToken(VolunteerDto volunteer)
         {
