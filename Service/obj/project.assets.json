@@ -2803,11 +2803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Service\\Service.csproj",
+      "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
       "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Service\\obj\\",
+      "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2828,11 +2828,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Common\\Common.csproj"
+            "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj"
             },
-            "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj"
+            "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj"
             }
           }
         }

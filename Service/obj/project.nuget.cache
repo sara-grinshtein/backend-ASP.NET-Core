@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bPVLN6f/3qI=",
+  "dgSpecHash": "ShXqy0bS8r0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Service\\Service.csproj",
+  "projectFilePath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\משפחה\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\משפחה\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

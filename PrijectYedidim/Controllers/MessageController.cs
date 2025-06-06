@@ -38,6 +38,10 @@ namespace PrijectYedidim.Controllers
         [HttpPost]
         public async Task<MessageDto> Post([FromBody] MessageDto value)
         {
+            //ככל הנראה השגיאה 500 קוראת כאן 
+            //
+            //
+            Console.WriteLine($"POST received: helped_id={value.helped_id}, volunteer_id={value.volunteer_id}");
             return await service.AddItem(value);
         }
 

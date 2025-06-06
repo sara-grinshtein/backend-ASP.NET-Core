@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj": {}
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yWb1tkv6FE0=",
+  "dgSpecHash": "Zb+rLl+SiIc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\projectYedidim-csharp\\Repository\\Repository.csproj",
+  "projectFilePath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\משפחה\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\משפחה\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

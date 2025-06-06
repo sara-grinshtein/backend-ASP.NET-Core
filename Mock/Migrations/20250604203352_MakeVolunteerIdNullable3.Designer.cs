@@ -12,8 +12,8 @@ using Mock;
 namespace Mock.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20250513140258_AddIsDeletedToVolunteerAndHelped")]
-    partial class AddIsDeletedToVolunteerAndHelped
+    [Migration("20250604203352_MakeVolunteerIdNullable3")]
+    partial class MakeVolunteerIdNullable3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,9 @@ namespace Mock.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("message_id"));
 
+                    b.Property<bool?>("ConfirmArrival")
+                        .HasColumnType("bit");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -80,10 +83,14 @@ namespace Mock.Migrations
                     b.Property<bool>("isDone")
                         .HasColumnType("bit");
 
-                    b.Property<int>("volunteer_id")
+                    b.Property<int?>("volunteer_id")
                         .HasColumnType("int");
 
                     b.HasKey("message_id");
+
+                    b.HasIndex("helped_id");
+
+                    b.HasIndex("volunteer_id");
 
                     b.ToTable("Messages");
                 });
@@ -123,6 +130,9 @@ namespace Mock.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("helped_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("message_id")
                         .HasColumnType("int");
 
                     b.Property<int>("rating")
@@ -174,6 +184,23 @@ namespace Mock.Migrations
                     b.HasKey("volunteer_id");
 
                     b.ToTable("Volunteers");
+                });
+
+            modelBuilder.Entity("Repository.Entites.Message", b =>
+                {
+                    b.HasOne("Repository.Entites.Helped", "Helped")
+                        .WithMany()
+                        .HasForeignKey("helped_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Repository.Entites.Volunteer", "Volunteer")
+                        .WithMany()
+                        .HasForeignKey("volunteer_id");
+
+                    b.Navigation("Helped");
+
+                    b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("Repository.Entites.My_areas_of_knowledge", b =>

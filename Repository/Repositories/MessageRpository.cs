@@ -20,6 +20,7 @@ namespace Repository.Repositories
 
         async Task<Message> Irepository<Message>.AddItem(Message item)
         {
+           // Console.WriteLine($"Adding message: helped_id={item.helped_id}, volunteer_id={item.volunteer_id}");
             await this.context.Messages.AddAsync(item);
             await this.context.Save();
             return item;

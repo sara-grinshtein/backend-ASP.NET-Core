@@ -12,12 +12,13 @@ namespace Common.Dto
     {
         
         public int message_id { get; set; } 
-        [ForeignKey("volunteer_id")]
-        public int volunteer_id { get; set; }
+       
+        public int? volunteer_id { get; set; }
+
         [ForeignKey("helped_id")]
         public int helped_id { get; set; } 
         public bool isDone { get; set; }//האם טופל
         public string description { get; set; }
-        public bool ConfirmArrival { get; set; }
+        public bool? confirmArrival { get; set; }
     }
 }

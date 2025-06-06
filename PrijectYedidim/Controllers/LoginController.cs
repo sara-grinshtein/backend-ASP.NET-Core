@@ -139,6 +139,7 @@ namespace PrijectYedidim.Controllers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
+                new Claim("userId", volunteer.volunteer_id.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, volunteer.volunteer_first_name),
                 new Claim(ClaimTypes.Email, volunteer.email),
                 new Claim(ClaimTypes.Role, "Volunteer"),
@@ -156,6 +157,7 @@ namespace PrijectYedidim.Controllers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
+                 new Claim("userId", helped.helped_id.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, helped.helped_first_name),
                 new Claim(ClaimTypes.Email, helped.email),
                 new Claim(ClaimTypes.Role, "Helped"),
