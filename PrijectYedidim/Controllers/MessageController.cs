@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Common.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
 
@@ -38,9 +39,7 @@ namespace PrijectYedidim.Controllers
         [HttpPost]
         public async Task<MessageDto> Post([FromBody] MessageDto value)
         {
-            //ככל הנראה השגיאה 500 קוראת כאן 
-            //
-            //
+           
             Console.WriteLine($"POST received: helped_id={value.helped_id}, volunteer_id={value.volunteer_id}");
             return await service.AddItem(value);
         }
@@ -58,5 +57,21 @@ namespace PrijectYedidim.Controllers
         {
             await service.DeleteItem(id);
         }
+
+
+        [Authorize]
+        [HttpGet("my-messages")]
+        public async Task<List<MessageDto>> GetByHelpedId()
+        {
+            var helpedIdClaim = User.FindFirst("userid")?.Value;
+            if (helpedIdClaim == null)
+                return new List<MessageDto>();
+
+            int helpedId = int.Parse(helpedIdClaim);
+
+            var allMessages = await service.GetAll();
+            return allMessages.Where(m => m.helped_id == helpedId).ToList();
+        }
+
     }
 }
