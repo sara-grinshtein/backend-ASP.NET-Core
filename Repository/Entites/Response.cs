@@ -21,7 +21,7 @@ namespace Repository.Entites
         public string context { get; set; }
         public int rating { get; set; }
 
-
+        public bool hasResponse { get; set; }
 
     }
 }

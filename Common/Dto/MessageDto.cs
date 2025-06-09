@@ -20,5 +20,7 @@ namespace Common.Dto
         public bool isDone { get; set; }//האם טופל
         public string description { get; set; }
         public bool? confirmArrival { get; set; }
+
+        public bool hasResponse { get; set; }
     }
 }
