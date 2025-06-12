@@ -45,3 +45,29 @@ TestResults/
 *.DS_Store
 Thumbs.db
 
+# קבצי קומפילציה
+bin/
+obj/
+*.dll
+*.pdb
+*.cache
+
+# קבצי VS/IDE
+.vscode/
+*.user
+*.suo
+
+# קבצי Build אוטומטיים
+*.AssemblyInfo.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+
+# קבצי לוגים ו-temp
+*.log
+*.tmp
+
+# מיגרציות אם את לא רוצה לעקוב אחריהן זמנית
+# Mock/Migrations/
+
+# קובצי מערכת
+.DS_Store
+Thumbs.db
