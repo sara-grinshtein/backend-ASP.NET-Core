@@ -10,12 +10,14 @@ namespace Common.Dto
 {
     public class ResponseDto
     {
-         
-            public int response_id { get; set; }
-            public int helped_id { get; set; }
-            public string context { get; set; }
-            public int rating { get; set; }
-        
+        public int response_id { get; set; }
 
+        public int helped_id { get; set; }
+
+        public int message_id { get; set; } // שדה חדש שנוסף
+
+        public string context { get; set; }
+
+        public int rating { get; set; }
     }
 }
