@@ -10,7 +10,6 @@ namespace Common.Dto
 {
     public class MessageDto
     {
-        
         public int message_id { get; set; } 
        
         public int? volunteer_id { get; set; }

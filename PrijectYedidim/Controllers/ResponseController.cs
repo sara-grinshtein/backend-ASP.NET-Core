@@ -50,24 +50,7 @@ namespace PrijectYedidim.Controllers
             await service.DeleteItem(id);
         }
 
-
-        // כדי שהמתנדב יראה רק תגובות לקריאות שנשלחו אליו
-        //[HttpGet("by-volunteer/{volunteerId}")]
-        //public async Task<List<ResponseDto>> GetByVolunteer(int volunteerId)
-        //{
-        //    // כאן נדרשת גישה ל־MessageService כדי לבדוק למי שייכת כל קריאה
-        //    // אם כבר הזרקת אותו בקונסטרקטור, השתמשי בו — אם לא, נוסיף עכשיו
-        //    var allMessages = await service.GetAll();
-        //    var messageIds = allMessages
-        //        .Where(m => m.volunteer_id == volunteerId)
-        //        .Select(m => m.message_id)
-        //        .ToList();
-
-        //    var allResponses = await service.GetAll();
-        //    return allResponses
-        //        .Where(r => messageIds.Contains(r.me)) // message_id חייב להיות ב־ResponseDto
-        //        .ToList();
-        //}
+ 
 
         // כדי שהנעזר יראה רק את התגובות ששייכות לו
         [HttpGet("by-helped/{helpedId}")]
@@ -77,6 +60,13 @@ namespace PrijectYedidim.Controllers
             return allResponses
                 .Where(r => r.helped_id == helpedId)
                 .ToList();
+        }
+        // רק אם אושר פירסום תגובה
+        [HttpGet("public")]
+        public async Task<List<ResponseDto>> GetPublicResponses()
+        {
+            var all = await service.GetAll();
+            return all.Where(r => r.isPublic).ToList();
         }
 
 

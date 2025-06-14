@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
 
 namespace Repository.interfaces
 {
@@ -15,6 +16,7 @@ namespace Repository.interfaces
         Task<T> AddItem(T item);
         Task<T> DeleteItem(int id);
         Task<T> UpDateItem(int id, T item);
+
 
 
 

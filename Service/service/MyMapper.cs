@@ -32,9 +32,13 @@ namespace Service.service
            .ReverseMap()
            .ForMember(dest => dest.message_id, opt => opt.MapFrom(src => src.message_id));
 
-
             // Volunteer
             CreateMap<Volunteer, VolunteerDto>().ReverseMap();
+
+            CreateMap<VolunteerDto, Volunteer>()
+                .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore())
+                .ForMember(dest => dest.IsDeleted, opt => opt.Ignore())
+                .ForMember(dest => dest.password, opt => opt.Ignore()); // Ignore password mapping for security
 
         }
     }

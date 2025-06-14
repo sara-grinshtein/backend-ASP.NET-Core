@@ -56,6 +56,13 @@ namespace Repository.Repositories
             return response;
         }
 
+       
+        public async Task<List<Response>> GetByHelpedId(int helpedId)
+        {
+            return await context.responses
+                .Where(r => r.helped_id == helpedId)
+                .ToListAsync();
+        }
 
     }
 }

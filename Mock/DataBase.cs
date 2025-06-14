@@ -18,6 +18,7 @@ namespace Mock
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
 
+
         public async Task Save()
         {
             await SaveChangesAsync();
@@ -26,7 +27,7 @@ namespace Mock
         //שכבה שמטפלת בSQL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;");
         }
 
         

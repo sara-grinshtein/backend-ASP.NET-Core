@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+ο»Ώusing Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,19 +11,22 @@ using Mock;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Repository.Entites;
+using Repository.Repositories;
+using Common.Dto;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//  ωιψεϊιν ςαεψ Razor Pages
+//  Χ©Χ™Χ¨Χ•ΧªΧ™Χ ΧΆΧ‘Χ•Χ¨ Razor Pages
 builder.Services.AddRazorPages();
 
-//  δερτϊ Controllers μΰτμιχφιιϊ API
+//  Χ”Χ•Χ΅Χ¤Χª Controllers ΧΧΧ¤ΧΧ™Χ§Χ¦Χ™Χ™Χª API
 builder.Services.AddControllers();
 
-//  ηεαδ μΞSwagger – ΰηψϊ ϊετις ωβιΰδ ωμ constructor
+//  Χ—Χ•Χ‘Χ” ΧΦΎSwagger β€“ ΧΧ—Χ¨Χª ΧªΧ•Χ¤Χ™ΧΆ Χ©Χ’Χ™ΧΧ” Χ©Χ constructor
 builder.Services.AddEndpointsApiExplorer();
 
-// ψιωεν Swagger
+// Χ¨Χ™Χ©Χ•Χ Swagger
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -52,7 +55,7 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-// ωιψεϊιν τπιξιιν ωμκ
+// Χ©Χ™Χ¨Χ•ΧªΧ™Χ Χ¤Χ Χ™ΧΧ™Χ™Χ Χ©ΧΧ
 builder.Services.AddService();
 builder.Services.AddDbContext<Icontext, DataBase>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -80,16 +83,21 @@ builder.Services.AddCors(options =>
                           policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                       });
 });
+builder.Services.AddScoped<Irepository<Message>,MessageRepository>();
 
 builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
 
-//  δτςμϊ Swagger
+//  Χ”Χ¤ΧΆΧΧª Swagger
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo API V1");
+    c.RoutePrefix = string.Empty; // π‘ Χ—Χ©Χ•Χ‘! Χ–Χ” Χ¤Χ•ΧªΧ— ΧΧª Swagger Χ™Χ©Χ™Χ¨Χ•Χª Χ‘- /
+});
 
-// ϊωϊιϊ δΰτμιχφιδ
+// ΧªΧ©ΧªΧ™Χª Χ”ΧΧ¤ΧΧ™Χ§Χ¦Χ™Χ”
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -97,7 +105,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors(MyAllowSpecificOrigins);
 
-// ξιτει βν μΞControllers εβν μΞRazor Pages
+// ΧΧ™Χ¤Χ•Χ™ Χ’Χ ΧΦΎControllers Χ•Χ’Χ ΧΦΎRazor Pages
 app.MapControllers();
 app.MapRazorPages();
 

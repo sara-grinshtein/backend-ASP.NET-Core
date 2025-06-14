@@ -15,7 +15,7 @@ namespace Repository.Repositories
     {
         public static IServiceCollection  AddRepository( this IServiceCollection services)
         {
-             services.AddScoped<Irepository<Message>, MessageRpository>();
+             services.AddScoped<Irepository<Message>, MessageRepository>();
              
             services.AddScoped<Irepository< Volunteer>, VolunteerRpository>();
 

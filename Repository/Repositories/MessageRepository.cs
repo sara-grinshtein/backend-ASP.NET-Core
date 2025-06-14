@@ -9,11 +9,10 @@ using Repository.interfaces;
 
 namespace Repository.Repositories
 {
-    public class MessageRpository : Irepository<Message>
+    public class MessageRepository : Irepository<Message>   
     {
-
         private readonly Icontext context;
-        public MessageRpository(Icontext context)
+        public MessageRepository(Icontext context)
         {
             this.context = context;
         }
@@ -25,7 +24,6 @@ namespace Repository.Repositories
             await this.context.Save();
             return item;
         }
-
         async Task<Message> Irepository<Message>.Getbyid(int id)
         {
             return await context.Messages.FirstOrDefaultAsync(x => x.message_id == id);
@@ -52,13 +50,12 @@ namespace Repository.Repositories
 
             return message;
         }
-
-
+         
         async Task<List<Message>> Irepository<Message>.GetAll()
         {
             return await context.Messages.ToListAsync();
         }
 
-
+       
     }
 }

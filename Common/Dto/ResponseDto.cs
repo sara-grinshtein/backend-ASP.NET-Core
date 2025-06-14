@@ -19,5 +19,6 @@ namespace Common.Dto
         public string context { get; set; }
 
         public int rating { get; set; }
+             public bool isPublic { get; set; }
     }
 }

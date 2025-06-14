@@ -20,6 +20,10 @@ namespace Repository.Entites
         public int helped_id { get; set; }
         public string context { get; set; }
         public int rating { get; set; }
+        public virtual Message Message { get; set; }
+        public virtual Helped Helped { get; set; }
+        public bool isPublic { get; set; }  
+
 
         public bool hasResponse { get; set; }
 

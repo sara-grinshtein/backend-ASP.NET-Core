@@ -1,4 +1,3 @@
-
 # Visual Studio
 .vs/
 *.user
@@ -12,6 +11,15 @@ obj/
 Debug/
 Release/
 
+# קבצי קומפילציה
+*.dll
+*.pdb
+*.cache
+
+# קבצי Build אוטומטיים
+*.AssemblyInfo.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+
 # NuGet
 *.nupkg
 *.snupkg
@@ -23,8 +31,9 @@ project.fragment.lock.json
 # Visual Studio Code
 .vscode/
 
-# Logs
+# Logs & Temp files
 *.log
+*.tmp
 
 # Resharper
 _ReSharper*/
@@ -33,41 +42,15 @@ _ReSharper*/
 # Rider
 .idea/
 
-# DotCover
-*.dcvr
-
 # Backup files
 *.bak
-*.tmp
 
-# Others
+# Other tools
 TestResults/
+
+# מערכת / OS
 *.DS_Store
 Thumbs.db
 
-# קבצי קומפילציה
-bin/
-obj/
-*.dll
-*.pdb
-*.cache
-
-# קבצי VS/IDE
-.vscode/
-*.user
-*.suo
-
-# קבצי Build אוטומטיים
-*.AssemblyInfo.cs
-*.GeneratedMSBuildEditorConfig.editorconfig
-
-# קבצי לוגים ו-temp
-*.log
-*.tmp
-
-# מיגרציות אם את לא רוצה לעקוב אחריהן זמנית
+# מיגרציות (אם לא רוצים לעקוב זמנית)
 # Mock/Migrations/
-
-# קובצי מערכת
-.DS_Store
-Thumbs.db
