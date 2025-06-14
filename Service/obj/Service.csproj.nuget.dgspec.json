@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj": {}
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\obj\\",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,29 +66,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
-        "projectName": "Repository",
-        "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\obj\\",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj",
+        "projectName": "Mock",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,7 +111,111 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -151,29 +268,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj": {
+    "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\obj\\",
+        "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -182,18 +313,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj"
+              "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj"
               },
-              "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj"
+              "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj"
+              },
+              "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\משפחה\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj"
               }
             }
           }
@@ -230,12 +363,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
