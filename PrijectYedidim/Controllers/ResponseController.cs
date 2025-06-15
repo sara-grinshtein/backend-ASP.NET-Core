@@ -50,17 +50,18 @@ namespace PrijectYedidim.Controllers
             await service.DeleteItem(id);
         }
 
- 
 
-        // כדי שהנעזר יראה רק את התגובות ששייכות לו
-        [HttpGet("by-helped/{helpedId}")]
-        public async Task<List<ResponseDto>> GetByHelped(int helpedId)
-        {
-            var allResponses = await service.GetAll();
-            return allResponses
-                .Where(r => r.helped_id == helpedId)
-                .ToList();
-        }
+
+        //// כדי שהנעזר יראה רק את התגובות ששייכות לו
+        //[HttpGet("by-helped/{helpedId}")]
+        //public async Task<List<ResponseDto>> GetByHelped(int helpedId)
+        //{
+        //    var allResponses = await service.GetAll();
+        //    return allResponses
+        //        .Where(r => r.helped_id == helpedId)
+        //        .ToList();
+        //}
+
         // רק אם אושר פירסום תגובה
         [HttpGet("public")]
         public async Task<List<ResponseDto>> GetPublicResponses()

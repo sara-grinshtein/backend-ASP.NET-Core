@@ -9,27 +9,24 @@ using Repository.interfaces;
 
 namespace Mock
 {
-    public class DataBase :DbContext, Icontext
+    public class DataBase : DbContext, Icontext
     {
-
-        public DbSet<Helped> Helpeds{ get; set; }
+        public DbSet<Helped> Helpeds { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
-
 
         public async Task Save()
         {
             await SaveChangesAsync();
         }
 
-        //שכבה שמטפלת בSQL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;");
         }
 
-        
+      
     }
 }

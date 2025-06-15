@@ -33,6 +33,12 @@ namespace Mock.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
                     b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -42,9 +48,6 @@ namespace Mock.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("helped_last_name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("location")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
@@ -74,6 +77,9 @@ namespace Mock.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("hasResponse")
+                        .HasColumnType("bit");
+
                     b.Property<int>("helped_id")
                         .HasColumnType("int");
 
@@ -81,6 +87,7 @@ namespace Mock.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("volunteer_id")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("message_id");
@@ -126,13 +133,7 @@ namespace Mock.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("hasResponse")
-                        .HasColumnType("bit");
-
                     b.Property<int>("helped_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("helped_id1")
                         .HasColumnType("int");
 
                     b.Property<bool>("isPublic")
@@ -141,17 +142,14 @@ namespace Mock.Migrations
                     b.Property<int>("message_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("message_id1")
-                        .HasColumnType("int");
-
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
                     b.HasKey("response_id");
 
-                    b.HasIndex("helped_id1");
+                    b.HasIndex("helped_id");
 
-                    b.HasIndex("message_id1");
+                    b.HasIndex("message_id");
 
                     b.ToTable("responses");
                 });
@@ -167,15 +165,18 @@ namespace Mock.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
                     b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<TimeSpan?>("end_time")
                         .HasColumnType("time");
-
-                    b.Property<string>("location")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
                         .IsRequired()
@@ -204,12 +205,14 @@ namespace Mock.Migrations
                     b.HasOne("Repository.Entites.Helped", "Helped")
                         .WithMany()
                         .HasForeignKey("helped_id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Repository.Entites.Volunteer", "Volunteer")
                         .WithMany()
-                        .HasForeignKey("volunteer_id");
+                        .HasForeignKey("volunteer_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Helped");
 
@@ -227,14 +230,14 @@ namespace Mock.Migrations
                 {
                     b.HasOne("Repository.Entites.Helped", "Helped")
                         .WithMany()
-                        .HasForeignKey("helped_id1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("helped_id")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Repository.Entites.Message", "Message")
                         .WithMany()
-                        .HasForeignKey("message_id1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("message_id")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Helped");

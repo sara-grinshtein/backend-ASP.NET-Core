@@ -23,7 +23,7 @@ namespace Repository.Entites
         public bool isDone { get; set; }
 
         public string description { get; set; }
-
+        public bool hasResponse { get; set; }
         public bool? ConfirmArrival { get; set; }
     }
 }

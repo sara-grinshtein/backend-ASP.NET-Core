@@ -41,7 +41,6 @@ namespace Repository.Repositories
             volunteer.password = item.password;
             volunteer.volunteer_first_name = item.volunteer_first_name;
             volunteer.volunteer_last_name = item.volunteer_last_name;
-            volunteer.location = item.location;
             volunteer.areas_of_knowledge = item.areas_of_knowledge;
             await context.Save();
             return volunteer;

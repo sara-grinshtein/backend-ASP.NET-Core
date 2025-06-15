@@ -51,18 +51,17 @@ namespace Repository.Repositories
             var response = await ((Irepository<Response>)this).Getbyid(id);
             response.context = item.context;
             response.rating = item.rating;
-            response.helped_id = item.helped_id;
             await context.Save();
             return response;
         }
 
        
-        public async Task<List<Response>> GetByHelpedId(int helpedId)
-        {
-            return await context.responses
-                .Where(r => r.helped_id == helpedId)
-                .ToListAsync();
-        }
+        //public async Task<List<Response>> GetByHelpedId(int helpedId)
+        //{
+        //    return await context.responses
+        //        .Where(r => r.helped_id == helpedId)
+        //        .ToListAsync();
+        //}
 
     }
 }

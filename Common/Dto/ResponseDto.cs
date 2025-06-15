@@ -12,13 +12,11 @@ namespace Common.Dto
     {
         public int response_id { get; set; }
 
-        public int helped_id { get; set; }
-
         public int message_id { get; set; } // שדה חדש שנוסף
 
         public string context { get; set; }
 
         public int rating { get; set; }
-             public bool isPublic { get; set; }
+        public bool isPublic { get; set; }
     }
 }

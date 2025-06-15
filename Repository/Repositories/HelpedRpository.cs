@@ -54,7 +54,6 @@ namespace Repository.Repositories
             helped.password = item.password;
             helped.helped_first_name = item.helped_first_name;
             helped.helped_last_name = item.helped_last_name;
-            helped.location = item.location;
             await context.Save();
             return helped;
         }

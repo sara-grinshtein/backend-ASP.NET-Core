@@ -16,9 +16,9 @@ namespace Repository.Entites
         public string? helped_last_name { get; set; } //משפחה 
         public string? tel { get; set; }//טל
         public string email { get; set; }
-        public string? location { get; set; }
         public bool IsDeleted { get; set; } = false;
-
+        public double? Latitude { get; set; }   // קו רוחב
+        public double? Longitude { get; set; }  // קו אורך
 
     }
 }
