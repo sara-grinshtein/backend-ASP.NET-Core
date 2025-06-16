@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>060388fc-3921-4e8a-8efc-5b51e289f6a3</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -19,5 +20,10 @@
     <ProjectReference Include="..\Mock\Mock.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
+
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
 
 </Project>

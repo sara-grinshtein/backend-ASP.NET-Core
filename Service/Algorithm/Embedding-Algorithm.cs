@@ -10,15 +10,18 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Service.interfaces;
 using Common.Dto;
+using Microsoft.Extensions.Configuration;
 
 namespace Service.Algorithm
 {
     public class Embedding_Algorithm: IEmbeddingAlgorithmService
     {
         private readonly DataBase _db;
-        public Embedding_Algorithm(DataBase db)
+        private readonly IConfiguration _configuration;
+        public Embedding_Algorithm(DataBase db , IConfiguration configuration)
         {
             _db = db;
+            _configuration = configuration;
         }
 
         //task 1.1 - Get all unassigned and incomplete help requests
@@ -53,10 +56,89 @@ namespace Service.Algorithm
 
         // task 2.2 - Get volunteers within 10 km from the given address using Google Maps API
 
-      
+
+        //public async Task<List<VolunteerDto>> FilterVolunteersByDistanceAsync(double helpedLat, double helpedLng)
+        //{
+        //    const string apiKey = "";
+
+        //    var availableVolunteers = GetVolunteersAvailableNow()
+        //        .Where(v => v.Latitude != null && v.Longitude != null)
+        //        .ToList();
+
+        //    Console.WriteLine($"🔍 Total available volunteers with coordinates: {availableVolunteers.Count}");
+
+        //    var nearbyVolunteers = new List<VolunteerDto>();
+        //    using var httpClient = new HttpClient();
+
+        //    foreach (var volunteer in availableVolunteers)
+        //    {
+        //        var requestUrl =
+        //            $"https://maps.googleapis.com/maps/api/distancematrix/json" +
+        //            $"?origins={volunteer.Latitude},{volunteer.Longitude}" +
+        //            $"&destinations={helpedLat},{helpedLng}" +
+        //            $"&units=metric&key={apiKey}";
+
+        //        try
+        //        {
+        //            var response = await httpClient.GetStringAsync(requestUrl);
+        //            Console.WriteLine($"📡 Raw API response for volunteer {volunteer.volunteer_id}: {response}");
+
+        //            using var doc = JsonDocument.Parse(response);
+
+        //            var rows = doc.RootElement.GetProperty("rows");
+        //            if (rows.GetArrayLength() == 0) continue;
+
+        //            var elements = rows[0].GetProperty("elements");
+        //            if (elements.GetArrayLength() == 0) continue;
+
+        //            var distanceElement = elements[0];
+        //            if (distanceElement.GetProperty("status").GetString() != "OK") continue;
+
+        //            var distanceInMeters = distanceElement
+        //                .GetProperty("distance")
+        //                .GetProperty("value")
+        //                .GetInt32();
+
+        //            if (distanceInMeters < 10_000)
+        //            {
+        //                Console.WriteLine($"✅ Volunteer in range: {volunteer.volunteer_first_name} {volunteer.volunteer_last_name}, phone: {volunteer.tel}, distance: {distanceInMeters} meters");
+        //                 Console.WriteLine($"Volunteer {volunteer.volunteer_first_name} is {distanceInMeters} meters away.");
+        //                nearbyVolunteers.Add(new VolunteerDto
+        //                {
+        //                    volunteer_id = volunteer.volunteer_id,
+        //                    volunteer_first_name = volunteer.volunteer_first_name,
+        //                    volunteer_last_name = volunteer.volunteer_last_name,
+        //                    email = volunteer.email,
+        //                    tel = volunteer.tel,
+        //                    Latitude = volunteer.Latitude,
+        //                    Longitude = volunteer.Longitude,
+        //                    start_time = volunteer.start_time,
+        //                    end_time = volunteer.end_time,
+        //                    IsDeleted = volunteer.IsDeleted,
+        //                    password = volunteer.password // זמני לבדיקה
+        //                });
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine($"⚠️ Error while processing volunteer {volunteer.volunteer_id}: {ex.Message}");
+        //            continue;
+        //        }
+        //    }
+
+        //    Console.WriteLine($"📋 Total volunteers found in range: {nearbyVolunteers.Count}");
+        //    return nearbyVolunteers;
+        //}
+
+
         public async Task<List<VolunteerDto>> FilterVolunteersByDistanceAsync(double helpedLat, double helpedLng)
         {
-            const string apiKey = "AIzaSyAsPVKp9pAE4x61AdMqGTooYd4o-X86hwY";
+            string apiKey = _configuration["GoogleApiKey"];
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                Console.WriteLine("❌ Google API key is missing!");
+                return new List<VolunteerDto>();
+            }
 
             var availableVolunteers = GetVolunteersAvailableNow()
                 .Where(v => v.Latitude != null && v.Longitude != null)
@@ -99,7 +181,7 @@ namespace Service.Algorithm
                     if (distanceInMeters < 10_000)
                     {
                         Console.WriteLine($"✅ Volunteer in range: {volunteer.volunteer_first_name} {volunteer.volunteer_last_name}, phone: {volunteer.tel}, distance: {distanceInMeters} meters");
-                         Console.WriteLine($"Volunteer {volunteer.volunteer_first_name} is {distanceInMeters} meters away.");
+                        Console.WriteLine($"Volunteer {volunteer.volunteer_first_name} is {distanceInMeters} meters away.");
                         nearbyVolunteers.Add(new VolunteerDto
                         {
                             volunteer_id = volunteer.volunteer_id,
