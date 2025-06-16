@@ -39,7 +39,7 @@ namespace PrijectYedidim.Controllers
         [HttpPost]
         public async Task<MessageDto> Post([FromBody] MessageDto value)
         {
-           
+
             Console.WriteLine($"POST received: helped_id={value.helped_id}, volunteer_id={value.volunteer_id}");
             return await service.AddItem(value);
         }
@@ -72,6 +72,7 @@ namespace PrijectYedidim.Controllers
             var allMessages = await service.GetAll();
             return allMessages.Where(m => m.helped_id == helpedId).ToList();
         }
+ 
 
     }
 }

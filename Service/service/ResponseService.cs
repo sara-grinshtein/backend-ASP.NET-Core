@@ -10,6 +10,8 @@ using Common.Dto;
 using Repository.interfaces;
 using Azure;
 using Response = Repository.Entites.Response;
+using Microsoft.AspNetCore.Mvc;
+using Repository.Repositories;
 
 
 namespace Service.service
@@ -26,7 +28,7 @@ namespace Service.service
         {
             this.repository = repository;
             this.mapper = mapper;
-            this.messageRepository = messageRepository;  
+            this.messageRepository = messageRepository;
 
 
         }
@@ -38,8 +40,8 @@ namespace Service.service
 
         public async Task DeleteItem(int id)
         {
-           await repository.DeleteItem(id);
- 
+            await repository.DeleteItem(id);
+
         }
 
         public async Task<List<ResponseDto>> GetAll()
@@ -54,31 +56,22 @@ namespace Service.service
 
         public async Task UpDateItem(int id, ResponseDto item)
         {
-           await repository.UpDateItem(id, mapper.Map<ResponseDto, Response>(item));
+            await repository.UpDateItem(id, mapper.Map<ResponseDto, Response>(item));
 
         }
-
-        public async Task<List<Message>> GetMessagesUserRespondedToAsync(int helpedId)
+         
+        public async Task<int?> GetHelpedIdByResponseIdAsync(int responseId)
         {
-            // שולפים את כל התגובות של המשתמש כולל ה־Message
-            var responses = await repository.GetAll();
-            var filtered = responses
-                .Where(r => r.helped_id == helpedId)
-                .DistinctBy(r => r.message_id)
-                .ToList();
+            var response = await messageRepository.Getbyid(responseId);
+            if (response == null)
+                return null;
 
-            // את לא משתמשת ב־Include כי את לא עובדת ישירות עם EF כאן
-            // לכן נדרש שירות אחר שיביא את ההודעות לפי ID
-            // אם את כן משתמשת ב־EF מאחורי הקלעים — עדיף להעביר את זה ל־Repository
+            var message = await messageRepository.Getbyid(response.message_id);
+            if (message == null)
+                return null;
 
-            // כרגע הפונקציה מחזירה רק את IDs של ההודעות
-            // אפשר לשנות את זה בהתאם למה את מחזירה מה־Repository
-            return filtered
-                .Select(r => r.Message) // רק אם ב־Response יש navigation property בשם Message
-                .ToList();
+            return message.helped_id;
         }
-
-
 
     }
 }

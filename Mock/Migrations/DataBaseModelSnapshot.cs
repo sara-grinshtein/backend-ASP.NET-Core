@@ -73,6 +73,12 @@ namespace Mock.Migrations
                     b.Property<bool?>("ConfirmArrival")
                         .HasColumnType("bit");
 
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -87,7 +93,6 @@ namespace Mock.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("volunteer_id")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("message_id");
@@ -133,9 +138,6 @@ namespace Mock.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("helped_id")
-                        .HasColumnType("int");
-
                     b.Property<bool>("isPublic")
                         .HasColumnType("bit");
 
@@ -146,8 +148,6 @@ namespace Mock.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("response_id");
-
-                    b.HasIndex("helped_id");
 
                     b.HasIndex("message_id");
 
@@ -205,14 +205,12 @@ namespace Mock.Migrations
                     b.HasOne("Repository.Entites.Helped", "Helped")
                         .WithMany()
                         .HasForeignKey("helped_id")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Repository.Entites.Volunteer", "Volunteer")
                         .WithMany()
-                        .HasForeignKey("volunteer_id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("volunteer_id");
 
                     b.Navigation("Helped");
 
@@ -228,19 +226,11 @@ namespace Mock.Migrations
 
             modelBuilder.Entity("Repository.Entites.Response", b =>
                 {
-                    b.HasOne("Repository.Entites.Helped", "Helped")
-                        .WithMany()
-                        .HasForeignKey("helped_id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Repository.Entites.Message", "Message")
                         .WithMany()
                         .HasForeignKey("message_id")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Helped");
 
                     b.Navigation("Message");
                 });

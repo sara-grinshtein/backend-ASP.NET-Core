@@ -21,5 +21,7 @@ namespace Common.Dto
         public bool? confirmArrival { get; set; }
 
         public bool hasResponse { get; set; }
+        public double? Latitude { get; set; }  
+        public double? Longitude { get; set; }
     }
 }

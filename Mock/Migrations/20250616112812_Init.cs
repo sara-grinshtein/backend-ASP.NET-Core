@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mock.Migrations
 {
     /// <inheritdoc />
-    public partial class FinalWithoutHelpedInResponse : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,12 +78,14 @@ namespace Mock.Migrations
                 {
                     message_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    volunteer_id = table.Column<int>(type: "int", nullable: false),
+                    volunteer_id = table.Column<int>(type: "int", nullable: true),
                     helped_id = table.Column<int>(type: "int", nullable: false),
                     isDone = table.Column<bool>(type: "bit", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     hasResponse = table.Column<bool>(type: "bit", nullable: false),
-                    ConfirmArrival = table.Column<bool>(type: "bit", nullable: true)
+                    ConfirmArrival = table.Column<bool>(type: "bit", nullable: true),
+                    Latitude = table.Column<double>(type: "float", nullable: true),
+                    Longitude = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,13 +95,12 @@ namespace Mock.Migrations
                         column: x => x.helped_id,
                         principalTable: "Helpeds",
                         principalColumn: "helped_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Messages_Volunteers_volunteer_id",
                         column: x => x.volunteer_id,
                         principalTable: "Volunteers",
-                        principalColumn: "volunteer_id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "volunteer_id");
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +110,6 @@ namespace Mock.Migrations
                     response_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     message_id = table.Column<int>(type: "int", nullable: false),
-                    helped_id = table.Column<int>(type: "int", nullable: false),
                     context = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     rating = table.Column<int>(type: "int", nullable: false),
                     isPublic = table.Column<bool>(type: "bit", nullable: false)
@@ -118,17 +118,11 @@ namespace Mock.Migrations
                 {
                     table.PrimaryKey("PK_responses", x => x.response_id);
                     table.ForeignKey(
-                        name: "FK_responses_Helpeds_helped_id",
-                        column: x => x.helped_id,
-                        principalTable: "Helpeds",
-                        principalColumn: "helped_id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_responses_Messages_message_id",
                         column: x => x.message_id,
                         principalTable: "Messages",
                         principalColumn: "message_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -145,11 +139,6 @@ namespace Mock.Migrations
                 name: "IX_Messages_volunteer_id",
                 table: "Messages",
                 column: "volunteer_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_responses_helped_id",
-                table: "responses",
-                column: "helped_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_responses_message_id",

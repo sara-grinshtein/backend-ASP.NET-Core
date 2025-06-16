@@ -14,6 +14,8 @@ using System.Text;
 using Repository.Entites;
 using Repository.Repositories;
 using Common.Dto;
+using Service.interfaces;
+using Service.Algorithm;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,6 +86,9 @@ builder.Services.AddCors(options =>
                       });
 });
 builder.Services.AddScoped<Irepository<Message>,MessageRepository>();
+builder.Services.AddScoped<IEmbeddingAlgorithmService, Embedding_Algorithm>();
+builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
+
 
 builder.Services.AddAutoMapper(typeof(MyMapper));
 
