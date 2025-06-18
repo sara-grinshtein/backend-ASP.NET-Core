@@ -80,6 +80,8 @@ namespace Service.service
 
             // Volunteer
             CreateMap<Volunteer, VolunteerDto>().ReverseMap();
+       
+
 
             CreateMap<VolunteerDto, Volunteer>()
                 .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore())

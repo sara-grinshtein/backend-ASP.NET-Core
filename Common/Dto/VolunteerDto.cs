@@ -21,6 +21,8 @@ namespace Common.Dto
         public bool IsDeleted { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+        public List<My_areas_of_knowledge_Dto> areas_of_knowledge { get; set; }
+
 
     }
 }

@@ -12,6 +12,7 @@ using AutoMapper;
 using Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Service.Algorithm;
 
 namespace Service.service
 {
@@ -32,6 +33,11 @@ namespace Service.service
            services.AddScoped<IService<My_areas_of_knowledge_Dto>, My_areas_of_knowledge_Service>();
 
             services.AddAutoMapper(typeof(IMapper));
+
+            services.AddScoped<ICandidateScreening, Candidate_screening>();
+            services.AddScoped<IDataFetcher, DataFetcher>();
+
+
 
             return services;
         }

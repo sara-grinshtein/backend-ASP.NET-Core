@@ -11,6 +11,7 @@ namespace Common.Dto
 {
     public class My_areas_of_knowledge_Dto
     {
+        
         public int ID_knowledge { get; set; }
         public string describtion { get; set; }
     }

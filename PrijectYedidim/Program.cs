@@ -86,7 +86,6 @@ builder.Services.AddCors(options =>
                       });
 });
 builder.Services.AddScoped<Irepository<Message>,MessageRepository>();
-builder.Services.AddScoped<IEmbeddingAlgorithmService, Embedding_Algorithm>();
 builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
 
 
