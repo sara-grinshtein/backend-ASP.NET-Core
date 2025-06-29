@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mock.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class AddVolunteerIdToKnowledge : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +60,7 @@ namespace Mock.Migrations
                     ID_knowledge = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     describtion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    volunteer_id = table.Column<int>(type: "int", nullable: true)
+                    volunteer_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +69,8 @@ namespace Mock.Migrations
                         name: "FK_areas_Of_Knowledges_Volunteers_volunteer_id",
                         column: x => x.volunteer_id,
                         principalTable: "Volunteers",
-                        principalColumn: "volunteer_id");
+                        principalColumn: "volunteer_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

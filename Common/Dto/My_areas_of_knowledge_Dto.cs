@@ -14,5 +14,6 @@ namespace Common.Dto
         
         public int ID_knowledge { get; set; }
         public string describtion { get; set; }
+        public int? volunteer_id { get; set; }
     }
 }

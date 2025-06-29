@@ -25,12 +25,23 @@ namespace Service.Algorithm
             _configuration = configuration;
         }
         //task 1.1 - Get all unassigned and incomplete help requests
+
         public List<Message> GetOpenMessages()
         {
-            return _db.Messages
+            var openMessages = _db.Messages
                 .Where(m => m.volunteer_id == null && m.isDone == false)
                 .ToList();
+
+            Console.WriteLine($"🔍 סך הכל הודעות פתוחות שנמצאו: {openMessages.Count}");
+
+            foreach (var msg in openMessages)
+            {
+                Console.WriteLine($"🧾 הודעה: ID={msg.message_id}, תיאור='{msg.description}', helped_id={msg.helped_id}, isDone={msg.isDone}, volunteer_id={(msg.volunteer_id.HasValue ? msg.volunteer_id.Value.ToString() : "null")}");
+            }
+
+            return openMessages;
         }
+
 
         //task 1.2 - Get all volunteers that are marked as active (not deleted)
         public List<Volunteer> GetAvailableVolunteers()
