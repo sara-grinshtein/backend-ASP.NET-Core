@@ -1,57 +1,6 @@
-﻿//using AutoMapper;
-//using Common.Dto;
-//using Repository.Entites;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-
-//namespace Service.service
-//{
-//    public class MyMapper : Profile
-//    {
-//        public MyMapper()
-//        {
-//            // Helped
-//            CreateMap<Helped, HelpedDto>().ReverseMap();
-
-//            // Message
-//            CreateMap<Message, MessageDto>().ReverseMap();
-
-//            CreateMap<MessageDto, Message>()
-//                .ForMember(dest => dest.Volunteer, opt => opt.Ignore())
-//                .ForMember(dest => dest.Helped, opt => opt.Ignore());
-
-//            // Knowledge Areas
-//            CreateMap<My_areas_of_knowledge, My_areas_of_knowledge_Dto>().ReverseMap();
-
-//            // Response
-//            CreateMap<Response, ResponseDto>()
-//           .ForMember(dest => dest.message_id, opt => opt.MapFrom(src => src.message_id))
-//           .ReverseMap()
-//           .ForMember(dest => dest.message_id, opt => opt.MapFrom(src => src.message_id));
-
-//            // Volunteer
-//            CreateMap<Volunteer, VolunteerDto>().ReverseMap();
-
-//            CreateMap<VolunteerDto, Volunteer>()
-//                .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore())
-//                .ForMember(dest => dest.IsDeleted, opt => opt.Ignore())
-//                .ForMember(dest => dest.password, opt => opt.Ignore()); // Ignore password mapping for security
-
-//        }
-//    }
-//}
-
-using AutoMapper;
+﻿using AutoMapper;
 using Common.Dto;
 using Repository.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.service
 {
@@ -64,29 +13,26 @@ namespace Service.service
 
             // Message
             CreateMap<Message, MessageDto>().ReverseMap();
-
             CreateMap<MessageDto, Message>()
                 .ForMember(dest => dest.Volunteer, opt => opt.Ignore())
                 .ForMember(dest => dest.Helped, opt => opt.Ignore());
 
             // Knowledge Areas
-            CreateMap<My_areas_of_knowledge, My_areas_of_knowledge_Dto>().ReverseMap();
+            CreateMap<My_areas_of_knowledge, My_areas_of_knowledge_Dto>()
+                .ReverseMap()
+                .ForMember(dest => dest.Volunteer, opt => opt.Ignore())
+                .ForMember(dest => dest.volunteer_id, opt => opt.Ignore()); // חשוב – לא נכתוב volunteer_id ידנית
 
             // Response
-            CreateMap<Response, ResponseDto>()
-               .ForMember(dest => dest.message_id, opt => opt.MapFrom(src => src.message_id))
-               .ReverseMap()
-               .ForMember(dest => dest.message_id, opt => opt.MapFrom(src => src.message_id));
+            CreateMap<Response, ResponseDto>().ReverseMap();
 
             // Volunteer
-            CreateMap<Volunteer, VolunteerDto>().ReverseMap();
-       
-
+            CreateMap<Volunteer, VolunteerDto>()
+                .ForMember(dest => dest.areas_of_knowledge, opt => opt.MapFrom(src => src.areas_of_knowledge));
 
             CreateMap<VolunteerDto, Volunteer>()
-                .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore())
-                .ForMember(dest => dest.IsDeleted, opt => opt.Ignore());
-            // לא מתעלם מה-password יותר
+                .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore()); // לא למפות אוטומטית – נטפל ידנית בשירות
         }
     }
+
 }

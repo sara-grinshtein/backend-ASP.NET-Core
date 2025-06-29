@@ -612,6 +612,19 @@
           }
         }
       },
+      "Porter2Stemmer/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Porter2Stemmer.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Porter2Stemmer.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -2263,6 +2276,24 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Porter2Stemmer/1.0.0": {
+      "sha512": "naYdTjvnmUrigtpCzgPSkqbxJ+Zy/y0dB7pH6UZ7mI0QhdU0BcncyzrJu9gArX48KzVWxQVkP/V/SpbWuAqFFw==",
+      "type": "package",
+      "path": "porter2stemmer/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net452/Porter2Stemmer.dll",
+        "lib/net452/Porter2Stemmer.pdb",
+        "lib/net452/Porter2Stemmer.xml",
+        "lib/netstandard2.0/Porter2Stemmer.dll",
+        "lib/netstandard2.0/Porter2Stemmer.pdb",
+        "lib/netstandard2.0/Porter2Stemmer.xml",
+        "porter2stemmer.1.0.0.nupkg.sha512",
+        "porter2stemmer.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
@@ -3237,27 +3268,28 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "Common >= 1.0.0",
       "Mock >= 1.0.0",
+      "Porter2Stemmer >= 1.0.0",
       "Repository >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\This User\\.nuget\\packages\\": {},
+    "C:\\Users\\משפחה\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
+      "projectUniqueName": "D:\\backend-ASP.NET-Core\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Service\\obj\\",
+      "projectPath": "D:\\backend-ASP.NET-Core\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\משפחה\\.nuget\\packages\\",
+      "outputPath": "D:\\backend-ASP.NET-Core\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\This User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\משפחה\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3266,21 +3298,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Common\\Common.csproj"
+            "D:\\backend-ASP.NET-Core\\Common\\Common.csproj": {
+              "projectPath": "D:\\backend-ASP.NET-Core\\Common\\Common.csproj"
             },
-            "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Mock\\Mock.csproj"
+            "D:\\backend-ASP.NET-Core\\Mock\\Mock.csproj": {
+              "projectPath": "D:\\backend-ASP.NET-Core\\Mock\\Mock.csproj"
             },
-            "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\projectYedidim-csharp\\Repository\\Repository.csproj"
+            "D:\\backend-ASP.NET-Core\\Repository\\Repository.csproj": {
+              "projectPath": "D:\\backend-ASP.NET-Core\\Repository\\Repository.csproj"
             }
           }
         }
@@ -3304,6 +3335,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[12.0.1, )"
+          },
+          "Porter2Stemmer": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           }
         },
         "imports": [
@@ -3317,12 +3352,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

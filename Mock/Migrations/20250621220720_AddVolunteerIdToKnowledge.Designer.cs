@@ -12,8 +12,8 @@ using Mock;
 namespace Mock.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20250616112812_Init")]
-    partial class Init
+    [Migration("20250621220720_AddVolunteerIdToKnowledge")]
+    partial class AddVolunteerIdToKnowledge
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,7 +119,7 @@ namespace Mock.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("volunteer_id")
+                    b.Property<int>("volunteer_id")
                         .HasColumnType("int");
 
                     b.HasKey("ID_knowledge");
@@ -222,9 +222,13 @@ namespace Mock.Migrations
 
             modelBuilder.Entity("Repository.Entites.My_areas_of_knowledge", b =>
                 {
-                    b.HasOne("Repository.Entites.Volunteer", null)
+                    b.HasOne("Repository.Entites.Volunteer", "Volunteer")
                         .WithMany("areas_of_knowledge")
-                        .HasForeignKey("volunteer_id");
+                        .HasForeignKey("volunteer_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("Repository.Entites.Response", b =>
