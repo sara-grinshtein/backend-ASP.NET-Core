@@ -13,11 +13,13 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0" />
+		<PackageReference Include="TestEssentials.Xunit" Version="2.1.0" />
 	</ItemGroup>
 
 
 	<ItemGroup>
     <ProjectReference Include="..\Mock\Mock.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
