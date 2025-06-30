@@ -54,3 +54,7 @@ Thumbs.db
 
 # מיגרציות (אם לא רוצים לעקוב זמנית)
 # Mock/Migrations/
+
+
+# דוחות כיסוי קוד (Code Coverage)
+coverage-report/

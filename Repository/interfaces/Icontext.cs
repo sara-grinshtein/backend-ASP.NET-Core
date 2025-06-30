@@ -14,6 +14,7 @@ namespace Repository.interfaces
     //ממשק המתאר את הנתונים 
    public interface Icontext
     {
+        int SaveChanges();
         public DbSet<Helped> Helpeds { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }

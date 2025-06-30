@@ -24,6 +24,8 @@ namespace Repository.Entites
         public bool IsDeleted { get; set; } = false;
         public double? Latitude { get; set; }   // קו רוחב
         public double? Longitude { get; set; }  // קו אורך
+        public int assignment_count { get; set; }
+
 
 
 
