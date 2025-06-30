@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrijectYedidim", "PrijectYedidim\PrijectYedidim.csproj", "{5AE512D3-D941-4BE1-8731-78708479138F}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock", "Mock\Mock.csproj", "{299C8B78-23F1-4084-8D32-8FF0FFDDA7B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{5277EF8B-3F15-4E26-B5DD-B0E6BF30CF93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrijectYedidim.Test", "PrijectYedidim.Test\PrijectYedidim.Test.csproj", "{556BFF7A-3957-41C7-92B0-9FCB3AA34F24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{5277EF8B-3F15-4E26-B5DD-B0E6BF30CF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5277EF8B-3F15-4E26-B5DD-B0E6BF30CF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5277EF8B-3F15-4E26-B5DD-B0E6BF30CF93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{556BFF7A-3957-41C7-92B0-9FCB3AA34F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{556BFF7A-3957-41C7-92B0-9FCB3AA34F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{556BFF7A-3957-41C7-92B0-9FCB3AA34F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{556BFF7A-3957-41C7-92B0-9FCB3AA34F24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

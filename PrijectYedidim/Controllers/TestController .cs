@@ -14,6 +14,7 @@ namespace PrijectYedidim.Controllers
 {
     [Route("api/test")]
     [ApiController]
+    //טסטים עבור סעיפים 1 2 עבור אלגוריתם
     public class TestController : ControllerBase
     {
         private readonly ICandidateScreening _embeddingService;
