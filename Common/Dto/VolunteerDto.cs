@@ -22,6 +22,9 @@ namespace Common.Dto
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
         public List<My_areas_of_knowledge_Dto> areas_of_knowledge { get; set; }
+        public int assignment_count { get; set; }
+ 
+
 
 
     }
