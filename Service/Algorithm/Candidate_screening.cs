@@ -14,11 +14,13 @@ using Common.Dto;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using Service.service;
+using System.Reflection.PortableExecutable;
 
 
 
 namespace Service.Algorithm
 {
+  //  Step 2: Screening and matching candidates
     public class Candidate_screening : ICandidateScreening
     {
         private readonly IMapper _mapper;

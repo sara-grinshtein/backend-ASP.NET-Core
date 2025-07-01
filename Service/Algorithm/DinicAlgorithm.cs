@@ -12,6 +12,7 @@ namespace Service.Algorithm
 {
     namespace Service.Algorithm
     {
+        //activate a DinicAlgorithm -4
         public class DinicAlgorithm
         {
             //graph: The graph that includes all the nodes and edges.
