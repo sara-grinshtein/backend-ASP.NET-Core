@@ -15,6 +15,7 @@ using Common.Dto;
 
 namespace Service.Algorithm
 {
+    //Step 1: Collect data
     public class DataFetcher:IDataFetcher
     {
         private readonly DataBase _db;

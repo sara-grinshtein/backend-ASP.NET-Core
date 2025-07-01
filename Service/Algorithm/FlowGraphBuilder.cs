@@ -11,9 +11,11 @@ namespace Service.Algorithm
 {
     public class FlowGraphBuilder
     {
+        // Step 3: Building a flow chart
+
         //Purpose of the function:
-       //Create a flow chart according to your task:
-      //Calls ←→ Volunteers, including source and destination
+        //Create a flow chart according to your task:
+        //Calls ←→ Volunteers, including source and destination
         public FlowGraph BuildGraph(List<Message> messages, List<VolunteerDto> volunteers)
         {
             var graph = new FlowGraph();

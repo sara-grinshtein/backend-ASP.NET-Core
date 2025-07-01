@@ -21,6 +21,10 @@ namespace Mock
         {
             await SaveChangesAsync();
         }
+        public DataBase(DbContextOptions<DataBase> options) : base(options)
+        {
+        }
+
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
