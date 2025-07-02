@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Dto;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Repository.Entites;
+ using Repository.Entites;
 
 namespace Service.Algorithm
 {

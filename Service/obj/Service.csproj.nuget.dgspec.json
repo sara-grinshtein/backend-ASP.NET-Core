@@ -142,10 +142,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -316,6 +312,10 @@
             "Porter2Stemmer": {
               "target": "Package",
               "version": "[1.0.0, )"
+            },
+            "xunit.abstractions": {
+              "target": "Package",
+              "version": "[2.0.3, )"
             }
           },
           "imports": [
