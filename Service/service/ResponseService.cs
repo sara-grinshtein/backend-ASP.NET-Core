@@ -10,8 +10,7 @@ using Common.Dto;
 using Repository.interfaces;
 using Azure;
 using Response = Repository.Entites.Response;
-using Microsoft.AspNetCore.Mvc;
-using Repository.Repositories;
+ using Repository.Repositories;
 
 
 namespace Service.service
