@@ -219,23 +219,25 @@ var assemblies = [
       { "name": "Common.Dto.My_areas_of_knowledge_Dto", "rp": "Common_My_areas_of_knowledge_Dto.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Common.Dto.ResponseDto", "rp": "Common_ResponseDto.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 22, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Common.Dto.UserLogin", "rp": "Common_UserLogin.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 24, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Common.Dto.VolunteerDto", "rp": "Common_VolunteerDto.html", "cl": 2, "ucl": 10, "cal": 12, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Common.Dto.VolunteerDto", "rp": "Common_VolunteerDto.html", "cl": 2, "ucl": 11, "cal": 13, "tl": 31, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "Mock",
     "classes": [
-      { "name": "Mock.DataBase", "rp": "Mock_DataBase.html", "cl": 0, "ucl": 11, "cal": 11, "tl": 37, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Mock.DataBase", "rp": "Mock_DataBase.html", "cl": 0, "ucl": 14, "cal": 14, "tl": 39, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Mock.Migrations.AddAssignmentCountToVolunteer", "rp": "Mock_AddAssignmentCountToVolunteer.html", "cl": 0, "ucl": 235, "cal": 235, "tl": 284, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Mock.Migrations.AddDateToMessage", "rp": "Mock_AddDateToMessage.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 288, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Mock.Migrations.AddVolunteerIdToKnowledge", "rp": "Mock_AddVolunteerIdToKnowledge.html", "cl": 0, "ucl": 359, "cal": 359, "tl": 421, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Mock.Migrations.DataBaseModelSnapshot", "rp": "Mock_DataBaseModelSnapshot.html", "cl": 0, "ucl": 219, "cal": 219, "tl": 249, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Mock.Migrations.DataBaseModelSnapshot", "rp": "Mock_DataBaseModelSnapshot.html", "cl": 0, "ucl": 225, "cal": 225, "tl": 255, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "Repository",
     "classes": [
-      { "name": "Repository.Entites.Helped", "rp": "Repository_Helped.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 24, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Repository.Entites.Message", "rp": "Repository_Message.html", "cl": 2, "ucl": 9, "cal": 11, "tl": 32, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Repository.Entites.Helped", "rp": "Repository_Helped.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 24, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Repository.Entites.Message", "rp": "Repository_Message.html", "cl": 7, "ucl": 5, "cal": 12, "tl": 35, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Repository.Entites.My_areas_of_knowledge", "rp": "Repository_My_areas_of_knowledge.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Repository.Entites.Response", "rp": "Repository_Response.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Repository.Entites.Volunteer", "rp": "Repository_Volunteer.html", "cl": 0, "ucl": 12, "cal": 12, "tl": 31, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Repository.Entites.Volunteer", "rp": "Repository_Volunteer.html", "cl": 11, "ucl": 2, "cal": 13, "tl": 33, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Repository.Repositories.ExtensionRepository", "rp": "Repository_ExtensionRepository.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 32, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Repository.Repositories.HelpedRepository", "rp": "Repository_HelpedRepository.html", "cl": 0, "ucl": 33, "cal": 33, "tl": 63, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Repository.Repositories.MessageRepository", "rp": "Repository_MessageRepository.html", "cl": 0, "ucl": 32, "cal": 32, "tl": 61, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -246,18 +248,24 @@ var assemblies = [
   {
     "name": "Service",
     "classes": [
-      { "name": "Service.Algorithm.Candidate_screening", "rp": "Service_Candidate_screening.html", "cl": 0, "ucl": 140, "cal": 140, "tl": 254, "cb": 0, "tb": 28, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Service.Algorithm.DataFetcher", "rp": "Service_DataFetcher.html", "cl": 0, "ucl": 21, "cal": 21, "tl": 54, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Service.Algorithm.FlowGraph", "rp": "Service_FlowGraph.html", "cl": 24, "ucl": 0, "cal": 24, "tl": 38, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Service.Algorithm.FlowGraphBuilder", "rp": "Service_FlowGraphBuilder.html", "cl": 41, "ucl": 0, "cal": 41, "tl": 66, "cb": 16, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Algorithm.Validation.DataIntegrityValidator", "rp": "Service_DataIntegrityValidator.html", "cl": 0, "ucl": 73, "cal": 73, "tl": 118, "cb": 0, "tb": 30, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Algorithm.Validation.DataQualityValidator", "rp": "Service_DataQualityValidator.html", "cl": 40, "ucl": 0, "cal": 40, "tl": 80, "cb": 16, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.AlgorithmDesign", "rp": "Service_AlgorithmDesign.html", "cl": 17, "ucl": 0, "cal": 17, "tl": 47, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.Candidate_screening", "rp": "Service_Candidate_screening.html", "cl": 0, "ucl": 80, "cal": 80, "tl": 129, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.DataFetcher", "rp": "Service_DataFetcher.html", "cl": 0, "ucl": 21, "cal": 21, "tl": 55, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.FlowGraph", "rp": "Service_FlowGraph.html", "cl": 17, "ucl": 0, "cal": 17, "tl": 38, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.FlowGraphBuilder", "rp": "Service_FlowGraphBuilder.html", "cl": 27, "ucl": 0, "cal": 27, "tl": 67, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.Algorithm.FlowNode", "rp": "Service_FlowNode.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Service.Algorithm.Service.Algorithm.DinicAlgorithm", "rp": "Service_DinicAlgorithm.html", "cl": 86, "ucl": 0, "cal": 86, "tl": 201, "cb": 38, "tb": 38, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.Logging.AssignmentLogger", "rp": "Service_AssignmentLogger.html", "cl": 32, "ucl": 0, "cal": 32, "tl": 55, "cb": 7, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.Service.Algorithm.DinicAlgorithm", "rp": "Service_DinicAlgorithm.html", "cl": 86, "ucl": 0, "cal": 86, "tl": 202, "cb": 38, "tb": 38, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.Validation.CapacityValidator", "rp": "Service_CapacityValidator.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 37, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.Algorithm.Validation.Validator", "rp": "Service_Validator.html", "cl": 63, "ucl": 19, "cal": 82, "tl": 139, "cb": 19, "tb": 30, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.ExtensionService", "rp": "Service_ExtensionService.html", "cl": 0, "ucl": 12, "cal": 12, "tl": 45, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.HelpedService", "rp": "Service_HelpedService.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 55, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.MessageService", "rp": "Service_MessageService.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 56, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.My_areas_of_knowledge_Service", "rp": "Service_My_areas_of_knowledge_Service.html", "cl": 0, "ucl": 21, "cal": 21, "tl": 61, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.MyMapper", "rp": "Service_MyMapper.html", "cl": 0, "ucl": 17, "cal": 17, "tl": 38, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Service.service.ResponseService", "rp": "Service_ResponseService.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 77, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Service.service.ResponseService", "rp": "Service_ResponseService.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 76, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Service.service.VolunteerService", "rp": "Service_VolunteerService.html", "cl": 0, "ucl": 69, "cal": 69, "tl": 132, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
@@ -273,27 +281,45 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
+    "assembly": "Service", "class": "Algorithm.Validation.DataIntegrityValidator", "reportPath": "Service_DataIntegrityValidator.html", "methodName": "ValidateVolunteerData(System.Collections.Generic.List`1<Repository.Entites.Volunteer>)", "methodShortName": "ValidateVolunteerData(...)", "fileIndex": 0, "line": 24,
+    "metrics": [
+      { "value": 342, "exceeded": true },
+      { "value": 18, "exceeded": true },
+    ]},
+  {
     "assembly": "Service", "class": "Service.service.VolunteerService", "reportPath": "Service_VolunteerService.html", "methodName": "AddItem()", "methodShortName": "AddItem()", "fileIndex": 0, "line": 34,
     "metrics": [
       { "value": 210, "exceeded": true },
       { "value": 14, "exceeded": false },
     ]},
   {
-    "assembly": "Service", "class": "Service.Algorithm.Candidate_screening", "reportPath": "Service_Candidate_screening.html", "methodName": "FilterByKnowledge(System.Collections.Generic.List`1<Common.Dto.VolunteerDto>,Repository.Entites.Message)", "methodShortName": "FilterByKnowledge(...)", "fileIndex": 0, "line": 205,
+    "assembly": "Service", "class": "Algorithm.Validation.DataIntegrityValidator", "reportPath": "Service_DataIntegrityValidator.html", "methodName": "ValidateMessages(System.Collections.Generic.List`1<Repository.Entites.Message>)", "methodShortName": "ValidateMessages(...)", "fileIndex": 0, "line": 74,
     "metrics": [
-      { "value": 156, "exceeded": true },
-      { "value": 12, "exceeded": false },
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Service", "class": "Service.Algorithm.Candidate_screening", "reportPath": "Service_Candidate_screening.html", "methodName": "FilterVolunteersByDistanceAsync()", "methodShortName": "FilterVolunteersByDistanceAsync()", "fileIndex": 0, "line": 87,
+    "assembly": "Service", "class": "Service.Algorithm.Candidate_screening", "reportPath": "Service_Candidate_screening.html", "methodName": "FilterVolunteersByDistanceAsync()", "methodShortName": "FilterVolunteersByDistanceAsync()", "fileIndex": 0, "line": 41,
     "metrics": [
-      { "value": 156, "exceeded": true },
-      { "value": 12, "exceeded": false },
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Service", "class": "Service.Algorithm.Service.Algorithm.DinicAlgorithm", "reportPath": "Service_DinicAlgorithm.html", "methodName": "SendFlow(Service.Algorithm.FlowNode,Service.Algorithm.FlowNode,System.Int32,System.Collections.Generic.Dictionary`2<Service.Algorithm.FlowNode,System.Collections.Generic.IEnumerator`1<System.Collections.Generic.KeyValuePair`2<Service.Algorithm.FlowNode,System.Int32>>>)", "methodShortName": "SendFlow(...)", "fileIndex": 0, "line": 72,
+    "assembly": "Service", "class": "Service.Algorithm.Candidate_screening", "reportPath": "Service_Candidate_screening.html", "methodName": "FilterByKnowledge(System.Collections.Generic.List`1<Common.Dto.VolunteerDto>,Repository.Entites.Message)", "methodShortName": "FilterByKnowledge(...)", "fileIndex": 0, "line": 112,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Service", "class": "Service.Algorithm.Service.Algorithm.DinicAlgorithm", "reportPath": "Service_DinicAlgorithm.html", "methodName": "SendFlow(Service.Algorithm.FlowNode,Service.Algorithm.FlowNode,System.Int32,System.Collections.Generic.Dictionary`2<Service.Algorithm.FlowNode,System.Collections.Generic.IEnumerator`1<System.Collections.Generic.KeyValuePair`2<Service.Algorithm.FlowNode,System.Int32>>>)", "methodShortName": "SendFlow(...)", "fileIndex": 0, "line": 73,
     "metrics": [
       { "value": 16, "exceeded": false },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "Service", "class": "Service.Algorithm.Validation.Validator", "reportPath": "Service_Validator.html", "methodName": "HasInvalidTimeDistanceAssignments(System.Collections.Generic.List`1<System.ValueTuple`2<System.Int32,System.Int32>>,System.Double)", "methodShortName": "HasInvalidTimeDistanceAssignments(...)", "fileIndex": 0, "line": 93,
+    "metrics": [
+      { "value": 17, "exceeded": false },
       { "value": 16, "exceeded": true },
     ]},
 ];

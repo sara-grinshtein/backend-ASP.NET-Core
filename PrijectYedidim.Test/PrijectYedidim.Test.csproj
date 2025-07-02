@@ -28,6 +28,7 @@
 		<PackageReference Include="xunit" Version="2.4.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
 	<ProjectReference Include="..\Service\Service.csproj" />
+	
 
 	</ItemGroup>
 
@@ -37,6 +38,8 @@
 		<ProjectReference Include="..\Repository\Repository.csproj" />
 		<ProjectReference Include="..\Service\Service.csproj" />
 		<ProjectReference Include="..\Mock\Mock.csproj" />
-	</ItemGroup>
+		<ProjectReference Include="..\Algorithm\Algorithm.csproj" />
 
+	 
+	</ItemGroup>
 </Project>

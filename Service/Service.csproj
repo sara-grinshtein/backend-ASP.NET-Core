@@ -16,7 +16,8 @@
 		<ProjectReference Include="..\Common\Common.csproj" />
 		<ProjectReference Include="..\Repository\Repository.csproj" />
 		<ProjectReference Include="..\Mock\Mock.csproj" />
-
 	</ItemGroup>
+
+	 
 
 </Project>
