@@ -10,6 +10,9 @@ using static Service.Algorithm.Validation.Validator;
 
 namespace Tests.Validator
 {
+    /// <summary>
+    /// 6.1 
+    /// </summary>
     public class AssignmentValidatorTests : IDisposable
     {
         private readonly DataBaseForTest _context;

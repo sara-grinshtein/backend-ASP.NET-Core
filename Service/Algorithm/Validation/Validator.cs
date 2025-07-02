@@ -7,6 +7,12 @@ namespace Service.Algorithm.Validation
 {
     public class Validator
     {
+        internal static bool IsValidAssignment(List<(int messageId, int volunteerId)> assignments, out object _)
+        {
+            throw new NotImplementedException();
+        }
+
+        //6.1
         public class AssignmentValidator
         {
             private readonly Icontext _context;
