@@ -25,9 +25,9 @@ namespace Mock
         public DataBase(DbContextOptions<DataBase> options) : base(options)
         {
         }
+        public DataBase() { }
 
 
-        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;");
