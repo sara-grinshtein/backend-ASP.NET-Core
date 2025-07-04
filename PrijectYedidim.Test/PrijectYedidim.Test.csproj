@@ -38,7 +38,7 @@
 		<ProjectReference Include="..\Repository\Repository.csproj" />
 		<ProjectReference Include="..\Service\Service.csproj" />
 		<ProjectReference Include="..\Mock\Mock.csproj" />
-		<ProjectReference Include="..\Algorithm\Algorithm.csproj" />
+
 
 	 
 	</ItemGroup>
