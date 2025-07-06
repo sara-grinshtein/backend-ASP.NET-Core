@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Common.Dto;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Common.Dto;
 using Service.interfaces;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PrijectYedidim.Controllers
 {
@@ -11,40 +10,37 @@ namespace PrijectYedidim.Controllers
     [ApiController]
     public class My_areas_of_knowledge_Controller : ControllerBase
     {
-        private readonly IService<My_areas_of_knowledge_Dto> service;
-        [HttpGet]
-        public async Task<List<My_areas_of_knowledge_Dto>> GetAll()
-        {
-            return await service.GetAll();
-        }
-        public My_areas_of_knowledge_Controller(IService<My_areas_of_knowledge_Dto> service)
+        private readonly IService<KnowledgeCategoryDto> service;
+
+        public My_areas_of_knowledge_Controller(IService<KnowledgeCategoryDto> service)
         {
             this.service = service;
         }
 
+        [HttpGet]
+        public async Task<List<KnowledgeCategoryDto>> GetAll()
+        {
+            return await service.GetAll();
+        }
 
-        // GET api/<My_areas_of_knowledge_Controller>/5
         [HttpGet("{id}")]
-        public async Task<My_areas_of_knowledge_Dto> GetAsync(int id)
+        public async Task<KnowledgeCategoryDto> GetAsync(int id)
         {
             return await service.Getbyid(id);
         }
 
-        // POST api/<My_areas_of_knowledge_Controller>
         [HttpPost]
-        public async Task<My_areas_of_knowledge_Dto> PostAsync([FromBody] My_areas_of_knowledge_Dto value)
+        public async Task<KnowledgeCategoryDto> PostAsync([FromBody] KnowledgeCategoryDto value)
         {
             return await service.AddItem(value);
         }
 
-        // PUT api/<My_areas_of_knowledge_Controller>/5
         [HttpPut("{id}")]
-        public async Task PutAsync(int id, [FromBody] My_areas_of_knowledge_Dto value)
+        public async Task PutAsync(int id, [FromBody] KnowledgeCategoryDto value)
         {
             await service.UpDateItem(id, value);
         }
 
-        // DELETE api/<My_areas_of_knowledge_Controller>/5
         [HttpDelete("{id}")]
         public async Task DeleteAsync(int id)
         {

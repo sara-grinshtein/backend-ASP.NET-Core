@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
@@ -16,24 +12,30 @@ namespace Mock
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
- 
+        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
 
-        public async Task Save()
-        {
-            await SaveChangesAsync();
-        }
-        public DataBase(DbContextOptions<DataBase> options) : base(options)
-        {
-        }
+        public DataBase(DbContextOptions<DataBase> options) : base(options) { }
+
         public DataBase() { }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;");
+            }
+        }
+
+        
+        public Task<int> SaveChangesAsync()
+        {
+            return base.SaveChangesAsync();
         }
 
 
-
+        public Task Save()
+        {
+            return SaveChangesAsync();
+        }
     }
 }

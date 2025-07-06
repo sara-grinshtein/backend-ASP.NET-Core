@@ -14,7 +14,6 @@ namespace PrijectYedidim.Controllers
 {
     [Route("api/test")]
     [ApiController]
-    //טסטים עבור סעיפים 1 2 עבור אלגוריתם
     public class TestController : ControllerBase
     {
         private readonly ICandidateScreening _embeddingService;
@@ -42,8 +41,6 @@ namespace PrijectYedidim.Controllers
 
             if (volunteers == null || volunteers.Count == 0)
             {
-                Console.WriteLine("⚠️ No volunteers found in range. Adding test volunteers...");
-
                 for (int i = 1; i <= 3; i++)
                 {
                     var dto = new VolunteerDto
@@ -61,7 +58,6 @@ namespace PrijectYedidim.Controllers
                     };
 
                     await _volunteerService.AddItem(dto);
-                    Console.WriteLine($"🆕 Added volunteer {dto.volunteer_first_name} at location {dto.Latitude}, {dto.Longitude}");
                 }
 
                 return Ok("נוספו 3 מתנדבים לבדיקה. נסה שוב.");
@@ -117,33 +113,38 @@ namespace PrijectYedidim.Controllers
                 if (addedVolunteer != null && addedVolunteer.volunteer_id != 0)
                 {
                     volunteerIds.Add((int)addedVolunteer.volunteer_id);
-                    Console.WriteLine($"✅ Volunteer added: {addedVolunteer.volunteer_first_name} {addedVolunteer.volunteer_last_name}");
-                }
-                else
-                {
-                    Console.WriteLine($"❌ Failed to insert volunteer: {dto.email}");
                 }
             }
 
-            var existingKnowledge = _db.areas_Of_Knowledges.FirstOrDefault(a => a.describtion == "Computer");
+            var knowledgeCategory = _db.KnowledgeCategories.FirstOrDefault(k => k.describtion == "Computer");
+
+            if (knowledgeCategory == null)
+            {
+                knowledgeCategory = new KnowledgeCategory
+                {
+                    describtion = "Computer"
+                };
+                _db.KnowledgeCategories.Add(knowledgeCategory);
+                _db.SaveChanges();
+            }
 
             foreach (var volunteerId in volunteerIds)
             {
                 var alreadyLinked = _db.areas_Of_Knowledges
-                    .Any(a => a.volunteer_id == volunteerId && a.describtion == "Computer");
+                    .Any(a => a.volunteer_id == volunteerId && a.ID_knowledge == knowledgeCategory.ID_knowledge);
 
                 if (!alreadyLinked)
                 {
                     var knowledge = new My_areas_of_knowledge
                     {
-                        describtion = "Computer",
-                        volunteer_id = volunteerId
+                        volunteer_id = volunteerId,
+                        ID_knowledge = knowledgeCategory.ID_knowledge
                     };
 
                     _db.areas_Of_Knowledges.Add(knowledge);
-                    Console.WriteLine($"🔗 Added knowledge 'Computer' to volunteer ID {volunteerId}");
                 }
             }
+
             _db.SaveChanges();
 
             var volunteers = await _embeddingService.FilterVolunteersByDistanceAsync(lat, lng);
@@ -184,6 +185,5 @@ namespace PrijectYedidim.Controllers
                 volunteers = filtered
             });
         }
-
     }
 }

@@ -13,6 +13,7 @@ using Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Service.Algorithm;
+using Common.Dto.Common.Dto;
 
 namespace Service.service
 {
@@ -36,6 +37,8 @@ namespace Service.service
 
             services.AddScoped<ICandidateScreening, Candidate_screening>();
             services.AddScoped<IDataFetcher, DataFetcher>();
+
+            services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
 
 
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mock.Migrations
 {
     /// <inheritdoc />
-    public partial class AddVolunteerIdToKnowledge : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,19 @@ namespace Mock.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "KnowledgeCategories",
+                columns: table => new
+                {
+                    ID_knowledge = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    describtion = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KnowledgeCategories", x => x.ID_knowledge);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Volunteers",
                 columns: table => new
                 {
@@ -46,7 +59,8 @@ namespace Mock.Migrations
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Latitude = table.Column<double>(type: "float", nullable: true),
-                    Longitude = table.Column<double>(type: "float", nullable: true)
+                    Longitude = table.Column<double>(type: "float", nullable: true),
+                    assignment_count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,14 +71,20 @@ namespace Mock.Migrations
                 name: "areas_Of_Knowledges",
                 columns: table => new
                 {
-                    ID_knowledge = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    describtion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    volunteer_id = table.Column<int>(type: "int", nullable: false)
+                    volunteer_id = table.Column<int>(type: "int", nullable: false),
+                    ID_knowledge = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_areas_Of_Knowledges", x => x.ID_knowledge);
+                    table.PrimaryKey("PK_areas_Of_Knowledges", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_areas_Of_Knowledges_KnowledgeCategories_ID_knowledge",
+                        column: x => x.ID_knowledge,
+                        principalTable: "KnowledgeCategories",
+                        principalColumn: "ID_knowledge",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_areas_Of_Knowledges_Volunteers_volunteer_id",
                         column: x => x.volunteer_id,
@@ -86,7 +106,11 @@ namespace Mock.Migrations
                     hasResponse = table.Column<bool>(type: "bit", nullable: false),
                     ConfirmArrival = table.Column<bool>(type: "bit", nullable: true),
                     Latitude = table.Column<double>(type: "float", nullable: true),
-                    Longitude = table.Column<double>(type: "float", nullable: true)
+                    Longitude = table.Column<double>(type: "float", nullable: true),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -127,6 +151,11 @@ namespace Mock.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_areas_Of_Knowledges_ID_knowledge",
+                table: "areas_Of_Knowledges",
+                column: "ID_knowledge");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_areas_Of_Knowledges_volunteer_id",
                 table: "areas_Of_Knowledges",
                 column: "volunteer_id");
@@ -155,6 +184,9 @@ namespace Mock.Migrations
 
             migrationBuilder.DropTable(
                 name: "responses");
+
+            migrationBuilder.DropTable(
+                name: "KnowledgeCategories");
 
             migrationBuilder.DropTable(
                 name: "Messages");
