@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common.Dto;
+using Common.Dto.Common.Dto;
 using Microsoft.Extensions.Configuration;
 using Mock;
 using Porter2Stemmer;
@@ -78,7 +79,9 @@ namespace Service.Algorithm
                     {
                         var knowledge = _db.areas_Of_Knowledges
                             .Where(k => k.volunteer_id == volunteer.volunteer_id)
-                            .Select(k => new My_areas_of_knowledge_Dto { describtion = k.describtion })
+                            .Select(k => new My_areas_of_knowledge_Dto {
+                                describtion = k.KnowledgeCategory.describtion
+                            })
                             .ToList();
 
                         nearbyVolunteers.Add(new VolunteerDto

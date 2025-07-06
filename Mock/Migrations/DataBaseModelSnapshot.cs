@@ -22,6 +22,60 @@ namespace Mock.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Message", b =>
+                {
+                    b.Property<int>("message_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("message_id"));
+
+                    b.Property<bool?>("ConfirmArrival")
+                        .HasColumnType("bit");
+
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("hasResponse")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("helped_id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isDone")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("volunteer_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("message_id");
+
+                    b.HasIndex("helped_id");
+
+                    b.HasIndex("volunteer_id");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("Repository.Entites.Helped", b =>
                 {
                     b.Property<int>("helped_id")
@@ -62,52 +116,7 @@ namespace Mock.Migrations
                     b.ToTable("Helpeds");
                 });
 
-            modelBuilder.Entity("Repository.Entites.Message", b =>
-                {
-                    b.Property<int>("message_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("message_id"));
-
-                    b.Property<bool?>("ConfirmArrival")
-                        .HasColumnType("bit");
-
-                    b.Property<double?>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("hasResponse")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("helped_id")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("isDone")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("volunteer_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("message_id");
-
-                    b.HasIndex("helped_id");
-
-                    b.HasIndex("volunteer_id");
-
-                    b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("Repository.Entites.My_areas_of_knowledge", b =>
+            modelBuilder.Entity("Repository.Entites.KnowledgeCategory", b =>
                 {
                     b.Property<int>("ID_knowledge")
                         .ValueGeneratedOnAdd()
@@ -119,10 +128,28 @@ namespace Mock.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("ID_knowledge");
+
+                    b.ToTable("KnowledgeCategories");
+                });
+
+            modelBuilder.Entity("Repository.Entites.My_areas_of_knowledge", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ID_knowledge")
+                        .HasColumnType("int");
+
                     b.Property<int>("volunteer_id")
                         .HasColumnType("int");
 
-                    b.HasKey("ID_knowledge");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ID_knowledge");
 
                     b.HasIndex("volunteer_id");
 
@@ -206,7 +233,7 @@ namespace Mock.Migrations
                     b.ToTable("Volunteers");
                 });
 
-            modelBuilder.Entity("Repository.Entites.Message", b =>
+            modelBuilder.Entity("Message", b =>
                 {
                     b.HasOne("Repository.Entites.Helped", "Helped")
                         .WithMany()
@@ -225,24 +252,37 @@ namespace Mock.Migrations
 
             modelBuilder.Entity("Repository.Entites.My_areas_of_knowledge", b =>
                 {
+                    b.HasOne("Repository.Entites.KnowledgeCategory", "KnowledgeCategory")
+                        .WithMany("Volunteers")
+                        .HasForeignKey("ID_knowledge")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Repository.Entites.Volunteer", "Volunteer")
                         .WithMany("areas_of_knowledge")
                         .HasForeignKey("volunteer_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("KnowledgeCategory");
+
                     b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("Repository.Entites.Response", b =>
                 {
-                    b.HasOne("Repository.Entites.Message", "Message")
+                    b.HasOne("Message", "Message")
                         .WithMany()
                         .HasForeignKey("message_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Message");
+                });
+
+            modelBuilder.Entity("Repository.Entites.KnowledgeCategory", b =>
+                {
+                    b.Navigation("Volunteers");
                 });
 
             modelBuilder.Entity("Repository.Entites.Volunteer", b =>

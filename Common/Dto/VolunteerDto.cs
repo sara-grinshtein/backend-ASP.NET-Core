@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Dto;
+using Common.Dto.Common.Dto;
 
 
 namespace Common.Dto

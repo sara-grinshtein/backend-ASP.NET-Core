@@ -16,19 +16,17 @@ using Repository.Repositories;
 using Common.Dto;
 using Service.interfaces;
 using Service.Algorithm;
+using NuGet.Protocol.Core.Types;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-//  שירותים עבור Razor Pages
+// 1. שירותי Razor + Controllers
 builder.Services.AddRazorPages();
-
-//  הוספת Controllers לאפליקציית API
 builder.Services.AddControllers();
-
-//  חובה ל־Swagger – אחרת תופיע שגיאה של constructor
 builder.Services.AddEndpointsApiExplorer();
 
-// רישום Swagger
+// 2. Swagger
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -57,59 +55,67 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-// שירותים פנימיים שלך
-builder.Services.AddService();
-builder.Services.AddDbContext<Icontext, DataBase>();
+// 3. Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-              .AddJwtBearer(option =>
-              option.TokenValidationParameters = new TokenValidationParameters
-              {
-                  ValidateIssuer = true,
-                  ValidateAudience = true,
-                  ValidateLifetime = true,
-                  ValidateIssuerSigningKey = true,
-                  ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                  ValidAudience = builder.Configuration["Jwt:Audience"],
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    .AddJwtBearer(option =>
+    {
+        option.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
 
-              });
-
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-//cores
+// 4. CORS – מאפשר גישה רק ל־localhost:3000
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                      });
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
 });
-builder.Services.AddScoped<Irepository<Message>,MessageRepository>();
+
+// 5. Dependency Injection
+builder.Services.AddDbContext<Icontext, DataBase>();
+builder.Services.AddScoped<Irepository<Message>, MessageRepository>();
 builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
+builder.Services.AddScoped<IService<MessageDto>, MessageService>(); // 👈 חשוב!
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<Irepository<KnowledgeCategory>, KnowledgeCategoryRepository>();
 
 
+
+builder.Services.AddHostedService<ScheduledCleanupService>();
+
+builder.Services.AddService();
 builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
 
-//  הפעלת Swagger
+// 6. Middleware pipeline
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo API V1");
-    c.RoutePrefix = string.Empty; // 👈 חשוב! זה פותח את Swagger ישירות ב- /
+    c.RoutePrefix = string.Empty;
 });
 
-// תשתית האפליקציה
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors("AllowReactApp"); // CORS לפני Authentication
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors(MyAllowSpecificOrigins);
 
-// מיפוי גם ל־Controllers וגם ל־Razor Pages
 app.MapControllers();
 app.MapRazorPages();
 

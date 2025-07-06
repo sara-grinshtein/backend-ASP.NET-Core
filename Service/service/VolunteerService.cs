@@ -66,9 +66,10 @@ namespace Service.service
                     {
                         var knowledgeEntity = new My_areas_of_knowledge
                         {
-                            describtion = dto.describtion,
-                            volunteer_id = createdVolunteer.volunteer_id
+                            volunteer_id = createdVolunteer.volunteer_id,
+                            ID_knowledge = dto.ID_knowledge // ✅ ודאי שזה קיים ב־dto
                         };
+
 
                         Console.WriteLine($"🧠 [AddItem] Saving knowledge area: '{dto.describtion}' for Volunteer ID {createdVolunteer.volunteer_id}");
                         await knowledge_repository.AddItem(knowledgeEntity);
