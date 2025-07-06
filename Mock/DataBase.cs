@@ -10,9 +10,10 @@ namespace Mock
         public DbSet<Helped> Helpeds { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<Response> Responses { get; set; }
+        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
-        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
 
         public DataBase(DbContextOptions<DataBase> options) : base(options) { }
 
@@ -22,16 +23,16 @@ namespace Mock
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;");
+                optionsBuilder.UseSqlServer(
+                    "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
+                );
             }
         }
 
-        
         public Task<int> SaveChangesAsync()
         {
             return base.SaveChangesAsync();
         }
-
 
         public Task Save()
         {

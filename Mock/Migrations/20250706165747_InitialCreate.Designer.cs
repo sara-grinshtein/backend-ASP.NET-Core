@@ -12,7 +12,7 @@ using Mock;
 namespace Mock.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20250706153504_InitialCreate")]
+    [Migration("20250706165747_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
