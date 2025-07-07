@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.Extensions.DependencyInjection;
-using Repository.Entites;
 using Service.interfaces;
 using Common.Dto;
 using AutoMapper;
-using Repository.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Service.Algorithm;
+using Repository.Repositories;
+using Repository.Entites;
+using Microsoft.AspNetCore.Hosting;
 using Common.Dto.Common.Dto;
 
 namespace Service.service
@@ -23,26 +17,28 @@ namespace Service.service
         {
             services.AddRepository();
 
-           services.AddScoped<IService<MessageDto>, MessageService>();
-
-           services.AddScoped<IService<VolunteerDto>, VolunteerService>();
-
-           services.AddScoped<IService<HelpedDto>, HelpedService>();
-
+            services.AddScoped<IService<MessageDto>, MessageService>();
+            services.AddScoped<IService<VolunteerDto>, VolunteerService>();
+            services.AddScoped<IService<HelpedDto>, HelpedService>();
             services.AddScoped<IService<ResponseDto>, ResponseService>();
-
-           services.AddScoped<IService<My_areas_of_knowledge_Dto>, My_areas_of_knowledge_Service>();
-
-            services.AddAutoMapper(typeof(IMapper));
+            services.AddScoped<IService<My_areas_of_knowledge_Dto>, My_areas_of_knowledge_Service>();
+            services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
 
             services.AddScoped<ICandidateScreening, Candidate_screening>();
             services.AddScoped<IDataFetcher, DataFetcher>();
 
-            services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
+            services.AddAutoMapper(typeof(IMapper));
 
-
+            // הזרקת FilterService עם קובץ מילים אסורות מ-wwwroot
+            services.AddScoped<FilterService>(provider =>
+            {
+                var env = provider.GetRequiredService<IWebHostEnvironment>();
+                var filePath = Path.Combine(env.WebRootPath, "forbidden-words.txt");
+                return new FilterService(filePath);
+            });
 
             return services;
         }
     }
 }
+ 

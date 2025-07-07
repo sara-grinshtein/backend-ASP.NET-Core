@@ -24,6 +24,7 @@ namespace Mock
         public DbSet<Helped> Helpeds { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
         public DbSet<Response> responses { get; set; }
+        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
 
         // מימוש מלא של הממשק Icontext
         DbSet<My_areas_of_knowledge> Icontext.areas_Of_Knowledges
@@ -48,13 +49,18 @@ namespace Mock
             return base.SaveChanges();
         }
 
+        public Task<int> SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 var connectionString = !string.IsNullOrEmpty(_testDbName)
-                    ? $"Server=localhost\\SQLEXPRESS01;Database={_testDbName};Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
-                    : "Server=localhost\\SQLEXPRESS01;Database=TestDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+                    ? $"Server=localhost;Database={_testDbName};Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
+                    : "Server=localhost;Database=TestDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
 
                 optionsBuilder.UseSqlServer(connectionString);
             }
