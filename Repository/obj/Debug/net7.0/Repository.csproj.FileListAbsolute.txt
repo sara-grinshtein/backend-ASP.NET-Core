@@ -13,3 +13,18 @@ C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\ref
 C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.pdb
 C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\Repository.genruntimeconfig.cache
 C:\Users\This User\Desktop\projectYedidim-csharp\Repository\obj\Debug\net7.0\ref\Repository.dll
+C:\backend-ASP.NET-Core\Repository\bin\Debug\net7.0\Repository.deps.json
+C:\backend-ASP.NET-Core\Repository\bin\Debug\net7.0\Repository.runtimeconfig.json
+C:\backend-ASP.NET-Core\Repository\bin\Debug\net7.0\Repository.dll
+C:\backend-ASP.NET-Core\Repository\bin\Debug\net7.0\Repository.pdb
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.csproj.AssemblyReference.cache
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.dll
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\refint\Repository.dll
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.pdb
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\Repository.genruntimeconfig.cache
+C:\backend-ASP.NET-Core\Repository\obj\Debug\net7.0\ref\Repository.dll

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Repository.Entites;
 
@@ -26,14 +28,27 @@ namespace Algorithm.Validation
         }
 
         // 🧠 משימה 5.3 – ניקוי טקסט מתווים חריגים בתיאור
-        public string CleanDescription(string text)
+
+        public static string CleanDescription(string input)
         {
-            if (string.IsNullOrWhiteSpace(text))
+            if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;
 
-            // שמירה על אותיות, ספרות, רווחים, סימני פיסוק בסיסיים
-            return Regex.Replace(text, @"[^\w\sא-ת.,?!\-()""']", "").Trim();
+            // הסרת ניקוד (תווי ניקוד כמו חולם, פתח וכו')
+            string noDiacritics = new string(input.Normalize(NormalizationForm.FormD)
+                .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                .ToArray())
+                .Normalize(NormalizationForm.FormC);
+
+            // הסרת כל סימן פיסוק וסמל (כולל ! ? @ $)
+            string noPunctuation = Regex.Replace(noDiacritics, @"[\p{P}\p{S}]", " ");
+
+            // ניקוי רווחים מיותרים והשארת טקסט נקי
+            string cleaned = Regex.Replace(noPunctuation, @"\s+", " ").Trim();
+
+            return cleaned;
         }
+
 
         // 🧠 משימה 5.4 – בדיקת עומק תיאור (פחות מ־5 מילים → דגל אזהרה)
         public bool IsShallowDescription(string text)
