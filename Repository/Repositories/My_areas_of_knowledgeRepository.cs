@@ -48,6 +48,8 @@ namespace Repository.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
+     
+
         public async Task<My_areas_of_knowledge> UpDateItem(int id, My_areas_of_knowledge item)
         {
             var knowledge = await Getbyid(id);
@@ -59,5 +61,11 @@ namespace Repository.Repositories
             await context.Save();
             return knowledge;
         }
+
+        public async Task Save()
+        {
+             context.SaveChangesAsync();
+        }
+
     }
 }

@@ -17,10 +17,8 @@ namespace Common.Dto
         public string email { get; set; }
         public string location { get; set; }
         public bool IsDeleted { get; set; }
-
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
-
 
     }
 }

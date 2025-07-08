@@ -46,7 +46,15 @@ namespace PrijectYedidim.Controllers
                 };
 
                 await volunteerService.AddItem(newVolunteer);
-                return Ok("Volunteer registered successfully.");
+
+                var volunteer = (await volunteerService.GetAll())
+                    .FirstOrDefault(v => v.email.ToLower() == newVolunteer.email.ToLower());
+
+                if (volunteer == null)
+                    return BadRequest("שגיאה בשליפה אחרי יצירת מתנדב.");
+
+                var token = GenerateVolunteerToken(volunteer);
+                return Ok(new { token, volunteer });
             }
 
             if (value.Role == "Helped")
@@ -60,13 +68,21 @@ namespace PrijectYedidim.Controllers
                 };
 
                 await helpedService.AddItem(newHelped);
-                return Ok("Helped registered successfully.");
+
+                var helped = (await helpedService.GetAll())
+                    .FirstOrDefault(h => h.email.ToLower() == newHelped.email.ToLower());
+
+                if (helped == null)
+                    return BadRequest("שגיאה בשליפה אחרי יצירת נעזר.");
+
+                var token = GenerateHelpedToken(helped);
+                return Ok(new { token, helped });
             }
 
             return BadRequest("Invalid role specified.");
         }
 
-        // ✅ התחברות עם מייל + סיסמה בלבד
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserCredentials credentials)
         {
@@ -138,24 +154,24 @@ namespace PrijectYedidim.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        // אימות קיים בהרשמה
         private async Task<bool> IsVolunteer(UserLogin value)
         {
             var list = await volunteerService.GetAll();
             return list.Any(x =>
-                x.email.ToLower() == value.Email.ToLower() &&
-                x.password == value.Password);
+                x.email.ToLower() == value.Email.ToLower());
         }
+
+        
 
         private async Task<bool> IsHelped(UserLogin value)
         {
             var list = await helpedService.GetAll();
             return list.Any(x =>
-                x.email.ToLower() == value.Email.ToLower() &&
-                x.password == value.Password);
+                x.email.ToLower() == value.Email.ToLower());
         }
 
-        // התחברות לפי email+password בלבד
+
+
         private async Task<VolunteerDto?> AuthenticateVolunteer(UserCredentials credentials)
         {
             var list = await volunteerService.GetAll();

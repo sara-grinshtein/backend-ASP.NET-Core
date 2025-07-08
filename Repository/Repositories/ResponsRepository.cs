@@ -20,6 +20,7 @@ namespace Repository.Repositories
             this.context = context;
         }
 
+     
 
         async Task<Response> Irepository<Response>.AddItem(Response item)
         {
@@ -55,13 +56,12 @@ namespace Repository.Repositories
             return response;
         }
 
-       
-        //public async Task<List<Response>> GetByHelpedId(int helpedId)
-        //{
-        //    return await context.responses
-        //        .Where(r => r.helped_id == helpedId)
-        //        .ToListAsync();
-        //}
+        public async Task Save()
+        {
+           context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+        }
+
+      
 
     }
 }
