@@ -3,62 +3,89 @@ using Service.Algorithm;
 using System.Collections.Generic;
 using Xunit;
 using AutoMapper;
-using Moq;
 using Microsoft.Extensions.Configuration;
-using Mock;
 using Repository.Entites;
 using Common.Dto.Common.Dto;
+using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Mock;
+using Service.interfaces;
+using Microsoft.EntityFrameworkCore.InMemory;
 
 namespace PrijectYedidim.Test.Tests
 {
     public class CandidateScreeningTests
     {
-
-        [Fact]
-        public void FilterByKnowledge_ShouldReturnMatchingVolunteer_WhenDescriptionRoughlyMatchesKnowledge()
+        public class FakeDistanceService : IDistanceService
         {
-            // Arrange
-            var dbMock = new Mock<DataBase>();
-            var configMock = new Mock<IConfiguration>();
-            var mapperMock = new Mock<IMapper>();
-
-            var screening = new Candidate_screening(dbMock.Object, configMock.Object, mapperMock.Object);
-
-            var volunteer = new VolunteerDto
+            public Task<int?> GetDistanceInMetersAsync(double originLat, double originLng, double destLat, double destLng)
             {
-                volunteer_id = 1,
-                areas_of_knowledge = new List<My_areas_of_knowledge_Dto>
-                {
-                    new My_areas_of_knowledge_Dto { describtion = "תכנות" },
-                    new My_areas_of_knowledge_Dto { describtion = "מחשבים" }
-                }
-            };
+                return Task.FromResult<int?>(5000); // פחות מ־10 ק"מ
+            }
+        }
 
-            var volunteers = new List<VolunteerDto> { volunteer };
+        private DataBaseForTest CreateInMemoryDbContext()
+        {
+            var options = new DbContextOptionsBuilder<DataBase>()
+                .UseInMemoryDatabase(databaseName: $"TestDb_{Guid.NewGuid()}")
+                .Options;
 
-            var message = new Message
-            {
-                message_id = 1,
-                description = "אני צריך עזרה בתכנות בסיסי" // טקסט שעדיין אמור להיות דומה ל"תכנות"
-            };
+            return new DataBaseForTest(options);
+        }
 
-            // Act
-            var matchedVolunteers = screening.FilterByKnowledge(volunteers, message);
-
-            // Assert
-            Assert.True(matchedVolunteers.Any(), "ציפינו למתנדב אחד לפחות שעובר את סף 70% הדמיון");
-            Assert.Equal(volunteer.volunteer_id, matchedVolunteers[0].volunteer_id);
+        private IMapper CreateMapper()
+        {
+            var config = new MapperConfiguration(cfg => { /* השאר ריק או הוסף פרופילים לפי הצורך */ });
+            return config.CreateMapper();
         }
 
         [Fact]
-        public void CleanedMessage_ShouldReturnTextWithoutPunctuation()
+        public async Task FilterVolunteersByDistanceAndKnowledgeAsync_ShouldReturnCorrectVolunteers()
         {
-            var originalText = "!!! עזרה מידית !!!";
-            var expected = "עזרה מידית";
+            // Arrange
+            using var context = CreateInMemoryDbContext();
 
-            var actual = Candidate_screening.CleanDescription(originalText);
+            var volunteer = new Volunteer
+            {
+                volunteer_id = 1,
+                Latitude = 32.0853,
+                Longitude = 34.7818,
+                IsDeleted = false,
+                volunteer_first_name = "דני",
+                volunteer_last_name = "כהן",
+                email = "dani@example.com",
+                tel = "0500000000",
+                start_time = TimeSpan.Parse("08:00"),
+                end_time = TimeSpan.Parse("16:00"),
+                password = "1234"
+            };
 
-            Assert.Equal(expected, actual);
+            var category = new KnowledgeCategory { describtion = "עזרה ראשונה" };
+
+            var knowledge = new My_areas_of_knowledge
+            {
+                volunteer_id = 1,
+                KnowledgeCategory = category
+            };
+
+            context.Volunteers.Add(volunteer);
+            context.KnowledgeCategories.Add(category);
+            context.areas_Of_Knowledges.Add(knowledge);
+            await context.SaveChangesAsync();
+
+            var configMock = new ConfigurationBuilder().Build();
+            var mapper = CreateMapper();
+            var screening = new Candidate_screening(context, configMock, mapper, new FakeDistanceService());
+
+            var message = new Message { message_id = 1, description = "עזרה ראשונה דחופה" };
+
+            // Act
+            var result = await screening.FilterVolunteersByDistanceAndKnowledgeAsync(32.0853, 34.7818, message);
+
+            // Assert
+            Assert.Single(result);
+            Assert.Equal(1, result[0].volunteer_id);
         }
     }
 }
