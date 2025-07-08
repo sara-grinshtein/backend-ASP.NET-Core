@@ -135,6 +135,7 @@
 //        }
 //    }
 //}
+
 using Xunit;
 using System;
 using System.Collections.Generic;
@@ -184,12 +185,12 @@ namespace ProjectYedidim.Test.Validation
             Assert.Equal(expected, result);
         }
 
-        // 5.3 – ניקוי תווים חריגים (עכשיו דרך FilterService)
+        // 5.3 – ניקוי תווים חריגים
         [Fact]
         public void Test_CleanDescription_RemovesInvalidCharacters()
         {
             var input = "שלום! עזרה בבקשה!!! @#$%^&*";
-            var expected = "שלום עזרה בבקשה"; // ← תוצאה בהתאם לפילטר
+            var expected = "שלום עזרה בבקשה";
 
             var result = _filterService.CleanDescription(input);
             Assert.Equal(expected, result);
@@ -204,10 +205,10 @@ namespace ProjectYedidim.Test.Validation
 
         // 5.4 – עומק תיאור
         [Theory]
-        [InlineData("אני צריך עזרה מידית", true)] // 4 מילים
-        [InlineData("עזרה דחופה במקום זה", true)] // 4
-        [InlineData("עזרה דחופה עכשיו תודה רבה", false)] // 5
-        [InlineData("יש לי בעיה חמורה מאוד כאן", false)] // 6
+        [InlineData("אני צריך עזרה מידית", true)]
+        [InlineData("עזרה דחופה במקום זה", true)]
+        [InlineData("עזרה דחופה עכשיו תודה רבה", false)]
+        [InlineData("יש לי בעיה חמורה מאוד כאן", false)]
         [InlineData(null, true)]
         [InlineData("", true)]
         public void Test_IsShallowDescription(string text, bool expected)
@@ -256,7 +257,7 @@ namespace ProjectYedidim.Test.Validation
 
             Assert.Equal(3, result.Count);
 
-            Assert.Equal("!!! עזרה מידית !!!", result[0].CleanedDescription);
+            Assert.Equal("עזרה מידית", result[0].CleanedDescription); // תיקון כאן
             Assert.True(result[0].IsTooShort);
 
             Assert.False(result[1].IsTooShort);
@@ -282,3 +283,4 @@ namespace ProjectYedidim.Test.Validation
         }
     }
 }
+
