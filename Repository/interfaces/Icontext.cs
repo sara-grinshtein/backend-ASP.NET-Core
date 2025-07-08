@@ -19,7 +19,7 @@ namespace Repository.interfaces
         public DbSet<Message> Messages { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
-        public DbSet<Response>  responses{ get; set; }
+        public DbSet<Response>  Responses{ get; set; }
         public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
 
         public Task Save();

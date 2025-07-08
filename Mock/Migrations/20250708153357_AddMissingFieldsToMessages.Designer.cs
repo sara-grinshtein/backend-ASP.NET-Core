@@ -12,8 +12,8 @@ using Mock;
 namespace Mock.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20250706165747_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250708153357_AddMissingFieldsToMessages")]
+    partial class AddMissingFieldsToMessages
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,7 +184,7 @@ namespace Mock.Migrations
 
                     b.HasIndex("message_id");
 
-                    b.ToTable("responses");
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("Repository.Entites.Volunteer", b =>

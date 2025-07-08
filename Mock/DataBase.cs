@@ -13,13 +13,6 @@ namespace Mock
         public DbSet<Response> Responses { get; set; }
         public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
-<<<<<<< HEAD
-        public DbSet<Response> responses { get; set; }
-=======
-        public DbSet<Response> responses { get; set; } 
-        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
->>>>>>> 407d22a (עדכון קבצים ומיגרציות)
-
         public DataBase(DbContextOptions<DataBase> options) : base(options) { }
 
         public DataBase() { }
@@ -29,7 +22,7 @@ namespace Mock
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
+                    "Server=localhost\\SQLEXPRESS01;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
                 );
             }
         }
