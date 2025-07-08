@@ -55,7 +55,10 @@ namespace Repository.Repositories
         {
             return await context.Messages.ToListAsync();
         }
+        public async Task Save()
+        {
+            context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+        }
 
-       
     }
 }

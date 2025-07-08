@@ -7,13 +7,18 @@ namespace Mock
 {
     public class DataBase : DbContext, Icontext
     {
-        public DbSet<Helped> Helpeds { get; set; }
+        public DbSet<Helped> Helpeds { get; set; } 
         public DbSet<Message> Messages { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<Response> Responses { get; set; }
         public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
         public DbSet<My_areas_of_knowledge> areas_Of_Knowledges { get; set; }
+<<<<<<< HEAD
         public DbSet<Response> responses { get; set; }
+=======
+        public DbSet<Response> responses { get; set; } 
+        public DbSet<KnowledgeCategory> KnowledgeCategories { get; set; }
+>>>>>>> 407d22a (עדכון קבצים ומיגרציות)
 
         public DataBase(DbContextOptions<DataBase> options) : base(options) { }
 

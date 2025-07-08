@@ -90,6 +90,13 @@ namespace Repository.Repositories
                 .Where(v => !v.IsDeleted)
                 .ToListAsync();
         }
+
+
+        public async Task Save()
+        {
+           context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+        }
+
     }
 }
 

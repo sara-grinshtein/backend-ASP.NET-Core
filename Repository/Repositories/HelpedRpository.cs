@@ -58,6 +58,10 @@ namespace Repository.Repositories
             return helped;
         }
 
+        public async Task Save()
+        {
+            context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+        }
 
     }
 }

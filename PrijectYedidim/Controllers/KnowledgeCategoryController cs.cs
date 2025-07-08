@@ -18,8 +18,14 @@ namespace Common.Dto
         [HttpGet]
         public async Task<List<KnowledgeCategoryDto>> Get()
         {
-            return await _service.GetAll();
+            var list = await _service.GetAll();
+            return list
+                .GroupBy(x => x.ID_knowledge)
+                .Select(g => g.First()) // מסיר כפילויות
+                .ToList();
         }
+
+
 
         [HttpPost("init")]
         public async Task<IActionResult> SeedKnowledgeCategories()

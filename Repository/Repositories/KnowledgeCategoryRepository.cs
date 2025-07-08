@@ -18,7 +18,6 @@ namespace Repository.Repositories
         public async Task<KnowledgeCategory> AddItem(KnowledgeCategory item)
         {
             await _context.KnowledgeCategories.AddAsync(item);
-            await _context.Save();
             return item;
         }
 
@@ -28,7 +27,6 @@ namespace Repository.Repositories
             if (entity == null) return null;
 
             _context.KnowledgeCategories.Remove(entity);
-            await _context.Save();
             return entity;
         }
 
@@ -47,9 +45,14 @@ namespace Repository.Repositories
             var existing = await Getbyid(id);
             if (existing == null) return null;
 
-            existing.describtion = item.describtion; // אם יש שדות נוספים – תעדכני גם אותם
-            await _context.Save();
+            existing.describtion = item.describtion;
             return existing;
         }
+
+        public async Task Save()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

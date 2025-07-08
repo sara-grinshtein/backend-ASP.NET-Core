@@ -23,6 +23,7 @@ namespace Service.service
         {
             var entity = _mapper.Map<KnowledgeCategory>(item);
             var result = await _repo.AddItem(entity);
+            await _repo.Save(); // 🔴 זאת השורה החשובה שחסרה אצלך
             return _mapper.Map<KnowledgeCategoryDto>(result);
         }
 

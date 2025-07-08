@@ -17,6 +17,7 @@ using Common.Dto;
 using Service.interfaces;
 using Service.Algorithm;
 using NuGet.Protocol.Core.Types;
+using Common.Dto.Common.Dto;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -89,7 +90,8 @@ builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
 builder.Services.AddScoped<IService<MessageDto>, MessageService>(); // 👈 חשוב!
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<Irepository<KnowledgeCategory>, KnowledgeCategoryRepository>();
-
+builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
+builder.Services.AddScoped<My_areas_of_knowledge_Service>();
 
 
 builder.Services.AddHostedService<ScheduledCleanupService>();
