@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common.Dto;
 using Common.Dto.Common.Dto;
 using Microsoft.Extensions.Configuration;
 using Mock;
-using Porter2Stemmer;
 using Repository.Entites;
 using Service.interfaces;
 
 namespace Service.Algorithm
 {
-    // Step 2: Screening and matching candidates
     public class Candidate_screening : ICandidateScreening
     {
         private readonly IMapper _mapper;
@@ -29,7 +30,6 @@ namespace Service.Algorithm
             _mapper = mapper;
         }
 
-        // החזרת כלל המתנדבים שלא נמחקו (לא תלוי בשעות)
         public List<Volunteer> GetVolunteersAvailableNow()
         {
             return _db.Volunteers
@@ -37,7 +37,6 @@ namespace Service.Algorithm
                 .ToList();
         }
 
-        // מביא את כלל המתנדבים בטווח עד 10 ק"מ מכתובת הנעזר
         public async Task<List<VolunteerDto>> FilterVolunteersByDistanceAsync(double helpedLat, double helpedLng)
         {
             Console.WriteLine($"📍 Filtering volunteers near lat={helpedLat}, lng={helpedLng}");
@@ -79,7 +78,8 @@ namespace Service.Algorithm
                     {
                         var knowledge = _db.areas_Of_Knowledges
                             .Where(k => k.volunteer_id == volunteer.volunteer_id)
-                            .Select(k => new My_areas_of_knowledge_Dto {
+                            .Select(k => new My_areas_of_knowledge_Dto
+                            {
                                 describtion = k.KnowledgeCategory.describtion
                             })
                             .ToList();
@@ -110,23 +110,91 @@ namespace Service.Algorithm
             return nearbyVolunteers;
         }
 
-        // מסנן לפי תחומי ידע (שלב 2.3)
+        // ✅ סינון לפי אחוז התאמה של 70%
         public List<VolunteerDto> FilterByKnowledge(List<VolunteerDto> volunteers, Message message)
         {
-            var stemmer = new EnglishPorter2Stemmer();
-            var messageWords = message.description
+            if (volunteers == null || message == null || string.IsNullOrWhiteSpace(message.description))
+                return new List<VolunteerDto>();
+
+            var cleanedWords = CleanDescription(message.description)
                 .ToLowerInvariant()
-                .Split(new[] { ' ', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(w => stemmer.Stem(w))
-                .ToHashSet();
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(Stem)
+                .ToList();
 
             return volunteers.Where(v =>
                 v.areas_of_knowledge != null &&
-                v.areas_of_knowledge.Select(k => stemmer.Stem(k.describtion.ToLowerInvariant()))
-                    .Any(stem => messageWords.Contains(stem))
+                v.areas_of_knowledge.Any(k =>
+                {
+                    var cleanedKnowledge = Stem(CleanDescription(k.describtion).ToLowerInvariant());
+                    return cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.7);
+                })
             ).ToList();
         }
 
-       
+
+        public static string CleanDescription(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            string noDiacritics = new string(input.Normalize(NormalizationForm.FormD)
+                .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                .ToArray())
+                .Normalize(NormalizationForm.FormC);
+
+            string noPunctuation = Regex.Replace(noDiacritics, @"[\p{P}\p{S}]", " ");
+            string cleaned = Regex.Replace(noPunctuation, @"\s+", " ").Trim();
+
+            return cleaned;
+        }
+
+        public static string Stem(string word)
+        {
+            string[] prefixes = { "ה", "ש", "ו", "כ", "ל", "ב", "מ" };
+            foreach (var prefix in prefixes)
+            {
+                if (word.StartsWith(prefix) && word.Length > 3)
+                    word = word.Substring(1);
+            }
+
+            return word.Length >= 4 ? word.Substring(0, 4) : word;
+        }
+
+        // 🧠 פונקציות השוואה לפי אחוז דמיון
+        private static double CalculateSimilarity(string s1, string s2)
+        {
+            if (string.IsNullOrEmpty(s1) || string.IsNullOrEmpty(s2))
+                return 0;
+
+            int distance = LevenshteinDistance(s1, s2);
+            int maxLen = Math.Max(s1.Length, s2.Length);
+            return maxLen == 0 ? 1.0 : 1.0 - (double)distance / maxLen;
+        }
+
+        private static int LevenshteinDistance(string s, string t)
+        {
+            var n = s.Length;
+            var m = t.Length;
+            var d = new int[n + 1, m + 1];
+
+            if (n == 0) return m;
+            if (m == 0) return n;
+
+            for (int i = 0; i <= n; d[i, 0] = i++) ;
+            for (int j = 0; j <= m; d[0, j] = j++) ;
+
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
+                    d[i, j] = Math.Min(
+                        Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
+                        d[i - 1, j - 1] + cost);
+                }
+            }
+
+            return d[n, m];
+        }
     }
 }
