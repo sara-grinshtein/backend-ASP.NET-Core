@@ -27,6 +27,9 @@ namespace Service.service
             services.AddScoped<ICandidateScreening, Candidate_screening>();
             services.AddScoped<IDataFetcher, DataFetcher>();
 
+            // 👇 הוספת מימוש זמני ל-IDistanceService
+            services.AddScoped<IDistanceService, FakeDistanceService>();
+
             services.AddAutoMapper(typeof(IMapper));
 
             // הזרקת FilterService עם קובץ מילים אסורות מ-wwwroot
@@ -40,5 +43,5 @@ namespace Service.service
             return services;
         }
     }
+
 }
- 

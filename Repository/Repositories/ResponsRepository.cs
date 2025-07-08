@@ -24,7 +24,7 @@ namespace Repository.Repositories
 
         async Task<Response> Irepository<Response>.AddItem(Response item)
         {
-            await this.context.responses.AddAsync(item);
+            await this.context.Responses.AddAsync(item);
             await this.context.Save();
             return item;
         }
@@ -32,19 +32,19 @@ namespace Repository.Repositories
         async Task<Response> Irepository<Response>.DeleteItem(int id)
         {
             var item = await ((Irepository<Response>)this).Getbyid(id);
-            this.context.responses.Remove(item);
+            this.context.Responses.Remove(item);
             await this.context.Save();
             return item;
         }
 
         async Task<List<Response>> Irepository<Response>.GetAll()
         {
-            return await context.responses.ToListAsync();
+            return await context.Responses.ToListAsync();
         }
 
         async Task<Response> Irepository<Response>.Getbyid(int id)
         {
-            return await context.responses.FirstOrDefaultAsync(x => x.response_id == id);
+            return await context.Responses.FirstOrDefaultAsync(x => x.response_id == id);
         }
 
         async Task<Response> Irepository<Response>.UpDateItem(int id, Response item)

@@ -84,14 +84,15 @@ builder.Services.AddCors(options =>
 });
 
 // 5. Dependency Injection
-builder.Services.AddDbContext<Icontext, DataBase>();
-builder.Services.AddScoped<Irepository<Message>, MessageRepository>();
+ builder.Services.AddScoped<Irepository<Message>, MessageRepository>();
 builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
 builder.Services.AddScoped<IService<MessageDto>, MessageService>(); // 👈 חשוב!
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<Irepository<KnowledgeCategory>, KnowledgeCategoryRepository>();
 builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
 builder.Services.AddScoped<My_areas_of_knowledge_Service>();
+builder.Services.AddDbContext<Icontext, DataBase>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 builder.Services.AddHostedService<ScheduledCleanupService>();
