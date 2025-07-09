@@ -84,23 +84,81 @@ namespace Service.Algorithm
         public List<VolunteerDto> FilterByKnowledge(List<VolunteerDto> volunteers, Message message)
         {
             if (volunteers == null || message == null || string.IsNullOrWhiteSpace(message.description))
+            {
+                Console.WriteLine("❌ Volunteers or message is null or empty.");
                 return new List<VolunteerDto>();
+            }
 
-            var cleanedWords = CleanDescription(message.description)
-                .ToLowerInvariant()
+            var cleanedMessage = CleanDescription(message.description).ToLowerInvariant();
+            Console.WriteLine($"📨 Cleaned message: {cleanedMessage}");
+
+            var cleanedWords = cleanedMessage
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                 .Select(Stem)
                 .ToList();
+            Console.WriteLine($"🧹 Stemmed words in message: {string.Join(", ", cleanedWords)}");
 
-            return volunteers.Where(v =>
-                v.areas_of_knowledge != null &&
-                v.areas_of_knowledge.Any(k =>
+            var results = volunteers.Where(v =>
+            {
+                if (v.areas_of_knowledge == null || !v.areas_of_knowledge.Any())
+                {
+                    Console.WriteLine($"⚠️ Volunteer {v.volunteer_id} has no knowledge areas.");
+                    return false;
+                }
+
+                bool matchFound = false;
+                foreach (var k in v.areas_of_knowledge)
                 {
                     var cleanedKnowledge = Stem(CleanDescription(k.describtion).ToLowerInvariant());
-                    return cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.7);
-                })
-            ).ToList();
+
+                    // דמיון מילולי
+                    bool similar = cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.5);
+                    // בדיקת מוכלות
+                    bool included = cleanedMessage.Contains(cleanedKnowledge);
+
+                    if (similar || included)
+                    {
+                        Console.WriteLine($"✅ Match found for volunteer {v.volunteer_id}: \"{k.describtion}\" | Similar: {similar}, Included: {included}");
+                        matchFound = true;
+                        break;
+                    }
+                }
+
+                if (!matchFound)
+                    Console.WriteLine($"❌ No match for volunteer {v.volunteer_id}");
+
+                return matchFound;
+            }).ToList();
+
+            Console.WriteLine($"🔎 Total matched volunteers: {results.Count}");
+            return results;
         }
+
+
+        //public List<VolunteerDto> FilterByKnowledge(List<VolunteerDto> volunteers, Message message)
+        //{
+        //    if (volunteers == null || message == null || string.IsNullOrWhiteSpace(message.description))
+        //        return new List<VolunteerDto>();
+
+        //    var cleanedWords = CleanDescription(message.description)
+        //        .ToLowerInvariant()
+        //        .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+        //        .Select(Stem)
+        //        .ToList();
+        //    var results = volunteers.Where(v =>
+        //        v.areas_of_knowledge != null &&
+        //        v.areas_of_knowledge.Any(k =>
+        //        {
+        //            var cleanedKnowledge = Stem(CleanDescription(k.describtion).ToLowerInvariant());
+        //            return cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.5);
+        //        })
+        //    ).ToList();
+
+        //    Console.WriteLine( results.Count);
+        //    return results;
+        //}
+
+
 
         public static string CleanDescription(string input)
         {
@@ -123,11 +181,25 @@ namespace Service.Algorithm
             foreach (var prefix in prefixes)
             {
                 if (word.StartsWith(prefix) && word.Length > 3)
+                {
                     word = word.Substring(1);
+                    break; // מסיר רק קידומת אחת
+                }
             }
 
-            return word.Length >= 4 ? word.Substring(0, 4) : word;
+            string[] suffixes = { "ים", "ות", "ה" };
+            foreach (var suffix in suffixes)
+            {
+                if (word.EndsWith(suffix) && word.Length > 4)
+                {
+                    word = word.Substring(0, word.Length - suffix.Length);
+                    break; // מסיר רק סיומת אחת
+                }
+            }
+
+            return word;
         }
+
 
         private static double CalculateSimilarity(string s1, string s2)
         {
@@ -138,7 +210,8 @@ namespace Service.Algorithm
             int maxLen = Math.Max(s1.Length, s2.Length);
             return maxLen == 0 ? 1.0 : 1.0 - (double)distance / maxLen;
         }
-
+        // The LevenshteinDistance function calculates the Levenshtein distance between two strings 
+        // – a measure that shows how "different" one string is from another.
         private static int LevenshteinDistance(string s, string t)
         {
             var n = s.Length;
@@ -172,8 +245,9 @@ namespace Service.Algorithm
 
             if (volunteersNearby == null || !volunteersNearby.Any())
                 return new List<VolunteerDto>();
-
-            return FilterByKnowledge(volunteersNearby, message);
+            var results = FilterByKnowledge(volunteersNearby, message);
+            Console.WriteLine(results.Count);
+            return results;
         }
     }
 }
