@@ -37,12 +37,18 @@ namespace PrijectYedidim.Controllers
 
             if (value.Role == "Volunteer")
             {
+
                 var newVolunteer = new VolunteerDto
                 {
                     volunteer_first_name = value.FirstName,
                     volunteer_last_name = value.LastName,
                     password = value.Password,
-                    email = value.Email
+                    email = value.Email,
+                    tel = value.Tel,
+                    Latitude = value.Latitude,
+                    Longitude = value.Longitude,
+                    start_time = value.Start_time,
+                    end_time = value.End_time
                 };
 
                 await volunteerService.AddItem(newVolunteer);

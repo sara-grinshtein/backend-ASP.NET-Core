@@ -12,8 +12,8 @@ using Mock;
 namespace Mock.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20250706232049_InitKnowledgeMigration")]
-    partial class InitKnowledgeMigration
+    [Migration("20250708200619_Add_Latitude_Longitude_To_Message")]
+    partial class Add_Latitude_Longitude_To_Message
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,7 +184,7 @@ namespace Mock.Migrations
 
                     b.HasIndex("message_id");
 
-                    b.ToTable("responses");
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("Repository.Entites.Volunteer", b =>

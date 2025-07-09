@@ -94,7 +94,7 @@ namespace Repository.Repositories
 
         public async Task Save()
         {
-           context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+          await context.SaveChangesAsync(); // ✅ חובה לשמור למסד
         }
 
     }

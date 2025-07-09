@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
 using System.Security.Claims;
 using System.Threading.Tasks;
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PrijectYedidim.Controllers
 {
@@ -12,42 +11,58 @@ namespace PrijectYedidim.Controllers
     public class VolunteerController : ControllerBase
     {
         private readonly IService<VolunteerDto> service;
-        [HttpGet]
-        public async Task<List<VolunteerDto>> GetAll()
-        {
-            return await service.GetAll();
-        }
+
         public VolunteerController(IService<VolunteerDto> service)
         {
             this.service = service;
         }
 
-        // GET api/<VolunteerController>/5
+        [HttpGet]
+        public async Task<List<VolunteerDto>> GetAll()
+        {
+            Console.WriteLine("📥 התקבלה בקשת GET לכל המתנדבים");
+            var result = await service.GetAll();
+            Console.WriteLine($"📊 כמות מתנדבים שהוחזרה: {result.Count}");
+            return result;
+        }
+
         [HttpGet("{id}")]
         public async Task<VolunteerDto> GetAsync(int id)
         {
-            return await service.Getbyid(id);
+            Console.WriteLine($"📥 התקבלה בקשת GET למתנדב לפי מזהה: {id}");
+            var volunteer = await service.Getbyid(id);
+            Console.WriteLine($"🔎 מתנדב שנמצא: {volunteer?.volunteer_first_name} {volunteer?.volunteer_last_name}");
+            return volunteer;
         }
 
-        // POST api/<VolunteerController>
         [HttpPost]
         public async Task<VolunteerDto> PostAsync([FromBody] VolunteerDto value)
         {
-            return await service.AddItem(value);
+            Console.WriteLine("➕ התקבלה בקשת POST ליצירת מתנדב חדש");
+            Console.WriteLine($"📧 אימייל: {value.email}, 📛 שם: {value.volunteer_first_name} {value.volunteer_last_name}");
+            var added = await service.AddItem(value);
+            Console.WriteLine($"✅ מתנדב נוצר עם מזהה: {added.volunteer_id}");
+            return added;
         }
 
-        // PUT api/<VolunteerController>/5
         [HttpPut("{id}")]
         public async Task PutAsync(int id, [FromBody] VolunteerDto value)
         {
+            Console.WriteLine($"✏️ התקבלה בקשת PUT לעדכון מתנדב עם מזהה: {id}");
+            Console.WriteLine($"📍 מיקום חדש: Latitude = {value.Latitude}, Longitude = {value.Longitude}");
+            Console.WriteLine($"📧 אימייל: {value.email}, 📛 שם: {value.volunteer_first_name} {value.volunteer_last_name}");
+
             await service.UpDateItem(id, value);
+
+            Console.WriteLine("✅ העדכון הושלם");
         }
 
-        // DELETE api/<VolunteerController>/5
         [HttpDelete("{id}")]
         public async Task DeleteAsync(int id)
         {
+            Console.WriteLine($"🗑️ התקבלה בקשת DELETE למחיקת מתנדב עם מזהה: {id}");
             await service.DeleteItem(id);
+            Console.WriteLine("✅ המתנדב נמחק בהצלחה");
         }
     }
 }
