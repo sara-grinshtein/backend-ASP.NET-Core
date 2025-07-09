@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Common.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.interfaces;
+using Service.Algorithm;
 
 namespace PrijectYedidim.Controllers
 {
@@ -16,15 +18,18 @@ namespace PrijectYedidim.Controllers
         private readonly IService<MessageDto> service;
         private readonly IService<VolunteerDto> volunteerService;
         private readonly IEmailService emailService;
+        private readonly ManagerAlgorithm assigner;
 
         public MessageController(
             IService<MessageDto> service,
             IService<VolunteerDto> volunteerService,
-            IEmailService emailService)
+            IEmailService emailService,
+            ManagerAlgorithm assigner)
         {
             this.service = service;
             this.volunteerService = volunteerService;
             this.emailService = emailService;
+            this.assigner = assigner;
         }
 
         [HttpGet]
@@ -45,6 +50,9 @@ namespace PrijectYedidim.Controllers
             Console.WriteLine($"POST received: helped_id={value.helped_id}, volunteer_id={value.volunteer_id}");
 
             var message = await service.AddItem(value);
+
+            // ✅ הרצת אלגוריתם שיבוץ
+            assigner.AssignVolunteersToOpenMessages();
 
             // ✅ אם שובץ מתנדב – שלח מייל אליו
             if (message.volunteer_id.HasValue)
@@ -113,6 +121,6 @@ namespace PrijectYedidim.Controllers
 
             return filteredMessages;
         }
-
     }
 }
+ 

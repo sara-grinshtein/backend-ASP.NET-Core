@@ -18,38 +18,29 @@ namespace Service.service
                 .ForMember(dest => dest.Volunteer, opt => opt.Ignore())
                 .ForMember(dest => dest.Helped, opt => opt.Ignore());
 
-            // KnowledgeCategory -> DTO
-            CreateMap<KnowledgeCategory, KnowledgeCategoryDto>()
-                .ForMember(dest => dest.ID_knowledge, opt => opt.MapFrom(src => src.ID_knowledge))
-                .ForMember(dest => dest.describtion, opt => opt.MapFrom(src => src.describtion));
+            // KnowledgeCategory
+            CreateMap<KnowledgeCategory, KnowledgeCategoryDto>().ReverseMap();
 
-            // DTO -> KnowledgeCategory
-            CreateMap<KnowledgeCategoryDto, KnowledgeCategory>()
-                .ForMember(dest => dest.ID_knowledge, opt => opt.MapFrom(src => src.ID_knowledge))
-                .ForMember(dest => dest.describtion, opt => opt.MapFrom(src => src.describtion));
-
-            // My_areas_of_knowledge → DTO כולל תיאור מהקטגוריה
+            // My_areas_of_knowledge → DTO
             CreateMap<My_areas_of_knowledge, My_areas_of_knowledge_Dto>()
                 .ForMember(dest => dest.ID_knowledge, opt => opt.MapFrom(src => src.ID_knowledge))
                 .ForMember(dest => dest.volunteer_id, opt => opt.MapFrom(src => src.volunteer_id))
-                .ForMember(dest => dest.describtion, opt => opt.MapFrom(src => src.KnowledgeCategory.describtion));
+                .ForMember(dest => dest.describtion, opt => opt.MapFrom(src => src.KnowledgeCategory != null ? src.KnowledgeCategory.describtion : string.Empty));
 
-            // DTO → Entity
+            // DTO → Entity (שמירה על קשרים בטוחים)
             CreateMap<My_areas_of_knowledge_Dto, My_areas_of_knowledge>()
                 .ForMember(dest => dest.ID_knowledge, opt => opt.MapFrom(src => src.ID_knowledge))
                 .ForMember(dest => dest.volunteer_id, opt => opt.MapFrom(src => src.volunteer_id))
                 .ForMember(dest => dest.KnowledgeCategory, opt => opt.Ignore())
                 .ForMember(dest => dest.Volunteer, opt => opt.Ignore());
 
-            // Response
-            CreateMap<Response, ResponseDto>().ReverseMap();
-
-            // Volunteer
+            // Volunteer → DTO כולל תחומים
             CreateMap<Volunteer, VolunteerDto>()
                 .ForMember(dest => dest.areas_of_knowledge, opt => opt.MapFrom(src => src.areas_of_knowledge));
 
+            // VolunteerDto → Volunteer כולל תחומים
             CreateMap<VolunteerDto, Volunteer>()
-                .ForMember(dest => dest.areas_of_knowledge, opt => opt.Ignore());
+                .ForMember(dest => dest.areas_of_knowledge, opt => opt.MapFrom(src => src.areas_of_knowledge));
         }
     }
 }
