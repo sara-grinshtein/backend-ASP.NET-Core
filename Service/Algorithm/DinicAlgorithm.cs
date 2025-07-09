@@ -138,9 +138,9 @@ namespace Service.Algorithm
                     var iterators = new Dictionary<FlowNode, IEnumerator<KeyValuePair<FlowNode, int>>>();
                     int flow;
 
-                    //What happens here:
-                   //We try to send a flow in a legal path(with DFS)
-                  //Every time we succeed – add the amount of flow to totalFlow
+                 //What happens here:
+                 //We try to send a flow in a legal path(with DFS)
+                 //Every time we succeed – add the amount of flow to totalFlow
                  //We go back again, and try to send more in possible paths, until there are no more(flow == 0)
                     do
                     {
@@ -170,7 +170,7 @@ namespace Service.Algorithm
                             //Let's check: Does the arch go to the volunteer (v_)
                             //Did a flow pass through it? That is, value == 0 → the capacity has been emptied = there is a match!
                            // If the capacity has dropped to zero, it means that "water has passed" - that is, the call was assigned to this volunteer.
-                            if (edge.Key.Id.StartsWith("v_") && edge.Value == 0)
+                            if (edge.Key.Id.StartsWith("v_")) // && edge.Value == 0)
                             {
                                 int mId = int.Parse(node.Id.Split('_')[1]);
                                 int vId = int.Parse(edge.Key.Id.Split('_')[1]);
