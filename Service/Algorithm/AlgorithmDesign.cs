@@ -19,29 +19,84 @@ namespace Service.Algorithm
         }
 
         // Each pair (messageId, volunteerId) says: "Assign this volunteer to this call."
+        //public void ApplyAssignments(List<(int messageId, int volunteerId)> assignments)
+        //{
+        //    foreach (var (messageId, volunteerId) in assignments)
+        //    {
+        //        // Task 5.1: Update Message.volunteer_id
+        //        // Retrieve the message from the database
+        //        var message = _context.Messages.FirstOrDefault(m => m.message_id == messageId);
+
+        //        // Search for the volunteer in the Volunteers database by ID.
+        //        var volunteer = _context.Volunteers.FirstOrDefault(v => v.volunteer_id == volunteerId);
+
+        //        if (message != null && volunteer != null)
+        //        {
+        //            message.volunteer_id = volunteerId;
+
+        //            // Task 5.2: Update the volunteer placement count
+        //            volunteer.assignment_count += 1;  // If this field exists
+        //        }
+        //        // אם אחד מהם לא קיים – לא נבצע כל עדכון, כדי למנוע שגיאות FOREIGN KEY
+        //    }
+
+        //    // Step 5.3: Save to database
+        //    _context.SaveChanges();
+        //}
+
         public void ApplyAssignments(List<(int messageId, int volunteerId)> assignments)
         {
-            foreach (var (messageId, volunteerId) in assignments)
+            // קיבוץ כל השיוכים לפי הודעה
+            var grouped = assignments.GroupBy(a => a.messageId);
+
+            foreach (var group in grouped)
             {
-                // Task 5.1: Update Message.volunteer_id
-                // Retrieve the message from the database
-                var message = _context.Messages.FirstOrDefault(m => m.message_id == messageId);
+                // שליפת ההודעה המקורית מה־DB
+                var originalMessage = _context.Messages.FirstOrDefault(m => m.message_id == group.Key);
+                if (originalMessage == null) continue;
 
-                // Search for the volunteer in the Volunteers database by ID.
-                var volunteer = _context.Volunteers.FirstOrDefault(v => v.volunteer_id == volunteerId);
+                var volunteers = group.Select(g => g.volunteerId).ToList();
 
-                if (message != null && volunteer != null)
+                for (int i = 0; i < volunteers.Count; i++)
                 {
-                    message.volunteer_id = volunteerId;
+                    var volunteerId = volunteers[i];
+                    var volunteer = _context.Volunteers.FirstOrDefault(v => v.volunteer_id == volunteerId);
+                    if (volunteer == null) continue;
 
-                    // Task 5.2: Update the volunteer placement count
-                    volunteer.assignment_count += 1;  // If this field exists
+                    Message messageToAssign;
+
+                    if (i == 0)
+                    {
+                        // שימוש בהודעה המקורית לשיבוץ הראשון
+                        messageToAssign = originalMessage;
+                    }
+                    else
+                    {
+                        // יצירת עותק חדש מההודעה המקורית
+                        messageToAssign = new Message
+                        {
+                            helped_id = originalMessage.helped_id,
+                            description = originalMessage.description,
+                            Latitude = originalMessage.Latitude,
+                            Longitude = originalMessage.Longitude,
+                            isDone = originalMessage.isDone,
+                            ConfirmArrival= originalMessage.ConfirmArrival
+                            // הוספה לשימור שדות נוספים בעתיד אם יש
+                        };
+                        _context.Messages.Add(messageToAssign);
+                    }
+
+                    // Task 5.1: עדכון שדה volunteer_id בהודעה
+                    messageToAssign.volunteer_id = volunteerId;
+
+                    // Task 5.2: עדכון מספר השיבוצים של המתנדב
+                    volunteer.assignment_count += 1;  // אם השדה הזה קיים
                 }
-                // אם אחד מהם לא קיים – לא נבצע כל עדכון, כדי למנוע שגיאות FOREIGN KEY
             }
 
-            // Step 5.3: Save to database
+            // שלב 5.3: שמירת כל העדכונים בבסיס הנתונים
             _context.SaveChanges();
         }
+
     }
 }

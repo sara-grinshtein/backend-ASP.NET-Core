@@ -58,7 +58,7 @@ namespace Service.Algorithm
                     string volNode = $"v_{vol.volunteer_id}";
 
                     // Rainbow from the call for volunteers – capacity 1
-                    graph.AddEdge(msgNode, volNode, 1);
+                    graph.AddEdge(msgNode, volNode, int.MaxValue);
                 }
             }
             return graph;
