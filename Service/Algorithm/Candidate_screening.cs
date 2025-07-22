@@ -1,5 +1,4 @@
-﻿ 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -32,7 +31,6 @@ namespace Service.Algorithm
             _distanceService = distanceService;
         }
 
-       
         public List<Volunteer> GetVolunteersAvailableNow()
         {
             return _db.Volunteers
@@ -89,76 +87,71 @@ namespace Service.Algorithm
                 return new List<VolunteerDto>();
             }
 
-            var cleanedMessage = CleanDescription(message.description).ToLowerInvariant();
-            Console.WriteLine($"📨 Cleaned message: {cleanedMessage}");
+            var matchedVolunteers = new List<VolunteerDto>();
 
-            var cleanedWords = cleanedMessage
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                .Select(Stem)
-                .ToList();
-            Console.WriteLine($"🧹 Stemmed words in message: {string.Join(", ", cleanedWords)}");
-
-            var results = volunteers.Where(v =>
+            foreach (var volunteer in volunteers)
             {
-                if (v.areas_of_knowledge == null || !v.areas_of_knowledge.Any())
+                if (volunteer.areas_of_knowledge == null || !volunteer.areas_of_knowledge.Any())
+                    continue;
+
+                var knowledgeList = volunteer.areas_of_knowledge
+                    .Where(k => !string.IsNullOrWhiteSpace(k.describtion))
+                    .Select(k => k.describtion)
+                    .ToList();
+
+                double score = GetMatchScore(message.description, knowledgeList);
+
+                if (score > 0)
                 {
-                    Console.WriteLine($"⚠️ Volunteer {v.volunteer_id} has no knowledge areas.");
-                    return false;
+                    Console.WriteLine($"✅ Volunteer {volunteer.volunteer_id} matched with score {score:P0}");
+                    matchedVolunteers.Add(volunteer);
                 }
-
-                bool matchFound = false;
-                foreach (var k in v.areas_of_knowledge)
+                else
                 {
-                    var cleanedKnowledge = Stem(CleanDescription(k.describtion).ToLowerInvariant());
-
-                    // דמיון מילולי
-                    bool similar = cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.5);
-                    // בדיקת מוכלות
-                    bool included = cleanedMessage.Contains(cleanedKnowledge);
-
-                    if (similar || included)
-                    {
-                        Console.WriteLine($"✅ Match found for volunteer {v.volunteer_id}: \"{k.describtion}\" | Similar: {similar}, Included: {included}");
-                        matchFound = true;
-                        break;
-                    }
+                    Console.WriteLine($"❌ Volunteer {volunteer.volunteer_id} did not match.");
                 }
+            }
 
-                if (!matchFound)
-                    Console.WriteLine($"❌ No match for volunteer {v.volunteer_id}");
-
-                return matchFound;
-            }).ToList();
-
-            Console.WriteLine($"🔎 Total matched volunteers: {results.Count}");
-            return results;
+            Console.WriteLine($"🔎 Total matched volunteers: {matchedVolunteers.Count}");
+            return matchedVolunteers;
         }
 
+        private double GetMatchScore(string description, List<string> knowledgeAreas)
+        {
+            if (string.IsNullOrWhiteSpace(description) || knowledgeAreas == null || knowledgeAreas.Count == 0)
+                return 0;
 
-        //public List<VolunteerDto> FilterByKnowledge(List<VolunteerDto> volunteers, Message message)
-        //{
-        //    if (volunteers == null || message == null || string.IsNullOrWhiteSpace(message.description))
-        //        return new List<VolunteerDto>();
+            var lowerDescription = description.ToLowerInvariant();
+            int matchCount = 0;
 
-        //    var cleanedWords = CleanDescription(message.description)
-        //        .ToLowerInvariant()
-        //        .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-        //        .Select(Stem)
-        //        .ToList();
-        //    var results = volunteers.Where(v =>
-        //        v.areas_of_knowledge != null &&
-        //        v.areas_of_knowledge.Any(k =>
-        //        {
-        //            var cleanedKnowledge = Stem(CleanDescription(k.describtion).ToLowerInvariant());
-        //            return cleanedWords.Any(word => CalculateSimilarity(word, cleanedKnowledge) >= 0.5);
-        //        })
-        //    ).ToList();
+            foreach (var area in knowledgeAreas)
+            {
+                var words = area.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                foreach (var word in words)
+                {
+                    if (lowerDescription.Contains(word.ToLower()))
+                    {
+                        matchCount++;
+                        break; // מספיק מילה אחת מכל תחום ידע כדי להחשיב את התחום
+                    }
+                }
+            }
 
-        //    Console.WriteLine( results.Count);
-        //    return results;
-        //}
+            return (double)matchCount / knowledgeAreas.Count;
+        }
 
+        public async Task<List<VolunteerDto>> FilterVolunteersByDistanceAndKnowledgeAsync(
+            double helpedLat, double helpedLng, Message message)
+        {
+            var volunteersNearby = await FilterVolunteersByDistanceAsync(helpedLat, helpedLng);
 
+            if (volunteersNearby == null || !volunteersNearby.Any())
+                return new List<VolunteerDto>();
+
+            var results = FilterByKnowledge(volunteersNearby, message);
+            Console.WriteLine(results.Count);
+            return results;
+        }
 
         public static string CleanDescription(string input)
         {
@@ -200,7 +193,6 @@ namespace Service.Algorithm
             return word;
         }
 
-
         private static double CalculateSimilarity(string s1, string s2)
         {
             if (string.IsNullOrEmpty(s1) || string.IsNullOrEmpty(s2))
@@ -210,8 +202,7 @@ namespace Service.Algorithm
             int maxLen = Math.Max(s1.Length, s2.Length);
             return maxLen == 0 ? 1.0 : 1.0 - (double)distance / maxLen;
         }
-        // The LevenshteinDistance function calculates the Levenshtein distance between two strings 
-        // – a measure that shows how "different" one string is from another.
+
         private static int LevenshteinDistance(string s, string t)
         {
             var n = s.Length;
@@ -236,18 +227,6 @@ namespace Service.Algorithm
             }
 
             return d[n, m];
-        }
-
-        public async Task<List<VolunteerDto>> FilterVolunteersByDistanceAndKnowledgeAsync(
-            double helpedLat, double helpedLng, Message message)
-        {
-            var volunteersNearby = await FilterVolunteersByDistanceAsync(helpedLat, helpedLng);
-
-            if (volunteersNearby == null || !volunteersNearby.Any())
-                return new List<VolunteerDto>();
-            var results = FilterByKnowledge(volunteersNearby, message);
-            Console.WriteLine(results.Count);
-            return results;
         }
     }
 }

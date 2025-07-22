@@ -22,7 +22,7 @@ namespace Mock
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
+                    "Server=;Database=localhost\\SQLEXPRESS01;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
                 );
             }
         }

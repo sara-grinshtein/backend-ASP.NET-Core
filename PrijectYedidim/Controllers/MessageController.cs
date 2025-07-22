@@ -49,12 +49,19 @@ namespace PrijectYedidim.Controllers
         {
             Console.WriteLine($"POST received: helped_id={value.helped_id}, volunteer_id={value.volunteer_id}");
 
+            // ✅ אפס שדות חשובים לפני שמירת הבקשה
+            value.isDone = false;
+            value.confirmArrival = false; // ← הכרחי! כדי שלא יופיע ✔ כברירת מחדל
+            value.hasResponse = false;
+            value.created_at = DateTime.Now;
+
+            // ✅ שמירת הבקשה למסד הנתונים
             var message = await service.AddItem(value);
 
-            // ✅ הרצת אלגוריתם שיבוץ
+            // ✅ הרצת אלגוריתם שיבוץ למתנדבים
             assigner.AssignVolunteersToOpenMessages();
 
-            // ✅ אם שובץ מתנדב – שלח מייל אליו
+            // ✅ שליחת מייל למתנדב אם שובץ
             if (message.volunteer_id.HasValue)
             {
                 var volunteer = await volunteerService.Getbyid(message.volunteer_id.Value);
@@ -76,6 +83,7 @@ namespace PrijectYedidim.Controllers
 
             return message;
         }
+
 
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] MessageDto value)
@@ -119,8 +127,23 @@ namespace PrijectYedidim.Controllers
                 })
                 .ToList();
 
+
             return filteredMessages;
         }
+        //כפתור לאישור הגעת מתנדדב
+
+        [HttpPost("confirm-arrival/{id}")]
+        public async Task<IActionResult> ConfirmArrival(int id)
+        {
+            var message = await service.Getbyid(id);
+            if (message == null) return NotFound();
+
+            message.confirmArrival = true;
+            await service.UpDateItem(id, message);
+
+            return Ok(message);
+        }
+
     }
 }
  
