@@ -156,6 +156,37 @@ Steps:
 - 🌍 Integrated with **Google Maps API** to compute accurate geographic distances  
 - Triggered automatically when a new request (`POST /api/Message`) is created  
 
+### Graph Representation
+The algorithm models the problem as a **flow network**:
+- **Source node** connects to all **Messages** (requests from Helpeds).  
+- Each **Message** connects to eligible **Volunteers** (edges exist if volunteer matches location/skills/availability).  
+- **Volunteers** connect to the **Sink node**.  
+- Each **path** (Source → Message → Volunteer → Sink) represents one assignment of a volunteer to a request.  
+- The Dinic max-flow algorithm finds an optimal set of paths, ensuring fair and efficient dispatching.
+
+```mermaid
+flowchart LR
+    subgraph Requests
+        M1["Message 1"]
+        M2["Message 2"]
+    end
+
+    subgraph Volunteers
+        V1["Volunteer 1"]
+        V2["Volunteer 2"]
+    end
+
+    Source((Source)) --> M1
+    Source((Source)) --> M2
+
+    M1 --> V1
+    M1 --> V2
+    M2 --> V2
+
+    V1 --> Sink((Sink))
+    V2 --> Sink((Sink))
+```
+
 ---
 
 ## <a id="main-models"></a> 📦 Main Models
@@ -172,7 +203,7 @@ Steps:
 - 👥 Roles in the system:  
   - **Helped** – the requester, who creates a new assistance request  
   - **Volunteer** – the responder, who receives requests from the system and provides help  
-- 🧮 Volunteer assignment is performed by the **dispatch algorithm** automatically (based on availability, distance, and skills) – not by a user role  
+- 🧮 Volunteer assignment is performed by the **graph-based dispatch algorithm** automatically (based on availability, distance, and skills) – not by a user role  
 - 🔒 Sensitive data encrypted, secrets excluded from Git  
 - 🛡 Recommended: Rate limiting, CORS with allowed origins  
 
