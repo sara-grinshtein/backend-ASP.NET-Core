@@ -210,4 +210,4 @@ ENTRYPOINT ["dotnet","ProjectYedidim.dll"]
 ---
 
 ## 📜 License
-Add a LICENSE file (e.g., MIT) and reference it here.
+
