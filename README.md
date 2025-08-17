@@ -20,7 +20,7 @@ ASP.NET Core Web API backend for managing volunteer dispatch to roadside assista
 
 ---
 
-## 🛠 Architecture & Technologies
+## <a id="architecture--technologies"></a> 🛠 Architecture & Technologies
 - **Framework:** ASP.NET Core Web API (.NET 7)
 - **ORM:** Entity Framework Core
 - **Authentication/Authorization:** 🔑 JWT (Bearer)
@@ -38,7 +38,7 @@ ASP.NET Core Web API backend for managing volunteer dispatch to roadside assista
 
 ---
 
-## ⚡ Installation & Run
+## <a id="installation--run"></a> ⚡ Installation & Run
 Requirements: .NET 7 SDK, SQL Server (LocalDB works), EF Core tools.
 
 ~~~bash
@@ -56,7 +56,7 @@ dotnet run
 
 ---
 
-## ⚙️ Configuration (appsettings)
+## <a id="configuration-appsettings"></a> ⚙️ Configuration (appsettings)
 
 Create `appsettings.Development.json` (ignored by Git):
 
@@ -87,7 +87,7 @@ Create `appsettings.Development.json` (ignored by Git):
 
 ---
 
-## 🗄 EF Core Migrations
+## <a id="ef-core-migrations"></a> 🗄 EF Core Migrations
 ~~~bash
 dotnet ef migrations add Init
 dotnet ef database update
@@ -95,7 +95,7 @@ dotnet ef database update
 
 ---
 
-## 📡 API & Endpoints
+## <a id="api--endpoints"></a> 📡 API & Endpoints
 
 | 📂 Controller                     | 🌐 Base Route                  | 🔧 Main Actions                                                                 |
 |----------------------------------|--------------------------------|---------------------------------------------------------------------------------|
@@ -110,7 +110,7 @@ For the complete, up-to-date list check **Swagger**.
 
 ---
 
-## 📬 Request Examples
+## <a id="request-examples"></a> 📬 Request Examples
 
 ### 1️⃣ Login (JWT)
 ~~~bash
@@ -149,7 +149,7 @@ curl -X PUT http://localhost:5171/api/Volunteer/123 \
 
 ---
 
-## 🧮 Dispatch Algorithm
+## <a id="dispatch-algorithm"></a> 🧮 Dispatch Algorithm
 Steps:  
 - 📥 **DataFetcher** → 🕵️ **CandidateScreening** → 🔀 **DinicAlgorithm** → 🎯 **Assignment**  
 - Filters by availability, distance, area of knowledge  
@@ -159,7 +159,7 @@ Steps:
 
 ---
 
-## 📦 Main Models
+## <a id="main-models"></a> 📦 Main Models
 - 👤 `VolunteerDto` – volunteer details + knowledge areas  
 - 🙋 `HelpedDto` – assisted user details + location  
 - 📨 `MessageDto` – assistance request  
@@ -168,7 +168,7 @@ Steps:
 
 ---
 
-## 🔐 Security
+## <a id="security"></a> 🔐 Security
 - 🔑 JWT Bearer authentication  
 - 👥 RBAC (Admin / Volunteer / Dispatcher)  
 - 🔒 Sensitive data encrypted, secrets excluded from Git  
@@ -176,7 +176,7 @@ Steps:
 
 ---
 
-## 🧪 Testing
+## <a id="testing"></a> 🧪 Testing
 `ProjectYedidim.Test` includes unit tests for the dispatch algorithm.
 
 ~~~bash
@@ -185,7 +185,7 @@ dotnet test
 
 ---
 
-## 🚀 Deployment
+## <a id="deployment"></a> 🚀 Deployment
 
 ### 📦 Build
 ~~~bash
@@ -209,6 +209,6 @@ ENTRYPOINT ["dotnet","ProjectYedidim.dll"]
 
 ---
 
-## 📜 License
+## <a id="license"></a> 📜 License
 
 This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
