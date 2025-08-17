@@ -21,27 +21,27 @@ ASP.NET Core Web API backend for managing volunteer dispatch to roadside assista
 ---
 
 ## <a id="architecture--technologies"></a> 🛠 Architecture & Technologies
-- **Framework:** ASP.NET Core Web API (.NET 7)
-- **ORM:** Entity Framework Core
-- **Authentication/Authorization:** 🔑 JWT (Bearer)
-- **Object Mapping:** 🔄 AutoMapper
-- **Layers:**
+- **Framework:** ASP.NET Core Web API (.NET 7)  
+- **ORM:** Entity Framework Core  
+- **Authentication/Authorization:** 🔑 JWT (Bearer)  
+- **Object Mapping:** 🔄 AutoMapper  
+- **Layers:**  
   - 📂 `Repository` – EF entities and repositories  
   - 🧩 `Service` – business logic & dispatch algorithm  
   - 🌐 `Controllers` – API layer  
-- **Projects:**
+- **Projects:**  
   - 🚀 `ProjectYedidim` – main API  
   - 📂 `Repository`  
   - 🧩 `Service`  
   - 🧪 `ProjectYedidim.Test` – unit tests  
-  - 📦 `Common` – DTOs
+  - 📦 `Common` – DTOs  
 
 ---
 
 ## <a id="installation--run"></a> ⚡ Installation & Run
 Requirements: .NET 7 SDK, SQL Server (LocalDB works), EF Core tools.
 
-~~~bash
+```bash
 git clone https://github.com/sara-grinshtein/backend-ASP.NET-Core.git
 cd backend-ASP.NET-Core/ProjectYedidim
 
@@ -52,15 +52,14 @@ dotnet run
 # Default launch settings:
 # 🌍 HTTP: http://localhost:5171
 # 📖 Swagger: http://localhost:5171/swagger
-~~~
+```
 
 ---
 
 ## <a id="configuration-appsettings"></a> ⚙️ Configuration (appsettings)
-
 Create `appsettings.Development.json` (ignored by Git):
 
-~~~json
+```json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\ProjectModels;Database=ProjectYedidim;Trusted_Connection=True;"
@@ -81,17 +80,17 @@ Create `appsettings.Development.json` (ignored by Git):
     "ApiKey": "REPLACE_OR_REMOVE_IF_NOT_USED"
   }
 }
-~~~
+```
 
 ⚠️ Never commit real secrets. Use **User Secrets** (`dotnet user-secrets`) in dev or **Secrets Manager** in production.
 
 ---
 
 ## <a id="ef-core-migrations"></a> 🗄 EF Core Migrations
-~~~bash
+```bash
 dotnet ef migrations add Init
 dotnet ef database update
-~~~
+```
 
 ---
 
@@ -113,14 +112,14 @@ For the complete, up-to-date list check **Swagger**.
 ## <a id="request-examples"></a> 📬 Request Examples
 
 ### 1️⃣ Login (JWT)
-~~~bash
+```bash
 curl -X POST http://localhost:5171/api/Login/login \
  -H "Content-Type: application/json" \
  -d '{"email":"volunteer@example.com","password":"Secret123"}'
-~~~
+```
 
 ### 2️⃣ Open Assistance Request (Message)
-~~~bash
+```bash
 curl -X POST http://localhost:5171/api/Message \
  -H "Authorization: Bearer <JWT>" \
  -H "Content-Type: application/json" \
@@ -132,10 +131,10 @@ curl -X POST http://localhost:5171/api/Message \
    "need": "tire_change",
    "priority": "high"
  }'
-~~~
+```
 
 ### 3️⃣ Update Volunteer Info
-~~~bash
+```bash
 curl -X PUT http://localhost:5171/api/Volunteer/123 \
  -H "Authorization: Bearer <JWT>" \
  -H "Content-Type: application/json" \
@@ -145,7 +144,7 @@ curl -X PUT http://localhost:5171/api/Volunteer/123 \
    "tel":"050-0000000",
    "areas_of_knowledge":[{"ID_knowledge":1,"KnowledgeCategory":"tire_change"}]
  }'
-~~~
+```
 
 ---
 
@@ -161,7 +160,7 @@ Steps:
 
 ## <a id="main-models"></a> 📦 Main Models
 - 👤 `VolunteerDto` – volunteer details + knowledge areas  
-- 🙋 `HelpedDto` – assisted user details + location  
+- 🙋 `HelpedDto` – helped (requester) details + location  
 - 📨 `MessageDto` – assistance request  
 - 💬 `ResponseDto` – volunteer/system response  
 - 📚 `My_areas_of_knowledge_Dto` – skill categories  
@@ -170,7 +169,10 @@ Steps:
 
 ## <a id="security"></a> 🔐 Security
 - 🔑 JWT Bearer authentication  
-- 👥 RBAC (Admin / Volunteer / Dispatcher)  
+- 👥 Roles in the system:  
+  - **Helped** – the requester, who creates a new assistance request  
+  - **Volunteer** – the responder, who receives requests from the system and provides help  
+- 🧮 Volunteer assignment is performed by the **dispatch algorithm** automatically (based on availability, distance, and skills) – not by a user role  
 - 🔒 Sensitive data encrypted, secrets excluded from Git  
 - 🛡 Recommended: Rate limiting, CORS with allowed origins  
 
@@ -179,36 +181,35 @@ Steps:
 ## <a id="testing"></a> 🧪 Testing
 `ProjectYedidim.Test` includes unit tests for the dispatch algorithm.
 
-~~~bash
+```bash
 dotnet test
-~~~
+```
 
 ---
 
 ## <a id="deployment"></a> 🚀 Deployment
 
 ### 📦 Build
-~~~bash
+```bash
 dotnet publish ProjectYedidim -c Release -o out
-~~~
+```
 
 ### ▶️ Run
-~~~bash
+```bash
 dotnet out/ProjectYedidim.dll
-~~~
+```
 
 ### 🐳 Basic Dockerfile
-~~~dockerfile
+```dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY ./out .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 ENTRYPOINT ["dotnet","ProjectYedidim.dll"]
-~~~
+```
 
 ---
 
 ## <a id="license"></a> 📜 License
-
 This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
