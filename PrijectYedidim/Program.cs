@@ -86,7 +86,7 @@ builder.Services.AddCors(options =>
 // 5. Dependency Injection
 builder.Services.AddScoped<Irepository<Message>, MessageRepository>();
 builder.Services.AddScoped<IService<VolunteerDto>, VolunteerService>();
-builder.Services.AddScoped<IService<MessageDto>, MessageService>(); // 👈 חשוב!
+builder.Services.AddScoped<IService<MessageDto>, MessageService>(); 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<Irepository<KnowledgeCategory>, KnowledgeCategoryRepository>();
 builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryService>();
@@ -117,7 +117,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseCors("AllowReactApp"); // CORS לפני Authentication
+app.UseCors("AllowReactApp");
 
 app.UseAuthentication();
 app.UseAuthorization();
