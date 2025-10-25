@@ -58,3 +58,23 @@ C:\Users\This User\Desktop\לימודים\projectYedidim-csharp\Service\obj\Debu
 C:\Users\This User\Desktop\לימודים\projectYedidim-csharp\Service\obj\Debug\net7.0\refint\Service.dll
 C:\Users\This User\Desktop\לימודים\projectYedidim-csharp\Service\obj\Debug\net7.0\Service.pdb
 C:\Users\This User\Desktop\לימודים\projectYedidim-csharp\Service\obj\Debug\net7.0\ref\Service.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Service.deps.json
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Service.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Service.pdb
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Common.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Mock.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Repository.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Common.pdb
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Repository.pdb
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\bin\Debug\net7.0\Mock.pdb
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.csproj.AssemblyReference.cache
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.AssemblyInfoInputs.cache
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.AssemblyInfo.cs
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.sourcelink.json
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.csproj.Up2Date
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\refint\Service.dll
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\Service.pdb
+C:\Users\sara\Desktop\backend-ASP.NET-Core\Service\obj\Debug\net7.0\ref\Service.dll
