@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
 
+// Mock 
 namespace Mock
 {
     public class DataBase : DbContext, Icontext
@@ -17,16 +18,7 @@ namespace Mock
 
         public DataBase() { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(
-                    "Server=;Database=localhost\\SQLEXPRESS01;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
-                );
-            }
-        }
-
+     
         public Task<int> SaveChangesAsync()
         {
             return base.SaveChangesAsync();
