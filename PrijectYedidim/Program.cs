@@ -93,8 +93,9 @@ builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryServ
 builder.Services.AddScoped<My_areas_of_knowledge_Service>();
 builder.Services.AddScoped<ManagerAlgorithm>();
 
+// connect to DB 
 builder.Services.AddDbContext<Icontext, DataBase>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 builder.Services.AddHostedService<ScheduledCleanupService>();
