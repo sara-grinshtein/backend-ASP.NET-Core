@@ -11,11 +11,8 @@ using Repository.Repositories;
 using Common.Dto;
 using Service.interfaces;
 using Service.Algorithm;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Npgsql.EntityFrameworkCore.PostgreSQL; // Postgres provider
+
+// Program.cs
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -131,6 +128,17 @@ builder.Services.AddService();
 builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
+
+// 7.5 Ensure database exists & migrations are applied (important in Production)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<Icontext>() as DataBase;
+    if (db != null)
+    {
+        // This will create the DB / tables in Postgres on first deploy
+        db.Database.Migrate();
+    }
+}
 
 // 8. Middleware pipeline
 app.UseSwagger();
