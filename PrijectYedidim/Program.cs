@@ -1,18 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using Service.service;
-using Repository.interfaces;
-using Mock;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using Repository.Entites;
+
+using Repository.interfaces;
 using Repository.Repositories;
-using Common.Dto;
+using Repository.Entites;
+
 using Service.interfaces;
+using Service.service;
 using Service.Algorithm;
 
-// Program.cs
+using Common.Dto;
+using Mock; // DataBase : DbContext
+using AutoMapper; // for AddAutoMapper
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -111,7 +118,7 @@ builder.Services.AddDbContext<Icontext, DataBase>(options =>
         // Local dev => SQL Server
         var sqlConnStr = builder.Configuration.GetConnectionString("SqlServerConnection");
 
-        // Fallback hard-coded local connection if not provided in config
+        // fallback למחשב שלך
         if (string.IsNullOrWhiteSpace(sqlConnStr))
         {
             sqlConnStr =
@@ -129,14 +136,18 @@ builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
 
-// 7.5 Ensure database exists & migrations are applied (important in Production)
-using (var scope = app.Services.CreateScope())
+// 7.5 Run migrations automatically ONLY in Production on Render
+if (app.Environment.IsProduction())
 {
-    var db = scope.ServiceProvider.GetRequiredService<Icontext>() as DataBase;
-    if (db != null)
+    using (var scope = app.Services.CreateScope())
     {
-        // This will create the DB / tables in Postgres on first deploy
-        db.Database.Migrate();
+        var db = scope.ServiceProvider.GetRequiredService<Icontext>() as DataBase;
+
+        if (db != null)
+        {
+            // creates DB / tables in Postgres if missing
+            db.Database.Migrate();
+        }
     }
 }
 
