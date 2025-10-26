@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Npgsql.EntityFrameworkCore.PostgreSQL; // Postgres provider
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,7 +66,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
             )
         };
     });
@@ -91,34 +92,33 @@ builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryServ
 builder.Services.AddScoped<My_areas_of_knowledge_Service>();
 builder.Services.AddScoped<ManagerAlgorithm>();
 
-// 6. Database connection selection
-// -------------------------------------------
-// Production (Render)  -> connect to PostgreSQL
-// Development (local)  -> connect to SQL Server
-// -------------------------------------------
-var isProduction = builder.Environment.IsProduction();
-
-// Note: Make sure you have these connection strings in your configuration files:
-// "PostgresConnection"  -> for PostgreSQL (Production)
-// "SqlServerConnection" -> for SQL Server (Development)
+// 6. Database connection
+// Production  (Render / ASPNETCORE_ENVIRONMENT=Production) -> PostgreSQL (DefaultConnection)
+// Development (local)                                      -> SQL Server   (SqlServerConnection or fallback local)
 builder.Services.AddDbContext<Icontext, DataBase>(options =>
 {
-    if (isProduction)
+    if (builder.Environment.IsProduction())
     {
-        var pgConnStr = builder.Configuration.GetConnectionString("PostgresConnection");
+        // Production / Render => PostgreSQL
+        var pgConnStr = builder.Configuration.GetConnectionString("DefaultConnection");
+
         if (string.IsNullOrWhiteSpace(pgConnStr))
         {
-            throw new InvalidOperationException("PostgresConnection is missing for Production environment.");
+            throw new InvalidOperationException("DefaultConnection (PostgreSQL) is missing in Production.");
         }
 
         options.UseNpgsql(pgConnStr);
     }
     else
     {
+        // Local dev => SQL Server
         var sqlConnStr = builder.Configuration.GetConnectionString("SqlServerConnection");
+
+        // Fallback hard-coded local connection if not provided in config
         if (string.IsNullOrWhiteSpace(sqlConnStr))
         {
-            throw new InvalidOperationException("SqlServerConnection is missing for Development environment.");
+            sqlConnStr =
+                "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
         }
 
         options.UseSqlServer(sqlConnStr);
@@ -133,7 +133,6 @@ builder.Services.AddAutoMapper(typeof(MyMapper));
 var app = builder.Build();
 
 // 8. Middleware pipeline
-// Swagger UI (always enabled; you can hide it in production if needed)
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
