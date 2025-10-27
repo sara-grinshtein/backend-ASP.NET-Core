@@ -9,24 +9,26 @@ namespace Mock
         {
             var optionsBuilder = new DbContextOptionsBuilder<DataBase>();
 
-            // Try to get the PostgreSQL connection string from the environment variable
-            // (used in Render or other production-like environments)
             var pgConnStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
             if (!string.IsNullOrWhiteSpace(pgConnStr))
             {
-                // PostgreSQL connection available → use it for migrations / production
+                // Use PostgreSQL connection string from environment variables 
+                // (used in production environments like Render)
                 optionsBuilder.UseNpgsql(pgConnStr);
             }
             else
             {
-                // No environment variable → fallback to local SQL Server for dev/testing
-                optionsBuilder.UseSqlServer(
-                    "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;"
+                // Fallback for local development – use local PostgreSQL instead of SQL Server
+                // This ensures EF will never attempt to connect to a SQL Server instance
+                optionsBuilder.UseNpgsql(
+                    "Host=localhost;Port=5432;Database=yedidim_local;Username=postgres;Password=postgres;Ssl Mode=Disable;Trust Server Certificate=true;"
                 );
             }
 
             return new DataBase(optionsBuilder.Options);
         }
     }
+
+
 }
