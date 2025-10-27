@@ -136,6 +136,8 @@ builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
 
+Console.WriteLine("=== Booting Yedidim API - Build stamp " + DateTime.UtcNow + " ===");
+
 // 7.5 Run migrations automatically ONLY in Production on Render
 if (app.Environment.IsProduction())
 {
