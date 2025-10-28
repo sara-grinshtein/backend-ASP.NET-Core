@@ -35,8 +35,8 @@ namespace Repository.Repositories
         public async Task<List<My_areas_of_knowledge>> GetAll()
         {
             return await context.areas_Of_Knowledges
-                .Include(x => x.KnowledgeCategory)  // כולל תיאור התחום
-                .Include(x => x.Volunteer)          // כולל מידע על המתנדב
+                .Include(x => x.KnowledgeCategory)  // encluding the description of knowledge area
+                .Include(x => x.Volunteer)          // encluding information about the volunteer
                 .ToListAsync();
         }
 
@@ -64,7 +64,7 @@ namespace Repository.Repositories
 
         public async Task Save()
         {
-             context.SaveChangesAsync();
+             await context.SaveChangesAsync();
         }
 
     }

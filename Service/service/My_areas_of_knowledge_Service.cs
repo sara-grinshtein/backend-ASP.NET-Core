@@ -50,12 +50,11 @@ namespace Service.service
             await repository.UpDateItem(id, entity);
         }
 
-        // ✅ פונקציה חדשה – שליפת כל תחומי הידע של מתנדב
+        // extract the knowlwdge area by volunteer
        
-
         public async Task<List<My_areas_of_knowledge_Dto>> GetByVolunteerId(int volunteerId)
         {
-            var list = await repository.GetAll(); // או תשתמש בשאילתה ממוקדת אם יש
+            var list = await repository.GetAll(); 
             return mapper.Map<List<My_areas_of_knowledge>, List<My_areas_of_knowledge_Dto>>(
                 list.Where(x => x.volunteer_id == volunteerId).ToList()
             );

@@ -31,9 +31,19 @@ namespace PrijectYedidim.Controllers
         }
 
         [HttpPost]
-        public async Task<My_areas_of_knowledge_Dto> PostAsync([FromBody] My_areas_of_knowledge_Dto value)
+        public async Task<IActionResult> PostAsync([FromBody] My_areas_of_knowledge_Dto value)
         {
-            return await _service.AddItem(value);
+            try
+            {
+                var created = await _service.AddItem(value);
+                return Ok(created);
+
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine("POST /api/My_areas_of_knowledge_failed");
+                return StatusCode(500,ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
@@ -48,7 +58,7 @@ namespace PrijectYedidim.Controllers
             await _service.DeleteItem(id);
         }
 
-        // ✅ פונקציה חדשה – שליפת תחומי ידע לפי מזהה מתנדב
+        
 
         [HttpGet("volunteer/{volunteerId}")]
         public async Task<List<My_areas_of_knowledge_Dto>> GetByVolunteerId(int volunteerId)
