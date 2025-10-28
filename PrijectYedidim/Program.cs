@@ -96,37 +96,30 @@ builder.Services.AddScoped<IService<KnowledgeCategoryDto>, KnowledgeCategoryServ
 builder.Services.AddScoped<My_areas_of_knowledge_Service>();
 builder.Services.AddScoped<ManagerAlgorithm>();
 
-// 6. Database connection
-// Production  (Render / ASPNETCORE_ENVIRONMENT=Production) -> PostgreSQL (DefaultConnection)
-// Development (local)                                      -> SQL Server   (SqlServerConnection or fallback local)
+// 6. Database connection (PostgreSQL ONLY - no SQL Server fallback)
 builder.Services.AddDbContext<Icontext, DataBase>(options =>
 {
-    if (builder.Environment.IsProduction())
+    // 1. Try appsettings connection string ("DefaultConnection")
+    var pgConnStr = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    // 2. Fallback: environment var (Render style: ConnectionStrings__DefaultConnection)
+    if (string.IsNullOrWhiteSpace(pgConnStr))
     {
-        // Production / Render => PostgreSQL
-        var pgConnStr = builder.Configuration.GetConnectionString("DefaultConnection");
-
-        if (string.IsNullOrWhiteSpace(pgConnStr))
-        {
-            throw new InvalidOperationException("DefaultConnection (PostgreSQL) is missing in Production.");
-        }
-
-        options.UseNpgsql(pgConnStr);
+        pgConnStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
     }
-    else
+
+    // 3. Fallback: local dev env var (LOCAL_PG_CONNECTION)
+    if (string.IsNullOrWhiteSpace(pgConnStr))
     {
-        // Local dev => SQL Server
-        var sqlConnStr = builder.Configuration.GetConnectionString("SqlServerConnection");
-
-        // fallback למחשב שלך
-        if (string.IsNullOrWhiteSpace(sqlConnStr))
-        {
-            sqlConnStr =
-                "Server=localhost;Database=project_yedidim1;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
-        }
-
-        options.UseSqlServer(sqlConnStr);
+        pgConnStr = Environment.GetEnvironmentVariable("LOCAL_PG_CONNECTION");
     }
+
+    if (string.IsNullOrWhiteSpace(pgConnStr))
+    {
+        throw new InvalidOperationException("No PostgreSQL connection string found for DbContext.");
+    }
+
+    options.UseNpgsql(pgConnStr);
 });
 
 // 7. Hosted services, AutoMapper, and custom services
@@ -138,18 +131,13 @@ var app = builder.Build();
 
 Console.WriteLine("=== Booting Yedidim API - Build stamp " + DateTime.UtcNow + " ===");
 
-// 7.5 Run migrations automatically ONLY in Production on Render
-if (app.Environment.IsProduction())
+// 7.5 Run migrations automatically (applies in Production too)
+using (var scope = app.Services.CreateScope())
 {
-    using (var scope = app.Services.CreateScope())
+    var db = scope.ServiceProvider.GetRequiredService<Icontext>() as DataBase;
+    if (db != null)
     {
-        var db = scope.ServiceProvider.GetRequiredService<Icontext>() as DataBase;
-
-        if (db != null)
-        {
-            // creates DB / tables in Postgres if missing
-            db.Database.Migrate();
-        }
+        db.Database.Migrate();
     }
 }
 
@@ -161,7 +149,12 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty;
 });
 
-app.UseHttpsRedirection();
+// only force HTTPS redirect in Development to avoid Render warning
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseStaticFiles();
 app.UseRouting();
 
