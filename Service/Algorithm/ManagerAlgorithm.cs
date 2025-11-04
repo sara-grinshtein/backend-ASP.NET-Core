@@ -40,17 +40,17 @@ namespace Service.Algorithm
             var filtered = await Task.WhenAll(
                 openMessages.Select(async msg =>
                 {
-                    Console.WriteLine($"🔎 מתחיל סינון עבור הודעה {msg.message_id}...");
+                    Console.WriteLine($" מתחיל סינון עבור הודעה {msg.message_id}...");
                     var candidates = await candidateScreening.FilterVolunteersByDistanceAndKnowledgeAsync(
                         msg.Latitude ?? 0, msg.Longitude ?? 0, msg);
 
-                    Console.WriteLine($"✅ נמצאו {candidates.Count} מועמדים להודעה {msg.message_id}");
+                    Console.WriteLine($" נמצאו {candidates.Count} מועמדים להודעה {msg.message_id}");
                     return (msg, candidates);
                 })
             );
 
             var allVolunteers = filtered.SelectMany(f => f.candidates).Distinct().ToList();
-            Console.WriteLine($"👥 סך כל מתנדבים ייחודיים לאחר סינון: {allVolunteers.Count}");
+            Console.WriteLine($" סך כל מתנדבים ייחודיים לאחר סינון: {allVolunteers.Count}");
 
             // שלב 3: הפעלת הגרף
             var graphBuilder = new FlowGraphBuilder();
@@ -60,7 +60,7 @@ namespace Service.Algorithm
             dinic.MaxFlow("source", "sink");
 
             var assignments = dinic.GetAssignments();
-            Console.WriteLine($"🔗 מספר שיוכים שהתבצעו: {assignments.Count}");
+            Console.WriteLine($" מספר שיוכים שהתבצעו: {assignments.Count}");
 
             algorithmDesign.ApplyAssignments(assignments);
         }
