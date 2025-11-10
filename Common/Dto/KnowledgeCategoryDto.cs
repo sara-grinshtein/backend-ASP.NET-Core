@@ -2,7 +2,7 @@
 {
     public class KnowledgeCategoryDto
     {
-        public int ID_knowledge { get; set; }       // חייב להתאים לשם ב-Entity כדי שהמיפוי יעבוד אוטומטית (או ידני)
+        public int ID_knowledge { get; set; }       
         public string describtion { get; set; }
     }
 }
