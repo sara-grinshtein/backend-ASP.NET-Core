@@ -29,16 +29,16 @@ namespace Service.service
 
         public async Task<VolunteerDto> AddItem(VolunteerDto item)
         {
-            Console.WriteLine("🔄 [AddItem] Starting...");
+            Console.WriteLine(" [AddItem] Starting...");
 
             try
             {
-                Console.WriteLine("🧭 [AddItem] Mapping VolunteerDto to Volunteer entity...");
+                Console.WriteLine(" [AddItem] Mapping VolunteerDto to Volunteer entity...");
                 var volunteerEntity = mapper.Map<VolunteerDto, Volunteer>(item);
                 var knowledgeDtos = item.areas_of_knowledge;
                 volunteerEntity.areas_of_knowledge = null;
 
-                Console.WriteLine("📥 [AddItem] Saving volunteer to repository...");
+                Console.WriteLine(" [AddItem] Saving volunteer to repository...");
                 var createdVolunteer = await repository.AddItem(volunteerEntity);
 
                 if (createdVolunteer == null || createdVolunteer.volunteer_id == 0)
@@ -63,7 +63,7 @@ namespace Service.service
             catch (Exception ex)
             {
                 Console.WriteLine($"🔥 [AddItem] Exception: {ex.Message}");
-                return null;
+                throw;
             }
         }
 
