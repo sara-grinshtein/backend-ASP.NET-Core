@@ -26,10 +26,33 @@ namespace Repository.Repositories
 
         async Task<Helped> Irepository<Helped>.DeleteItem(int id)
         {
-            var Helped = await ((Irepository<Helped>)this).Getbyid(id);
-            Helped.IsDeleted = true;
-            await context.Save();
-            return Helped;
+            try
+            {
+                var helped = await ((Irepository<Helped>)this).Getbyid(id);
+
+                if (helped == null)
+                {
+                    throw new KeyNotFoundException($"Helped with id {id} not found");
+                }
+
+                helped.IsDeleted = true;
+
+                await context.SaveChangesAsync();
+
+                return helped;
+            }
+            catch (KeyNotFoundException)
+            {
+               
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($" Error deleting Helped id {id}: {ex.Message}");
+
+                 throw new Exception("Error deleting Helped from repository", ex);
+            }
+
         }
 
         async Task<List<Helped>> Irepository<Helped>.GetAll()
@@ -54,13 +77,13 @@ namespace Repository.Repositories
             helped.password = item.password;
             helped.helped_first_name = item.helped_first_name;
             helped.helped_last_name = item.helped_last_name;
-            await context.Save();
+            await context.SaveChangesAsync();
             return helped;
         }
 
         public async Task Save()
         {
-            context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+           await context.SaveChangesAsync(); 
         }
 
     }
