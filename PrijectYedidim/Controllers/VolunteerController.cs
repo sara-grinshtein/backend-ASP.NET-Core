@@ -20,29 +20,36 @@ namespace PrijectYedidim.Controllers
         [HttpGet]
         public async Task<List<VolunteerDto>> GetAll()
         {
-            Console.WriteLine("📥 התקבלה בקשת GET לכל המתנדבים");
+            Console.WriteLine(" התקבלה בקשת GET לכל המתנדבים");
             var result = await service.GetAll();
-            Console.WriteLine($"📊 כמות מתנדבים שהוחזרה: {result.Count}");
+            Console.WriteLine($" כמות מתנדבים שהוחזרה: {result.Count}");
             return result;
         }
 
         [HttpGet("{id}")]
         public async Task<VolunteerDto> GetAsync(int id)
         {
-            Console.WriteLine($"📥 התקבלה בקשת GET למתנדב לפי מזהה: {id}");
+            Console.WriteLine($" התקבלה בקשת GET למתנדב לפי מזהה: {id}");
             var volunteer = await service.Getbyid(id);
-            Console.WriteLine($"🔎 מתנדב שנמצא: {volunteer?.volunteer_first_name} {volunteer?.volunteer_last_name}");
+            Console.WriteLine($" מתנדב שנמצא: {volunteer?.volunteer_first_name} {volunteer?.volunteer_last_name}");
             return volunteer;
         }
 
         [HttpPost]
-        public async Task<VolunteerDto> PostAsync([FromBody] VolunteerDto value)
+        public async Task<IActionResult> PostAsync([FromBody] VolunteerDto value)
         {
-            Console.WriteLine("➕ התקבלה בקשת POST ליצירת מתנדב חדש");
-            Console.WriteLine($"📧 אימייל: {value.email}, 📛 שם: {value.volunteer_first_name} {value.volunteer_last_name}");
+            Console.WriteLine(" התקבלה בקשת POST ליצירת מתנדב חדש");
+            Console.WriteLine($" אימייל: {value.email},  שם: {value.volunteer_first_name} {value.volunteer_last_name}");
             var added = await service.AddItem(value);
-            Console.WriteLine($"✅ מתנדב נוצר עם מזהה: {added.volunteer_id}");
-            return added;
+            if(added== null)
+            {
+                Console.WriteLine("יצירת מתנדב נכשלה (service החזיר null)");
+                return StatusCode(500, "failed to create volunteer");
+            }
+                
+
+            Console.WriteLine($" מתנדב נוצר עם מזהה: {added.volunteer_id}");
+            return CreatedAtAction(nameof(GetAsync), new { id = added.volunteer_id }, added);
         }
 
         [HttpPut("{id}")]
@@ -54,15 +61,15 @@ namespace PrijectYedidim.Controllers
 
             await service.UpDateItem(id, value);
 
-            Console.WriteLine("✅ העדכון הושלם");
+            Console.WriteLine(" העדכון הושלם");
         }
 
         [HttpDelete("{id}")]
         public async Task DeleteAsync(int id)
         {
-            Console.WriteLine($"🗑️ התקבלה בקשת DELETE למחיקת מתנדב עם מזהה: {id}");
+            Console.WriteLine($" התקבלה בקשת DELETE למחיקת מתנדב עם מזהה: {id}");
             await service.DeleteItem(id);
-            Console.WriteLine("✅ המתנדב נמחק בהצלחה");
+            Console.WriteLine(" המתנדב נמחק בהצלחה");
         }
     }
 }

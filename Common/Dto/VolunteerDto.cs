@@ -14,11 +14,11 @@ namespace Common.Dto
     {
         public int? volunteer_id { get; set; }
         public string password { get; set; }
-        public string volunteer_first_name { get; set; } //שם פרטי
-        public string? volunteer_last_name { get; set; } //משפחה 
+        public string volunteer_first_name { get; set; } 
+        public string? volunteer_last_name { get; set; }
          public TimeSpan? start_time { get; set; }
         public TimeSpan? end_time { get; set; }
-        public string? tel { get; set; }//טל
+        public string? tel { get; set; }
         public string email { get; set; }
         public bool IsDeleted { get; set; }
         public double? Latitude { get; set; }
