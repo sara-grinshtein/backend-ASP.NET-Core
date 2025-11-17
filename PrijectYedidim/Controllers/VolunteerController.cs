@@ -40,19 +40,15 @@ namespace PrijectYedidim.Controllers
         {
             try
             {
-                Console.WriteLine(" התקבלה בקשת POST ליצירת מתנדב חדש");
-                Console.WriteLine($" אימייל: {value.email},  שם: {value.volunteer_first_name} {value.volunteer_last_name}");
-
                 var added = await service.AddItem(value);
 
                 if (added == null)
                 {
-                    Console.WriteLine("יצירת מתנדב נכשלה (service החזיר null)");
                     return StatusCode(500, "failed to create volunteer");
                 }
 
-                Console.WriteLine($" מתנדב נוצר עם מזהה: {added.volunteer_id}");
-                return CreatedAtAction(nameof(GetAsync), new { id = added.volunteer_id }, added);
+                
+                return Ok(added);
             }
             catch (Exception ex)
             {
