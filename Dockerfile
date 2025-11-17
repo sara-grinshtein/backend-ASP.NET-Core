@@ -13,7 +13,7 @@ COPY Service/Service.csproj Service/
 COPY Mock/Mock.csproj Mock/
 COPY PrijectYedidim/PrijectYedidim.csproj PrijectYedidim/
 
-# 🔧 Restore ONLY the web project to avoid missing test project
+# Restore ONLY the web project to avoid missing test project
 RUN dotnet restore PrijectYedidim/PrijectYedidim.csproj
 
 # Copy the rest of the source
