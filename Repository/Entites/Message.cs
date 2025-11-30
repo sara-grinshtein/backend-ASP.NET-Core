@@ -26,9 +26,8 @@ public class Message
     public bool? ConfirmArrival { get; set; }
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
-
     [Required]
-    public DateTime date { get; set; } = DateTime.Now;
+    public DateTime date { get; set; }
 
     // 🆕 שדות חדשים
     public string? title { get; set; }

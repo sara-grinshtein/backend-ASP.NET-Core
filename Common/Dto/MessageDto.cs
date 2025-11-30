@@ -27,6 +27,6 @@ namespace Common.Dto
         public string? location { get; set; }    // מיקום כתובת
         public string? phone { get; set; }       // טלפון ליצירת קשר
 
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime created_at { get; set; }
     }
 }
