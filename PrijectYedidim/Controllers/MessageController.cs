@@ -53,7 +53,7 @@ namespace PrijectYedidim.Controllers
             value.isDone = false;
             value.confirmArrival = false; // ← הכרחי! כדי שלא יופיע ✔ כברירת מחדל
             value.hasResponse = false;
-            value.created_at = DateTime.Now;
+            value.created_at = DateTime.UtcNow;
 
             // ✅ שמירת הבקשה למסד הנתונים
             var message = await service.AddItem(value);
