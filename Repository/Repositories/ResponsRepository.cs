@@ -3,37 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Azure;
 using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 using Repository.interfaces;
 using Response = Repository.Entites.Response;
+
 namespace Repository.Repositories
 {
     public class ResponsRepository : Irepository<Response>
     {
         private readonly Icontext context;
 
-
         public ResponsRepository(Icontext context)
         {
             this.context = context;
         }
 
-     
-
         async Task<Response> Irepository<Response>.AddItem(Response item)
         {
-            await this.context.Responses.AddAsync(item);
-            await this.context.Save();
+            await context.Responses.AddAsync(item);
+            await context.SaveChangesAsync();   // ✔ שמירה תקינה
             return item;
         }
 
         async Task<Response> Irepository<Response>.DeleteItem(int id)
         {
             var item = await ((Irepository<Response>)this).Getbyid(id);
-            this.context.Responses.Remove(item);
-            await this.context.Save();
+            context.Responses.Remove(item);
+            await context.SaveChangesAsync();   // ✔ שמירה תקינה
             return item;
         }
 
@@ -52,17 +49,16 @@ namespace Repository.Repositories
             var response = await ((Irepository<Response>)this).Getbyid(id);
             response.context = item.context;
             response.rating = item.rating;
-            await context.Save();
+            response.isPublic = item.isPublic;   // ✔ עדכון שדות מלא
+            response.message_id = item.message_id;
+
+            await context.SaveChangesAsync();   // ✔ שמירה תקינה
             return response;
         }
 
         public async Task Save()
         {
-           context.SaveChangesAsync(); // ✅ חובה לשמור למסד
+            await context.SaveChangesAsync();    // ✔ מתוקן — היה חסר await
         }
-
-      
-
     }
 }
-
