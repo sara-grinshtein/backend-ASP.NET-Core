@@ -124,8 +124,8 @@ builder.Services.AddDbContext<Icontext, DataBase>(options =>
 
 // 7. Hosted services, AutoMapper, and custom services
 //builder.Services.AddHostedService<ScheduledCleanupService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddService();
-builder.Services.AddAutoMapper(typeof(MyMapper));
 
 var app = builder.Build();
 
