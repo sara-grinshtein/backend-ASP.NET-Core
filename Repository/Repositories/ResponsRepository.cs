@@ -56,9 +56,11 @@ namespace Repository.Repositories
             return response;
         }
 
+   
         public async Task Save()
         {
-            await context.SaveChangesAsync();    // ✔ מתוקן — היה חסר await
+            await context.SaveChangesAsync();
         }
+
     }
 }
